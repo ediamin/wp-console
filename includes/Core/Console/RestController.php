@@ -94,42 +94,50 @@ class RestController extends WP_REST_Controller {
     public function create_item( $request ) {
         global $wp_console_dump;
 
-        $input = $request['input'];
+        try {
+            $input = $request['input'];
 
-        $config = new \Psy\Configuration( [
-            'configDir' => WP_CONTENT_DIR,
-        ] );
+            $config = new \Psy\Configuration( [
+                'configDir' => WP_CONTENT_DIR,
+            ] );
 
-        $config->setColorMode( \Psy\Configuration::COLOR_MODE_DISABLED );
+            $config->setColorMode( \Psy\Configuration::COLOR_MODE_DISABLED );
 
-        $psysh = new Shell( $config );
+            $psysh = new Shell( $config );
 
-        $output = new ShellOutput( ShellOutput::VERBOSITY_NORMAL, true );
+            $output = new ShellOutput( ShellOutput::VERBOSITY_NORMAL, true );
 
-        $psysh->setOutput( $output );
+            $psysh->setOutput( $output );
 
-        $psysh->addCode( $input );
+            $psysh->addCode( $input );
 
-        extract( $psysh->getScopeVariablesDiff( get_defined_vars() ) );
+            extract( $psysh->getScopeVariablesDiff( get_defined_vars() ) );
 
-        ob_start( [ $psysh, 'writeStdout' ], 1 );
+            ob_start( [ $psysh, 'writeStdout' ], 1 );
 
-        set_error_handler( [ $psysh, 'handleError' ] );
+            set_error_handler( [ $psysh, 'handleError' ] );
 
-        $_ = eval( $psysh->onExecute( $psysh->flushCode() ?: \Psy\ExecutionClosure::NOOP_INPUT ) );
+            $_ = eval( $psysh->onExecute( $psysh->flushCode() ?: \Psy\ExecutionClosure::NOOP_INPUT ) );
 
-        restore_error_handler();
+            restore_error_handler();
 
-        $psysh->setScopeVariables( get_defined_vars() );
-        $psysh->writeReturnValue( $_ );
+            $psysh->setScopeVariables( get_defined_vars() );
+            $psysh->writeReturnValue( $_ );
 
-        ob_end_flush();
+            ob_end_flush();
 
-        $data = [
-            'output' => $output->outputMessage,
-            'dump'   => $wp_console_dump
-        ];
+            $data = [
+                'output' => $output->outputMessage,
+                'dump'   => $wp_console_dump
+            ];
 
-        return rest_ensure_response( $data );
+            return rest_ensure_response( $data );
+
+        } catch ( \Exception $e ) {
+            return new WP_Error( 'wp_console_rest_error', $e->getMessage(), [
+                'input'  => $request['input'],
+                'status' => 422
+            ] );
+        }
     }
 }
