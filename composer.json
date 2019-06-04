@@ -17,6 +17,7 @@
     }
   },
   "require": {
-    "composer/installers": "^1.6"
+    "composer/installers": "^1.6",
+    "psy/psysh": "^0.9.9"
   }
 }

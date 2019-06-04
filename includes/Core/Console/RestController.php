@@ -2,6 +2,8 @@
 
 namespace WPConsole\Core\Console;
 
+use WPConsole\Core\Console\Psy\Output\ShellOutput;
+use WPConsole\Core\Console\Psy\Shell;
 use WP_Error;
 use WP_REST_Controller;
 use WP_REST_Server;
@@ -90,8 +92,44 @@ class RestController extends WP_REST_Controller {
      * @return \WP_REST_Response
      */
     public function create_item( $request ) {
+        global $wp_console_dump;
+
         $input = $request['input'];
 
-        return [];
+        $config = new \Psy\Configuration( [
+            'configDir' => WP_CONTENT_DIR,
+        ] );
+
+        $config->setColorMode( \Psy\Configuration::COLOR_MODE_DISABLED );
+
+        $psysh = new Shell( $config );
+
+        $output = new ShellOutput( ShellOutput::VERBOSITY_NORMAL, true );
+
+        $psysh->setOutput( $output );
+
+        $psysh->addCode( $input );
+
+        extract( $psysh->getScopeVariablesDiff( get_defined_vars() ) );
+
+        ob_start( [ $psysh, 'writeStdout' ], 1 );
+
+        set_error_handler( [ $psysh, 'handleError' ] );
+
+        $_ = eval( $psysh->onExecute( $psysh->flushCode() ?: \Psy\ExecutionClosure::NOOP_INPUT ) );
+
+        restore_error_handler();
+
+        $psysh->setScopeVariables( get_defined_vars() );
+        $psysh->writeReturnValue( $_ );
+
+        ob_end_flush();
+
+        $data = [
+            'output' => $output->outputMessage,
+            'dump'   => $wp_console_dump
+        ];
+
+        return rest_ensure_response( $data );
     }
 }
