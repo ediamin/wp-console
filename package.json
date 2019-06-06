@@ -4,6 +4,7 @@
   "description": "WordPress PHP Console",
   "main": "index.js",
   "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --progress --colors --watch"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,10 @@
   "bugs": {
     "url": "https://github.com/ediamin/wp-console/issues"
   },
-  "homepage": "https://github.com/ediamin/wp-console"
+  "homepage": "https://github.com/ediamin/wp-console",
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.2"
+  }
 }
