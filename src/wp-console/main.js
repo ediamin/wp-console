@@ -1,11 +1,15 @@
-wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( WPConsole.rest.root ) );
+import './style.scss';
 
-wp.apiFetch( {
-    path: '/' + WPConsole.rest.namespace + '/console',
-    method: 'post',
-    data: {
-        input: '$a = [1,2,3]; $b = [9,4]; dump(array_merge($a, $b))'
-    }
-} ).then((response) => {
-    console.log(response);
+const title = 'WP Console';
+
+ReactDOM.render(
+  <div className="wp-console-inner">
+    <h4>{title}</h4>
+  </div>,
+  document.getElementById('wp-console')
+);
+
+$('.ab-item', '#wp-admin-bar-wp-console').on('click', (e) => {
+    e.preventDefault();
+    $('#wp-console').addClass('active');
 });

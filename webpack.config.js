@@ -6,11 +6,22 @@ function resolve(...paths) {
     return path.resolve(__dirname, ...paths);
 }
 
+function isProduction() {
+    return process.env.NODE_ENV === 'production';
+}
+
 const plugins = [
+    new webpack.ProvidePlugin({
+        $: 'jQuery'
+    })
 ];
 
 module.exports = {
     mode: process.env.NODE_ENV,
+
+    externals: {
+        jQuery: 'jQuery'
+    },
 
     plugins,
 
@@ -35,12 +46,23 @@ module.exports = {
 
     output: {
         filename: '[name].js',
-        path: resolve('assets/js'),
-        chunkFilename: 'chunks/[chunkhash].js',
+        path: resolve('assets/js')
     },
 
     module: {
         rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader']
+            },
+            {
+                test: /\.scss$/,
+                use: ['style-loader','css-loader','sass-loader']
+            }
         ]
+    },
+    resolve: {
+        extensions: ['*', '.js', '.jsx']
     }
 }
