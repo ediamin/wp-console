@@ -14,3 +14,5 @@ dump.rdb
 # Dev environment
 /node_modules/
 /vendor/
+/assets/js/
+/assets/css/
