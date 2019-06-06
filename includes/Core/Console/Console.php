@@ -57,7 +57,11 @@ class Console {
      */
     public function enqueue_scripts() {
         wp_enqueue_style( 'wp-console', WP_CONSOLE_ASSETS . '/css/wp-console.css', [], WP_CONSOLE_VERSION );
-        wp_enqueue_script( 'wp-console', WP_CONSOLE_ASSETS . '/js/wp-console.js', [ 'jquery', 'wp-api-fetch', 'react', 'react-dom' ], WP_CONSOLE_VERSION, true );
+
+        $deps_file = WP_CONSOLE_ABSPATH . '/assets/js/wp-console.deps.json';
+        $deps      = file_exists( $deps_file ) ? json_decode( file_get_contents( $deps_file ) ) : [];
+
+        wp_enqueue_script( 'wp-console', WP_CONSOLE_ASSETS . '/js/wp-console.js', $deps, WP_CONSOLE_VERSION, true );
 
         $data = [
             'rest' => [
