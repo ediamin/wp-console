@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 function resolve(...paths) {
     return path.resolve(__dirname, ...paths);
@@ -13,7 +14,11 @@ function isProduction() {
 const plugins = [
     new webpack.ProvidePlugin({
         $: 'jQuery'
-    })
+    }),
+
+    new MiniCssExtractPlugin({
+      filename: '../css/[name].css'
+    }),
 ];
 
 module.exports = {
@@ -58,7 +63,11 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader','css-loader','sass-loader']
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader'
+                ]
             }
         ]
     },
