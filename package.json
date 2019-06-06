@@ -1,0 +1,26 @@
+{
+  "name": "wp-console",
+  "version": "1.0.0",
+  "description": "WordPress PHP Console",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ediamin/wp-console.git"
+  },
+  "keywords": [
+    "wordpress",
+    "console",
+    "browser",
+    "psysh",
+    "shell",
+    "dump"
+  ],
+  "author": "Edi Amin <to.ediamin@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ediamin/wp-console/issues"
+  },
+  "homepage": "https://github.com/ediamin/wp-console"
+}
