@@ -2,6 +2,7 @@
 const path = require( 'path' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
+const StyleLintPlugin = require( 'stylelint-webpack-plugin' );
 
 function resolve( ...paths ) {
     return path.resolve( __dirname, ...paths );
@@ -13,6 +14,13 @@ const plugins = [
     } ),
 
     new DependencyExtractionWebpackPlugin(),
+
+    new StyleLintPlugin( {
+        configFile: path.resolve( './.stylelintrc.json' ),
+        files: [
+            'src/wp-console/scss/**/*.scss'
+        ]
+    } ),
 ];
 
 module.exports = {

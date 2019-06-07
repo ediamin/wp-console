@@ -11,14 +11,19 @@ import { render } from '@wordpress/element';
 /**
  * Internal dependencies
  */
-import './style.scss';
-
-const title = 'WP Console';
+import './scss/main.scss';
 
 render(
-    <div className="wp-console-inner">
-        <h4>{ title }</h4>
-    </div>,
+    <section className="wp-console-inner">
+        <header className="wp-console-header clearfix">
+            <span className="wp-console-title">WP Console</span>
+            <ul className="wp-console-header-buttons float-right">
+                <li>
+                    <a href="#close-wp-console" className="close">&times;</a>
+                </li>
+            </ul>
+        </header>
+    </section>,
     document.getElementById( 'wp-console' )
 );
 
