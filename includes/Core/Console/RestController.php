@@ -2,6 +2,7 @@
 
 namespace WPConsole\Core\Console;
 
+use Exception;
 use WPConsole\Core\Console\Psy\Output\ShellOutput;
 use WPConsole\Core\Console\Psy\Shell;
 use WP_Error;
@@ -113,8 +114,6 @@ class RestController extends WP_REST_Controller {
 
             extract( $psysh->getScopeVariablesDiff( get_defined_vars() ) );
 
-            ob_start( [ $psysh, 'writeStdout' ], 1 );
-
             set_error_handler( [ $psysh, 'handleError' ] );
 
             $_ = eval( $psysh->onExecute( $psysh->flushCode() ?: \Psy\ExecutionClosure::NOOP_INPUT ) );
@@ -124,8 +123,6 @@ class RestController extends WP_REST_Controller {
             $psysh->setScopeVariables( get_defined_vars() );
             $psysh->writeReturnValue( $_ );
 
-            ob_end_flush();
-
             $data = [
                 'output' => $output->outputMessage,
                 'dump'   => $wp_console_dump
@@ -133,7 +130,7 @@ class RestController extends WP_REST_Controller {
 
             return rest_ensure_response( $data );
 
-        } catch ( \Exception $e ) {
+        } catch ( Exception $e ) {
             return new WP_Error( 'wp_console_rest_error', $e->getMessage(), [
                 'input'  => $request['input'],
                 'status' => 422
