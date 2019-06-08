@@ -4,7 +4,8 @@
   "description": "WordPress PHP Console",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack --progress --colors --watch"
+    "dev": "cross-env NODE_ENV=development webpack --progress --colors --watch",
+    "make-pot": "wp i18n make-pot ./ languages/wp-console.pot"
   },
   "repository": {
     "type": "git",
