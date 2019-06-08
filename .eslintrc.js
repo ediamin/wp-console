@@ -114,4 +114,8 @@ module.exports = {
             },
         },
     ],
+    // Custom settings
+    globals: {
+        wp: true
+    },
 };

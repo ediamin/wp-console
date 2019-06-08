@@ -62,6 +62,9 @@ class Console {
         $deps      = file_exists( $deps_file ) ? json_decode( file_get_contents( $deps_file ) ) : [];
 
         wp_enqueue_script( 'wp-console', WP_CONSOLE_ASSETS . '/js/wp-console.js', $deps, WP_CONSOLE_VERSION, true );
+        wp_enqueue_code_editor( [
+            'type' => 'php',
+        ] );
 
         $data = [
             'rest' => [

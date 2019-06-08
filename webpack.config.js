@@ -18,8 +18,8 @@ const plugins = [
     new StyleLintPlugin( {
         configFile: path.resolve( './.stylelintrc.json' ),
         files: [
-            'src/wp-console/scss/**/*.scss'
-        ]
+            'src/wp-console/scss/**/*.scss',
+        ],
     } ),
 ];
 
@@ -32,6 +32,7 @@ module.exports = {
         alias: {
             '@': resolve( 'src' ),
             '@wp-console': resolve( 'src/wp-console' ),
+            bootstrap: resolve( 'node_modules/bootstrap/scss' ),
         },
         extensions: [ '*', '.js', '.jsx' ],
     },
