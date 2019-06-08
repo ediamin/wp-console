@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { Component } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -18,7 +19,7 @@ class App extends Component {
         return (
             <section className="wp-console-inner">
                 <header className="wp-console-header clearfix">
-                    <h4 className="wp-console-title">WP Console</h4>
+                    <h4 className="wp-console-title">{ __( 'Dashboard', 'wp-console' ) }</h4>
                     <ul className="wp-console-header-buttons list-inline float-right">
                         <li className="list-inline-item">
                             <a href="#close-wp-console" className="close">&times;</a>

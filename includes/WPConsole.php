@@ -263,7 +263,7 @@ final class WPConsole {
      * @return void
      */
     public function load_plugin_textdomain() {
-        load_plugin_textdomain( 'wp-console', false, dirname( plugin_basename( WP_CONSOLE_FILE ) ) . '/i18n/languages/' );
+        load_plugin_textdomain( 'wp-console', false, dirname( plugin_basename( WP_CONSOLE_FILE ) ) . '/languages/' );
     }
 
     /**
