@@ -1,0 +1,72 @@
+// gutenberg notice component
+.components-notice {
+    font-family: $font-family-base;
+    font-size: 14px;
+    background-color: $blue-medium-100;
+    border-left: 4px solid $blue-medium-500;
+    margin: 5px 15px 2px;
+    padding: 8px 12px;
+    position: absolute !important;
+    top: 5px;
+    left: calc(50% - 250px);
+    z-index: 1;
+    width: 500px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
+
+    &.is-dismissible {
+        padding-right: 36px;
+        // position: relative;
+    }
+
+    &.is-success {
+        border-left-color: $alert-green;
+        background-color: lighten($alert-green, 45%);
+    }
+
+    &.is-warning {
+        border-left-color: $alert-yellow;
+        background-color: lighten($alert-yellow, 35%);
+    }
+
+    &.is-error {
+        border-left-color: $alert-red;
+        background-color: lighten($alert-red, 35%);
+    }
+}
+
+.components-notice__content {
+    margin: 0.6em #{ $icon-button-size-small + $border-width } 0.6em 0;
+}
+
+.components-notice__action.components-button {
+    &,
+    &.is-link {
+        margin-left: 4px;
+    }
+    &.is-default {
+        vertical-align: initial;
+    }
+}
+
+.components-notice__dismiss {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    color: $dark-gray-300;
+
+    &:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover,
+    &:not(:disabled):not([aria-disabled="true"]):not(.is-default):active,
+    &:not(:disabled):not([aria-disabled="true"]):focus {
+        color: $alert-red;
+        background-color: transparent;
+    }
+
+    &:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover {
+        box-shadow: none;
+    }
+}
+
+.components-notice-list {
+    min-width: 300px;
+    z-index: z-index(".components-notice-list");
+}

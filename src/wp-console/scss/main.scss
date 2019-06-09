@@ -1,10 +1,17 @@
 @import "variables";
+@import "mixins";
 @import "~bootstrap/functions";
 @import "~bootstrap/variables";
 @import "~bootstrap/mixins";
 
+body.wp-console-active {
+    overflow: hidden;
+}
+
 #wp-console {
     @import "bootstrap";
+    @import "icon-button";
+    @import "notice";
 
     display: none;
     font-size: 13px;
@@ -47,4 +54,16 @@
 
 .wp-console-header-buttons {
     margin: 0;
+}
+
+#wp-console-code-editor-wrapper {
+    padding: 0 0 0 20px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ccc;
+}
+
+#wp-console-outputs {
+    overflow: auto;
+    height: calc(100vh - 387px);
+    padding-bottom: 20px;
 }

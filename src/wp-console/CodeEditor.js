@@ -17,7 +17,9 @@ class CodeEditor extends Component {
 
     render() {
         return (
-            <textarea id={ 'wp-console-textarea' }></textarea>
+            <section id={ 'wp-console-code-editor-wrapper' }>
+                <textarea id={ 'wp-console-code-editor' }></textarea>
+            </section>
         );
     }
 
@@ -26,14 +28,14 @@ class CodeEditor extends Component {
             return;
         }
 
-        this.editor = wp.codeEditor.initialize( 'wp-console-textarea' );
+        this.editor = wp.codeEditor.initialize( 'wp-console-code-editor' );
 
         this.editor.codemirror.setValue( `<?php\n` );
 
         this.editor.codemirror.getDoc().markText(
             { line: 0, ch: 0 },
             { line: 0, ch: 5 },
-            { readOnly: true }
+            { readOnly: true, atomic: true }
         );
 
         this.editor.codemirror.addKeyMap( {

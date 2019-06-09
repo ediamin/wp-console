@@ -1,5 +1,14 @@
+@import "colors";
+
+// bootstrap variable overrides
 $grid-breakpoints: (
     xs: 0
 );
 
 $font-size-base: 0.875rem;
+
+// gutenberg variable overrides
+$icon-button-size-small: 24px;
+// Buttons & UI Widgets
+$radius-round-rectangle: 4px;
+$radius-round: 50%;

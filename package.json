@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --progress --colors --watch",
-    "make-pot": "wp i18n make-pot ./ languages/wp-console.pot"
+    "make-pot": "wp i18n make-pot ./ languages/wp-console.pot",
+    "lint-js:fix": "eslint src/wp-console/**/*.js --fix",
+    "lint-css:fix": "stylelint --config=.stylelintrc.json src/wp-console/scss/**/*.scss --fix"
   },
   "repository": {
     "type": "git",
