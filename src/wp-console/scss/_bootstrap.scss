@@ -1,7 +1,3 @@
-@import "variables";
-@import "~bootstrap/functions";
-@import "~bootstrap/variables";
-@import "~bootstrap/mixins";
 @import "~bootstrap/close";
 @import "~bootstrap/utilities/float";
 @import "~bootstrap/utilities/clearfix";
@@ -30,5 +26,6 @@ a {
 }
 
 .close {
+    font-size: 21px;
     line-height: 0.7;
 }
