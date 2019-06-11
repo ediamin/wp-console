@@ -16,6 +16,10 @@ import './jquery';
 import App from './App';
 
 $( document ).ready( function() {
+    if ( ! $( '#wp-console' ).length ) {
+        return;
+    }
+
     render(
         <App />,
         document.getElementById( 'wp-console' )
