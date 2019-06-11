@@ -15,7 +15,7 @@ class ShellOutput extends PsyShellOutput {
     /**
      * Output message
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var string
      */
@@ -24,7 +24,7 @@ class ShellOutput extends PsyShellOutput {
     /**
      * Construct a ShellOutput instance.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param mixed                    $verbosity (default: self::VERBOSITY_NORMAL)
      * @param bool                     $decorated (default: null)
@@ -52,7 +52,7 @@ class ShellOutput extends PsyShellOutput {
     /**
      * Writes a message to the output.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param string $message A message to write to the output
      * @param bool   $newline Whether to add a newline or not
@@ -66,7 +66,7 @@ class ShellOutput extends PsyShellOutput {
     /**
      * Initialize output formatter styles.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */

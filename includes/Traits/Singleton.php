@@ -5,14 +5,14 @@ namespace WPConsole\Traits;
 /**
  * Singleton Trait
  *
- * @since WP_CONSOLE_SINCE
+ * @since 1.0.0
  */
 trait Singleton {
 
     /**
      * Singleton class instance holder
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var object
      */
@@ -21,7 +21,7 @@ trait Singleton {
     /**
      * Make a class instance
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return object
      */

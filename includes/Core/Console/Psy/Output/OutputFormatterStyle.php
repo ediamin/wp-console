@@ -73,7 +73,7 @@ class OutputFormatterStyle extends SymfonyOutputFormatterStyle {
     /**
      * Sets style foreground color.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param string|null $color The color name
      *
@@ -119,7 +119,7 @@ class OutputFormatterStyle extends SymfonyOutputFormatterStyle {
     /**
      * Sets some specific style option.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param string $option The option name
      *
@@ -140,7 +140,7 @@ class OutputFormatterStyle extends SymfonyOutputFormatterStyle {
     /**
      * Unsets some specific style option.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param string $option The option name
      *
@@ -162,7 +162,7 @@ class OutputFormatterStyle extends SymfonyOutputFormatterStyle {
     /**
      * Sets multiple style options at once.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -177,7 +177,7 @@ class OutputFormatterStyle extends SymfonyOutputFormatterStyle {
     /**
      * Applies the style to a given text.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param string $text The text to style
      *

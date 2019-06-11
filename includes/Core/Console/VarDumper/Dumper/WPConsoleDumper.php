@@ -12,7 +12,7 @@ class WPConsoleDumper extends HtmlDumper {
     /**
      * Echo output line
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param string $line
      * @param int    $depth

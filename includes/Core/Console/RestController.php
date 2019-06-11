@@ -14,7 +14,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Endpoint namespace
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var string
      */
@@ -23,7 +23,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Route name
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var string
      */
@@ -32,7 +32,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Class constructor
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -43,7 +43,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Register REST routes
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -67,7 +67,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Validate input arg
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param string           $value
      * @param \WP_REST_Request $request
@@ -86,7 +86,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Evaluate input code
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param \WP_REST_Request $request
      *

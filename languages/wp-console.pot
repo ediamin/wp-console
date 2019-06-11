@@ -1,8 +1,8 @@
-# Copyright (C) 2019 
+# Copyright (C) 2019
 # This file is distributed under the same license as the WP Console plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Console WP_CONSOLE_SINCE\n"
+"Project-Id-Version: WP Console 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-console\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"

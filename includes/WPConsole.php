@@ -7,7 +7,7 @@ use WPConsole\Traits\Singleton;
 /**
  * Main plugin class
  *
- * @since WP_CONSOLE_SINCE
+ * @since 1.0.0
  */
 final class WPConsole {
 
@@ -16,25 +16,25 @@ final class WPConsole {
     /**
      * Plugin version.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var string
      */
-    public $version = 'WP_CONSOLE_SINCE';
+    public $version = '1.0.0';
 
     /**
      * DB version
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var string
      */
-    public $db_version = 'WP_CONSOLE_SINCE';
+    public $db_version = '1.0.0';
 
     /**
      * Minimum PHP version required
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var string
      */
@@ -43,7 +43,7 @@ final class WPConsole {
     /**
      * Plugin text domain
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var string
      */
@@ -52,7 +52,7 @@ final class WPConsole {
     /**
      * Admin notice messages
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var array
      */
@@ -63,7 +63,7 @@ final class WPConsole {
      *
      * Can be called via wp_console()->controller_name->feature.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var array
      */
@@ -72,7 +72,7 @@ final class WPConsole {
     /**
      * Bootstrap the plugin
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -88,7 +88,7 @@ final class WPConsole {
     /**
      * Getter to call the controller classes
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param string $prop
      *
@@ -139,7 +139,7 @@ final class WPConsole {
     /**
      * Validate plugin requirements
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return bool
      */
@@ -161,7 +161,7 @@ final class WPConsole {
     /**
      * Show admin notices
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -174,7 +174,7 @@ final class WPConsole {
     /**
      * Initialize plugin logics
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -182,7 +182,7 @@ final class WPConsole {
         /**
          * Fires right before plugin loads its logics
          *
-         * @since WP_CONSOLE_SINCE
+         * @since 1.0.0
          */
         do_action( 'wp_console_before_init' );
 
@@ -196,7 +196,7 @@ final class WPConsole {
         /**
          * Fires after plugin finished loding its logics
          *
-         * @since WP_CONSOLE_SINCE
+         * @since 1.0.0
          */
         do_action( 'wp_console_init' );
     }
@@ -204,7 +204,7 @@ final class WPConsole {
     /**
      * Define plugin constants
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -219,7 +219,7 @@ final class WPConsole {
     /**
      * Load plugin core
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -229,7 +229,7 @@ final class WPConsole {
         /**
          * Fires after finished loading the plugin core
          *
-         * @since WP_CONSOLE_SINCE
+         * @since 1.0.0
          */
         do_action( 'wp_console_core_loaded' );
     }
@@ -240,7 +240,7 @@ final class WPConsole {
      * These controllers are chainable and could be called
      * like wp_console()->controller_name->feature.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -248,7 +248,7 @@ final class WPConsole {
         /**
          * Add chainable controllers
          *
-         * @since WP_CONSOLE_SINCE
+         * @since 1.0.0
          *
          * @var array
          */
@@ -258,7 +258,7 @@ final class WPConsole {
     /**
      * Load plugin textdomain
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -269,7 +269,7 @@ final class WPConsole {
     /**
      * Load the REST API controllers
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -277,7 +277,7 @@ final class WPConsole {
         /**
          * WP Console REST API controllers
          *
-         * @since WP_CONSOLE_SINCE
+         * @since 1.0.0
          */
         apply_filters( 'wp_console_rest_controllers', [] );
     }

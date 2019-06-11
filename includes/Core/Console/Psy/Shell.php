@@ -9,7 +9,7 @@ class Shell extends PsyShell {
     /**
      * Return value indicator override
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var string
      */

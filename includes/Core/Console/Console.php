@@ -9,7 +9,7 @@ class Console {
     /**
      * Class constructor
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -25,7 +25,7 @@ class Console {
     /**
      * Add chainable controller
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param array $controllers
      *
@@ -39,7 +39,7 @@ class Console {
     /**
      * Add REST controller
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param array $controllers
      *
@@ -53,7 +53,7 @@ class Console {
     /**
      * Add admin bar quick link
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -70,7 +70,7 @@ class Console {
     /**
      * Add footer
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */

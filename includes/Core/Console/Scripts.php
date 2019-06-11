@@ -7,7 +7,7 @@ class Scripts {
     /**
      * Class constructor
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -21,7 +21,7 @@ class Scripts {
     /**
      * Register scripts
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -36,7 +36,7 @@ class Scripts {
     /**
      * Load translations for JavaScript
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */
@@ -47,7 +47,7 @@ class Scripts {
     /**
      * Enqueue console scripts
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @return void
      */

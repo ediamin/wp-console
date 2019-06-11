@@ -1,10 +1,13 @@
 <?php
 /**
  * Plugin Name: WP Console
+ * Plugin URI: https://github.com/ediamin/wp-console
  * Description: WordPress PHP Console
- * Version: WP_CONSOLE_SINCE
+ * Version: 1.0.0
+ * Author: Edi Amin
+ * Author URI: https://github.com/ediamin
  * Text Domain: wp-console
- * Domain Path: /i18n/languages/
+ * Domain Path: /languages/
  */
 
 // Do not call the file directly.
@@ -21,7 +24,7 @@ define( 'WP_CONSOLE_ABSPATH', dirname( WP_CONSOLE_FILE ) );
 /**
  * An override version of Symfony's dump function
  *
- * @since WP_CONSOLE_SINCE
+ * @since 1.0.0
  *
  * @param mixed $var
  * @param mixed $moreVars
@@ -48,7 +51,7 @@ function dump( $var, ...$moreVars ) {
  * Returns the main instance of WPConsole to
  * prevent the need to use globals.
  *
- * @since  WP_CONSOLE_SINCE
+ * @since  1.0.0
  *
  * @return \WPConsole
  */

@@ -20,7 +20,7 @@ class VarDumper {
     /**
      * Dumper handler
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @var object
      */
@@ -29,7 +29,7 @@ class VarDumper {
     /**
      * Dump variable
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param mixed $var
      *
@@ -59,7 +59,7 @@ class VarDumper {
     /**
      * Set dump handler
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.0.0
      *
      * @param callable|null $callable
      *
