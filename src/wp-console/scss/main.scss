@@ -67,3 +67,41 @@ body.wp-console-active {
     height: calc(100vh - 387px);
     padding-bottom: 20px;
 }
+
+.wp-console-output {
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+
+    &.has-dump {
+        border-bottom: 0;
+    }
+
+    h4 {
+        background-color: #f1f1f1;
+        margin: 0;
+        border-bottom: 1px solid #ccc;
+        padding: 15px 20px;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    pre {
+        padding: 10px 20px 10px 10px;
+        font-size: 13px;
+        margin: 0 0 0 20px;
+        background-color: #fff;
+        border-left: 1px solid #ccc;
+    }
+}
+
+.wp-console-dump {
+    padding-left: 20px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+
+    pre {
+        margin: 0;
+    }
+}
+
+@import "output-colors";

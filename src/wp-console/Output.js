@@ -5,22 +5,15 @@ import { Component } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 class Output extends Component {
-    editor = null;
-
-    componentDidMount() {
-        this.editor = wp.codeEditor.initialize( 'wp-console-output' );
-        this.editor.codemirror.setValue( `<?php \n${ this.props.output }` );
-    }
-
-    componentWillUnmount() {
-        this.editor.codemirror.toTextArea();
+    containerClass() {
+        return 'wp-console-output' + ( this.props.hasDump ? ' has-dump' : '' );
     }
 
     render() {
         return (
-            <div>
+            <div className={ this.containerClass() }>
                 <h4>{ __( 'Output', 'wp-console' ) }</h4>
-                <textarea id={ 'wp-console-output' }></textarea>
+                <pre dangerouslySetInnerHTML={ { __html: this.props.output } } />
             </div>
         );
     }

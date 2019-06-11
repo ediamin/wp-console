@@ -1,0 +1,57 @@
+.wp-console-color-black {
+    color: #424242;
+}
+
+.wp-console-color-red {
+    color: #c62828;
+}
+
+.wp-console-color-green {
+    color: #2e7d32;
+}
+
+.wp-console-color-yellow {
+    color: #f9a825;
+}
+
+.wp-console-color-blue {
+    color: #1565c0;
+}
+
+.wp-console-color-magenta {
+    color: #ad1457;
+}
+
+.wp-console-color-cyan {
+    color: #00838f;
+}
+
+.wp-console-color-white {
+    color: #fafafa;
+}
+
+.wp-console-color-default {
+    color: #424242;
+}
+
+.wp-console-color-bold {
+    font-weight: 700;
+}
+
+.wp-console-color-underscore {
+    text-decoration: underline;
+}
+
+.wp-console-color-blink {
+    animation: blink_text 1s linear infinite;
+}
+
+.wp-console-color-conceal {
+    opacity: 0.3;
+}
+
+@keyframes blink_text {
+    50% {
+        opacity: 0;
+    }
+}

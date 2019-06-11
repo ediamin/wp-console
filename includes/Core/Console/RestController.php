@@ -102,11 +102,12 @@ class RestController extends WP_REST_Controller {
                 'configDir' => WP_CONTENT_DIR,
             ] );
 
+            $output = new ShellOutput( ShellOutput::VERBOSITY_NORMAL, true );
+
+            $config->setOutput( $output );
             $config->setColorMode( \Psy\Configuration::COLOR_MODE_DISABLED );
 
             $psysh = new Shell( $config );
-
-            $output = new ShellOutput( ShellOutput::VERBOSITY_NORMAL, true );
 
             $psysh->setOutput( $output );
 
