@@ -90,7 +90,7 @@ class App extends Component {
                 <header className="wp-console-header clearfix">
                     <h4 className="wp-console-title">{ __( 'WP Console', 'wp-console' ) }</h4>
                     <ul className="wp-console-header-buttons list-inline float-right">
-                        <li className="list-inline-item keyboard-shortcut">{ sprintf( 'press `%s` to run', __( 'shift+enter', 'wp-console' ) ) }</li>
+                        <li className="list-inline-item keyboard-shortcut">{ sprintf( __( 'press `%s` to run', 'wp-console' ), 'shift+enter' ) }</li>
                         <li className="list-inline-item">
                             <a href="#close-wp-console" className="close">&times;</a>
                         </li>

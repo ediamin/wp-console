@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --progress --colors --watch",
-    "build": "cross-env NODE_ENV=production webpack --progress --colors && npm run zip",
+    "build": "cross-env NODE_ENV=production webpack --progress --colors && npm run make-pot && npm run zip",
     "zip": "bash +x build/build.sh",
-    "make-pot": "wp i18n make-pot ./ languages/wp-console.pot",
+    "make-pot": "wp i18n make-pot ./ languages/wp-console.pot --exclude=build",
     "lint-js:fix": "eslint src/wp-console/**/*.js --fix",
     "lint-css:fix": "stylelint --config=.stylelintrc.json src/wp-console/scss/**/*.scss --fix"
   },

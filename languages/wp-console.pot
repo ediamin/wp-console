@@ -1,4 +1,4 @@
-# Copyright (C) 2019
+# Copyright (C) 2019 Edi Amin
 # This file is distributed under the same license as the WP Console plugin.
 msgid ""
 msgstr ""
@@ -9,17 +9,30 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-06-11T11:11:57+02:00\n"
+"POT-Creation-Date: 2019-06-21T05:06:57+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.2.0\n"
 "X-Domain: wp-console\n"
 
 #. Plugin Name of the plugin
+#: assets/js/wp-console.js:1
 msgid "WP Console"
 msgstr ""
 
+#. Plugin URI of the plugin
+msgid "https://github.com/ediamin/wp-console"
+msgstr ""
+
 #. Description of the plugin
-msgid "WordPress PHP Console"
+msgid "WordPress PHP Console powered by PsySH"
+msgstr ""
+
+#. Author of the plugin
+msgid "Edi Amin"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/ediamin"
 msgstr ""
 
 #: includes/Core/Console/RestController.php:59
@@ -34,6 +47,11 @@ msgstr ""
 msgid "Console"
 msgstr ""
 
+#: assets/js/wp-console.js:1
 #: src/wp-console/Output.js:15
 msgid "Output"
+msgstr ""
+
+#: assets/js/wp-console.js:1
+msgid "press `%s` to run"
 msgstr ""
