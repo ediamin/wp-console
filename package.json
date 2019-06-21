@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --progress --colors --watch",
-    "build": "cross-env NODE_ENV=production webpack --progress --colors",
+    "build": "cross-env NODE_ENV=production webpack --progress --colors && npm run zip",
     "zip": "bash +x build/build.sh",
     "make-pot": "wp i18n make-pot ./ languages/wp-console.pot",
     "lint-js:fix": "eslint src/wp-console/**/*.js --fix",

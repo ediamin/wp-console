@@ -54,6 +54,12 @@ body.wp-console-active {
 
 .wp-console-header-buttons {
     margin: 0;
+
+    .keyboard-shortcut {
+        margin-right: 30px !important;
+        font-style: italic;
+        opacity: 0.6;
+    }
 }
 
 #wp-console-code-editor-wrapper {
