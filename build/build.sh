@@ -15,5 +15,7 @@ cp license.txt $dest
 cp readme.txt $dest
 cp wp-console.php $dest
 
+rm -rf $dest/vendor/psy/psysh/test/
+
 cd build
 zip wp-console.zip wp-console -r
