@@ -87,6 +87,7 @@ class RestController extends WP_REST_Controller {
      * Evaluate input code
      *
      * @since 1.0.0
+     * @since WP_CONSOLE_SINCE Use \Psy\Shell::writeStdout as output buffer
      *
      * @param \WP_REST_Request $request
      *
@@ -115,6 +116,8 @@ class RestController extends WP_REST_Controller {
 
             extract( $psysh->getScopeVariablesDiff( get_defined_vars() ) );
 
+            ob_start( [ $psysh, 'writeStdout' ], 1 );
+
             set_error_handler( [ $psysh, 'handleError' ] );
 
             $_ = eval( $psysh->onExecute( $psysh->flushCode() ?: \Psy\ExecutionClosure::NOOP_INPUT ) );
@@ -123,6 +126,12 @@ class RestController extends WP_REST_Controller {
 
             $psysh->setScopeVariables( get_defined_vars() );
             $psysh->writeReturnValue( $_ );
+
+            ob_end_flush();
+
+            if ( $output->exception ) {
+                throw $output->exception;
+            }
 
             $data = [
                 'output' => $output->outputMessage,

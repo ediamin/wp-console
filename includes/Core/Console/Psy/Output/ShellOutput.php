@@ -22,6 +22,15 @@ class ShellOutput extends PsyShellOutput {
     public $outputMessage = null;
 
     /**
+     * Holds exceptions
+     *
+     * @since WP_CONSOLE_SINCE
+     *
+     * @var null|\Exception
+     */
+    public $exception = null;
+
+    /**
      * Construct a ShellOutput instance.
      *
      * @since 1.0.0
@@ -60,7 +69,7 @@ class ShellOutput extends PsyShellOutput {
      * @return void
      */
     public function doWrite( $message, $newline ) {
-        $this->outputMessage = $message;
+        $this->outputMessage .= $message;
     }
 
     /**
