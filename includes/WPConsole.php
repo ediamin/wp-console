@@ -23,15 +23,6 @@ final class WPConsole {
     public $version = '1.0.0';
 
     /**
-     * DB version
-     *
-     * @since 1.0.0
-     *
-     * @var string
-     */
-    public $db_version = '1.0.0';
-
-    /**
      * Minimum PHP version required
      *
      * @since 1.0.0
@@ -39,15 +30,6 @@ final class WPConsole {
      * @var string
      */
     public $min_php = '5.6.0';
-
-    /**
-     * Plugin text domain
-     *
-     * @since 1.0.0
-     *
-     * @var string
-     */
-    public $text_domain = 'wp-console';
 
     /**
      * Admin notice messages
@@ -98,42 +80,6 @@ final class WPConsole {
         if ( isset( $this->controllers[ $prop ] ) ) {
             return $this->controllers[ $prop ];
         }
-    }
-
-    /**
-     * What type of request is this?
-     *
-     * @param  string $type admin, ajax, cron, frontend or rest
-     *
-     * @return bool
-     */
-    public function is_request( $type ) {
-        switch ( $type ) {
-            case 'admin':
-                $request = is_admin();
-                break;
-
-            case 'ajax':
-                $request = defined( 'DOING_AJAX' );
-                break;
-
-            case 'cron':
-                $request = defined( 'DOING_CRON' );
-                break;
-
-            case 'frontend':
-                $request = ! is_admin() && ! defined( 'DOING_AJAX' ) && ! defined( 'DOING_CRON' );
-                break;
-
-            case 'rest':
-                $request = defined( 'REST_REQUEST' );
-                break;
-
-            default:
-                $request = false;
-        }
-
-        return $request;
     }
 
     /**
