@@ -24,7 +24,7 @@ class ShellOutput extends PsyShellOutput {
     /**
      * Holds exceptions
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.1.0
      *
      * @var null|\Exception
      */
