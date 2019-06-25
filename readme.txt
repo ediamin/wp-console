@@ -2,7 +2,7 @@
 Contributors: ediamin
 Tags: console, repl, browser, psysh, shell, dump
 Requires at least: 5.0
-Tested up to: 5.2.1
+Tested up to: 5.2.2
 Stable tag: trunk
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -19,6 +19,8 @@ You can also use PsySH with wp-cli with the command `wp shell`. wp-cli has built
 WP Console requires WordPress v5.0 or later.
 
 Please note that, currently PsySH commands like `ls`, `doc`, `show` etc and Magic variables like `$_`, `$__class` etc are not supported in browser console.
+
+👉 GitHub Repo: [wp-console](https://github.com/ediamin/wp-console)
 
 == Screenshots ==
 

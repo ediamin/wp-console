@@ -1,14 +1,14 @@
 {
   "name": "wp-console",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "WordPress PHP Console powered by PsySH",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --progress --colors --watch",
-    "build": "cross-env NODE_ENV=production webpack --progress --colors && npm run zip",
+    "build": "cross-env NODE_ENV=production webpack --progress --colors",
     "zip": "node build",
     "make-pot": "wp i18n make-pot ./ languages/wp-console.pot --exclude=build",
-    "release": "npm run make-pot && npm run build",
+    "release": "npm run make-pot && npm run build && node build",
     "lint-js:fix": "eslint src/wp-console/**/*.js --fix",
     "lint-css:fix": "stylelint --config=.stylelintrc.json src/wp-console/scss/**/*.scss --fix"
   },

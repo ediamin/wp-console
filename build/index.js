@@ -24,6 +24,8 @@ if ( args.version && args.version.match( semverRegex ) ) {
     shell.exec( `sed -i '' 's/"version": "${currentVersion}"/"version": "${version}"/g' package.json` );
     shell.exec( `sed -i '' 's/* Version: ${currentVersion}/* Version: ${version}/g' wp-console.php` );
     shell.exec( `sed -i "" "s/= '${currentVersion}'/= '${version}'/g" includes/WPConsole.php` );
+    shell.exec( `find includes -iname '*.php' -exec sed -i "" "s/WP_CONSOLE_SINCE/${version}/g" {} \\\;` );
+    shell.exec( `npm install` );
 }
 
 const zip = `wp-console-${version}.zip`;
@@ -53,6 +55,7 @@ include.forEach( ( item ) => {
 shell.rm( '-rf',  resolve( DEST, 'vendor/psy/psysh/test' ) );
 
 console.log( 'Making zip...' );
-shell.exec( `zip ${ resolve( zip ) } ${ resolve( DEST ) } -rq` );
+shell.exec( `cd ${ resolve() } && zip ${ zip } wp-console -rq` );
 
+shell.rm( '-rf',  resolve( DEST ) );
 console.log( 'Done.' );
