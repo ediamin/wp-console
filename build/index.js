@@ -55,6 +55,7 @@ include.forEach( ( item ) => {
 shell.rm( '-rf',  resolve( DEST, 'vendor/psy/psysh/test' ) );
 
 console.log( 'Making zip...' );
-shell.exec( `zip ${ resolve( zip ) } ${ resolve( DEST ) } -rq` );
+shell.exec( `cd ${ resolve() } && zip ${ zip } wp-console -rq` );
 
+shell.rm( '-rf',  resolve( DEST ) );
 console.log( 'Done.' );
