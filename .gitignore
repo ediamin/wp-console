@@ -17,4 +17,4 @@ dump.rdb
 /assets/js/
 /assets/css/
 /build/wp-console
-/build/wp-console.zip
+/build/wp-console*

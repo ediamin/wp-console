@@ -1,0 +1,58 @@
+const fs = require( 'fs' );
+const path = require( 'path' );
+const minimist = require( 'minimist' );
+const child_process = require( 'child_process' );
+const shell = require( 'shelljs' );
+
+function resolve( ...paths ) {
+    return path.resolve( __dirname, ...paths );
+}
+
+const DEST = resolve( 'wp-console' );
+const packageInfo = JSON.parse( fs.readFileSync( 'package.json' ) );
+const args = minimist( process.argv.slice( 2 ) );
+
+let version = packageInfo.version;
+
+const semverRegex = /^((([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)$/
+
+if ( args.version && args.version.match( semverRegex ) ) {
+    const currentVersion = version;
+    version = args.version;
+
+    console.log( 'Updating plugin version number' );
+    shell.exec( `sed -i '' 's/"version": "${currentVersion}"/"version": "${version}"/g' package.json` );
+    shell.exec( `sed -i '' 's/* Version: ${currentVersion}/* Version: ${version}/g' wp-console.php` );
+    shell.exec( `sed -i "" "s/= '${currentVersion}'/= '${version}'/g" includes/WPConsole.php` );
+}
+
+const zip = `wp-console-${version}.zip`;
+
+shell.rm( '-rf', DEST );
+shell.rm( '-f', resolve( 'wp-console-*.zip' ) );
+shell.mkdir( '-p', DEST );
+
+const include = [
+    'assets',
+    'includes',
+    'languages',
+    'vendor',
+    'README.md',
+    'composer.json',
+    'index.php',
+    'license.txt',
+    'readme.txt',
+    'wp-console.php',
+];
+
+console.log( 'Copying files...' );
+include.forEach( ( item ) => {
+    shell.cp( '-r', resolve( '../', item ), resolve( DEST, item ) );
+} );
+
+shell.rm( '-rf',  resolve( DEST, 'vendor/psy/psysh/test' ) );
+
+console.log( 'Making zip...' );
+shell.exec( `zip ${ resolve( zip ) } ${ resolve( DEST ) } -rq` );
+
+console.log( 'Done.' );

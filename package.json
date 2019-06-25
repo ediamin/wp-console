@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --progress --colors --watch",
-    "build": "cross-env NODE_ENV=production webpack --progress --colors && npm run make-pot && npm run zip",
-    "zip": "bash +x build/build.sh",
+    "build": "cross-env NODE_ENV=production webpack --progress --colors && npm run zip",
+    "zip": "node build",
     "make-pot": "wp i18n make-pot ./ languages/wp-console.pot --exclude=build",
+    "release": "npm run make-pot && npm run build",
     "lint-js:fix": "eslint src/wp-console/**/*.js --fix",
     "lint-css:fix": "stylelint --config=.stylelintrc.json src/wp-console/scss/**/*.scss --fix"
   },
@@ -45,8 +46,10 @@
     "eslint-loader": "^2.1.2",
     "eslint-plugin-jest": "^22.6.4",
     "mini-css-extract-plugin": "^0.7.0",
+    "minimist": "^1.2.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
+    "shelljs": "^0.8.3",
     "stylelint": "^10.1.0",
     "stylelint-config-wordpress": "^14.0.0",
     "stylelint-webpack-plugin": "^0.10.5",
