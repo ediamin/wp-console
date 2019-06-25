@@ -20,7 +20,7 @@ class Shell extends PsyShell {
     /**
      * Shell Configuration
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.1.0
      *
      * @var \Psy\Configuration
      */
@@ -29,7 +29,7 @@ class Shell extends PsyShell {
     /**
      * Create a new Psy Shell.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.1.0
      *
      * @param \Psy\Configuration|null $config
      *
@@ -43,7 +43,7 @@ class Shell extends PsyShell {
     /**
      * Helper for throwing an ErrorException.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.1.0
      *
      * @param int    $errno   Error type
      * @param string $errstr  Message

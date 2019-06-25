@@ -87,7 +87,7 @@ class RestController extends WP_REST_Controller {
      * Evaluate input code
      *
      * @since 1.0.0
-     * @since WP_CONSOLE_SINCE Use \Psy\Shell::writeStdout as output buffer
+     * @since 1.1.0 Use \Psy\Shell::writeStdout as output buffer
      *
      * @param \WP_REST_Request $request
      *
