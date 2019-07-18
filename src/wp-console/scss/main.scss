@@ -6,6 +6,10 @@
 
 body.wp-console-active {
     overflow: hidden;
+
+    ul.CodeMirror-hints {
+        z-index: 99999;
+    }
 }
 
 #wp-console {
