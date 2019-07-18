@@ -33,6 +33,7 @@ class CodeEditor extends Component {
         this.editor.codemirror.setOption( 'mode', 'php' );
         this.editor.codemirror.setOption( 'matchBrackets', true );
         this.editor.codemirror.setOption( 'autoCloseBrackets', true );
+        this.editor.codemirror.setOption( 'lint', false );
 
         this.editor.codemirror.setValue( `<?php\n` );
 
