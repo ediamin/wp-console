@@ -18,6 +18,7 @@ class App extends Component {
         output: null,
         dump: null,
         errorMessage: null,
+        errorTrace: null,
     };
 
     reset() {
@@ -25,6 +26,7 @@ class App extends Component {
             output: null,
             dump: null,
             errorMessage: null,
+            errorTrace: null,
         } );
     }
 
@@ -60,6 +62,12 @@ class App extends Component {
                     errorMessage: response.message,
                 } );
             }
+
+            if ( response.data && response.data.trace ) {
+                this.setState( {
+                    errorTrace: response.data.trace,
+                } );
+            }
         } );
     }
 
@@ -69,6 +77,15 @@ class App extends Component {
 
     dump() {
         return !! this.state.dump ? ( <Dump dump={ this.state.dump } /> ) : null;
+    }
+
+    stackTrace() {
+        return !! this.state.errorTrace ? (
+            <div className="error-stacktrace">
+                <h3>{ __( 'Error Traceback', 'wp-console' ) }</h3>
+                <pre>{ this.state.errorTrace }</pre>
+            </div>
+        ) : null;
     }
 
     onDismiss = () => {
@@ -98,6 +115,7 @@ class App extends Component {
                 </header>
                 <CodeEditor onExecute={ this.onExecute } />
                 <section id={ 'wp-console-outputs' }>
+                    { this.stackTrace() }
                     { this.output() }
                     { this.dump() }
                 </section>

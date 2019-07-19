@@ -143,7 +143,8 @@ class RestController extends WP_REST_Controller {
         } catch ( Exception $e ) {
             return new WP_Error( 'wp_console_rest_error', $e->getMessage(), [
                 'input'  => $request['input'],
-                'status' => 422
+                'status' => 422,
+                'trace'  => $e->getTraceAsString(),
             ] );
         }
     }
