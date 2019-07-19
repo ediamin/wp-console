@@ -30,7 +30,7 @@ class CodeEditor extends Component {
 
         this.editor = wp.codeEditor.initialize( 'wp-console-code-editor' );
 
-        this.editor.codemirror.setOption( 'mode', 'php' );
+        this.editor.codemirror.setOption( 'mode', 'application/x-httpd-php' );
         this.editor.codemirror.setOption( 'matchBrackets', true );
         this.editor.codemirror.setOption( 'autoCloseBrackets', true );
         this.editor.codemirror.setOption( 'lint', false );
@@ -47,19 +47,6 @@ class CodeEditor extends Component {
             'Shift-Enter': ( cm ) => {
                 this.props.onExecute( cm.getValue() );
             },
-        } );
-
-        this.editor.codemirror.on( 'inputRead', ( instance ) => {
-            if ( instance.state.completionActive ) {
-                return;
-            }
-
-            const cur = instance.getCursor();
-            const token = instance.getTokenAt( cur );
-
-            if ( token.type && token.type !== 'comment' ) {
-                wp.CodeMirror.commands.autocomplete( instance );
-            }
         } );
     }
 }
