@@ -8,6 +8,15 @@ import $ from 'jquery';
  */
 import { Component } from '@wordpress/element';
 
+/**
+ * Internal dependencies
+ */
+import phpConstants from './data/php-constants';
+import phpFunctions from './data/php-functions';
+import phpKeywords from './data/php-keywords';
+import wpFunctions from './data/wp-functions';
+import phpBooleans from './data/php-booleans';
+
 class CodeEditor extends Component {
     editor = null;
 
@@ -30,7 +39,7 @@ class CodeEditor extends Component {
 
         this.editor = wp.codeEditor.initialize( 'wp-console-code-editor' );
 
-        this.editor.codemirror.setOption( 'mode', 'application/x-httpd-php' );
+        this.editor.codemirror.setOption( 'mode', 'php' );
         this.editor.codemirror.setOption( 'matchBrackets', true );
         this.editor.codemirror.setOption( 'autoCloseBrackets', true );
         this.editor.codemirror.setOption( 'lint', false );
@@ -48,6 +57,14 @@ class CodeEditor extends Component {
                 this.props.onExecute( cm.getValue() );
             },
         } );
+
+        wp.CodeMirror.hintWords.php = [].concat(
+            phpConstants,
+            phpFunctions,
+            phpKeywords,
+            wpFunctions,
+            phpBooleans,
+        ).sort();
     }
 }
 

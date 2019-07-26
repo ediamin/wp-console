@@ -97,7 +97,7 @@ module.exports = {
             } ),
         } ],
         // Custom rules for WP Console
-        'indent': ['error', 4],
+        'indent': [ 'error', 4 ],
         'react/jsx-indent': [ 'error', 'space' ],
         'react/jsx-indent-props': [ 'error', 'space' ],
     },
