@@ -22,7 +22,7 @@ class Scripts {
      * Register scripts
      *
      * @since 1.0.0
-     * @since WP_CONSOLE_SINCE Add codemirror closebrackets, matchbrackets addon scripts
+     * @since 1.2.0 Add codemirror closebrackets, matchbrackets addon scripts
      *
      * @return void
      */

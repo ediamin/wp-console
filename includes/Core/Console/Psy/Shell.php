@@ -44,7 +44,7 @@ class Shell extends PsyShell {
      * Helper for throwing an ErrorException.
      *
      * @since 1.1.0
-     * @since WP_CONSOLE_SINCE Using $errfile and remove line number increament
+     * @since 1.2.0 Using $errfile and remove line number increament
      *
      * @param int    $errno   Error type
      * @param string $errstr  Message
