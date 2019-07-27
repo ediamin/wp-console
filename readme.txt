@@ -3,6 +3,7 @@ Contributors: ediamin
 Tags: console, repl, browser, psysh, shell, dump
 Requires at least: 5.0
 Tested up to: 5.2.2
+Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,3 +30,18 @@ Please note that, currently PsySH commands like `ls`, `doc`, `show` etc and Magi
 3. Error in code
 4. wp shell command
 5. Browser console UI
+
+== Changelog ==
+
+1.2.0 - July 27, 2019
+* New - Add autocompletion data(WP functions, PHP booleans, constants, functions, keywords)
+* New - Add codemirror closebrackets, matchbrackets addon scripts
+* New - Show error stacktrace
+
+1.1.0 - June 25, 2019
+* New - Use output buffer handler
+* New - Add build process
+* Tweak - Remove unnecessary code
+
+1.0.0 - June 21, 2019
+Initial release

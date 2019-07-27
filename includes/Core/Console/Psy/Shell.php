@@ -44,6 +44,7 @@ class Shell extends PsyShell {
      * Helper for throwing an ErrorException.
      *
      * @since 1.1.0
+     * @since 1.2.0 Using $errfile and remove line number increament
      *
      * @param int    $errno   Error type
      * @param string $errstr  Message
@@ -53,6 +54,6 @@ class Shell extends PsyShell {
      * @return void
      */
     public function handleError( $errno, $errstr, $errfile, $errline ) {
-        $this->config->getOutput()->exception = new ErrorException( $errstr, 0, $errno, 'console editor', $errline + 1 );
+        $this->config->getOutput()->exception = new ErrorException( $errstr, 0, $errno, $errfile, $errline );
     }
 }

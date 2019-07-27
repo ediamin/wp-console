@@ -6,6 +6,10 @@
 
 body.wp-console-active {
     overflow: hidden;
+
+    ul.CodeMirror-hints {
+        z-index: 99999;
+    }
 }
 
 #wp-console {
@@ -72,6 +76,20 @@ body.wp-console-active {
     overflow: auto;
     height: calc(100vh - 387px);
     padding-bottom: 20px;
+
+    .error-stacktrace {
+        padding: 20px 0 0 20px;
+        border-left: 10px solid $alert-red;
+        background-color: lighten($alert-red, 35%);
+
+        h3 {
+            margin-top: 0;
+        }
+
+        pre {
+            overflow: auto;
+        }
+    }
 }
 
 .wp-console-output {

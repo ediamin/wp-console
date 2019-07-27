@@ -22,6 +22,7 @@ class Scripts {
      * Register scripts
      *
      * @since 1.0.0
+     * @since 1.2.0 Add codemirror closebrackets, matchbrackets addon scripts
      *
      * @return void
      */
@@ -30,6 +31,15 @@ class Scripts {
 
         $deps_file = WP_CONSOLE_ABSPATH . '/assets/js/wp-console.deps.json';
         $deps      = file_exists( $deps_file ) ? json_decode( file_get_contents( $deps_file ) ) : [];
+
+        wp_register_script( 'code-editor-addon-closebrackets', WP_CONSOLE_ASSETS . '/vendor/codemirror/addon/edit/closebrackets.js', [ 'code-editor' ], '5.48.0', true );
+        wp_register_script( 'code-editor-addon-matchbrackets', WP_CONSOLE_ASSETS . '/vendor/codemirror/addon/edit/matchbrackets.js', [ 'code-editor' ], '5.48.0', true );
+
+        $deps = array_merge( $deps, [
+            'code-editor-addon-closebrackets',
+            'code-editor-addon-matchbrackets',
+        ] );
+
         wp_register_script( 'wp-console', WP_CONSOLE_ASSETS . '/js/wp-console.js', $deps, WP_CONSOLE_VERSION, true );
     }
 
