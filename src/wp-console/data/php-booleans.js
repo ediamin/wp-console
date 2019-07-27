@@ -1,5 +1,8 @@
 export default [
-    'true',
+    {
+        trigger: 'true\tBoolean',
+        contents: 'true',
+    },
     'TRUE',
     'FALSE',
     'false',

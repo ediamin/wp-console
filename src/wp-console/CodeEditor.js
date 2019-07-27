@@ -7,6 +7,7 @@ import $ from 'jquery';
  * WordPress dependencies
  */
 import { Component } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
@@ -19,6 +20,8 @@ import phpBooleans from './data/php-booleans';
 
 class CodeEditor extends Component {
     editor = null;
+    editorData = {};
+    hintTriggers = {};
 
     componentDidMount() {
         $( '#wp-console' ).on( 'wp-console:open', this.initializeCodeMirror );
@@ -53,6 +56,7 @@ class CodeEditor extends Component {
         );
 
         this.editor.codemirror.addKeyMap( {
+            name: __( 'Execute code', 'wp-console' ),
             'Shift-Enter': ( cm ) => {
                 this.props.onExecute( cm.getValue() );
             },
@@ -64,7 +68,86 @@ class CodeEditor extends Component {
             phpKeywords,
             wpFunctions,
             phpBooleans,
-        ).sort();
+        ).map( ( hintWord ) => {
+            if ( hintWord.trigger && hintWord.contents ) {
+                this.hintTriggers[ hintWord.trigger ] = hintWord.contents;
+                return hintWord.trigger;
+            }
+
+            return hintWord;
+        } ).sort();
+
+        this.editor.codemirror.on( 'inputRead', ( codemirror ) => {
+            if ( codemirror.state.completionActive ) {
+                return;
+            }
+
+            const cur = codemirror.getCursor();
+            const token = codemirror.getTokenAt( cur );
+
+            if ( token.type && token.type !== 'comment' ) {
+                codemirror.showHint( {
+                    completeSingle: false,
+                    hint: this.hint,
+                } );
+            }
+        } );
+    }
+
+    hint = ( codemirror ) => {
+        const cursor = codemirror.getCursor();
+        const token = codemirror.getTokenAt( cursor );
+        const start = token.start;
+        const end = cursor.ch;
+        const line = cursor.line;
+        const currentWord = token.string;
+        const from = wp.CodeMirror.Pos( line, start );
+        const to = wp.CodeMirror.Pos( line, end );
+
+        const list = wp.CodeMirror.hintWords.php.filter( function( item ) {
+            if ( item.trigger ) {
+                return item.trigger.startsWith( currentWord );
+            }
+
+            return item.startsWith( currentWord );
+        } );
+
+        const data = {
+            list,
+            from,
+            to,
+        };
+
+        wp.CodeMirror.on( data, 'pick', this.replaceWithTriggerContents );
+
+        this.editorData = {
+            list,
+            cursor,
+            token,
+            start,
+            end,
+            line,
+            currentWord,
+            from,
+            to,
+        };
+
+        return data;
+    }
+
+    replaceWithTriggerContents = ( completion ) => {
+        if ( ! this.hintTriggers[ completion ] ) {
+            return;
+        }
+
+        const to = wp.CodeMirror.Pos( this.editorData.line, completion.length );
+
+        this.editor.codemirror.replaceRange(
+            this.hintTriggers[ completion ],
+            this.editorData.from,
+            to,
+            'complete'
+        );
     }
 }
 
