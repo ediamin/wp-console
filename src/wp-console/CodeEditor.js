@@ -17,6 +17,7 @@ import phpFunctions from './data/php-functions';
 import phpKeywords from './data/php-keywords';
 import wpFunctions from './data/wp-functions';
 import phpBooleans from './data/php-booleans';
+import misc from './data/misc';
 
 class CodeEditor extends Component {
     editor = null;
@@ -68,10 +69,12 @@ class CodeEditor extends Component {
             phpKeywords,
             wpFunctions,
             phpBooleans,
+            misc
         ).map( ( hintWord ) => {
-            if ( hintWord.trigger && hintWord.contents ) {
-                this.hintTriggers[ hintWord.trigger ] = hintWord.contents;
-                return hintWord.trigger;
+            if ( hintWord.prefix && hintWord.body ) {
+                const prefix = hintWord.description ? `${ hintWord.prefix }\t${ hintWord.description }` : hintWord.prefix;
+                this.hintTriggers[ prefix ] = hintWord.body;
+                return prefix;
             }
 
             return hintWord;
