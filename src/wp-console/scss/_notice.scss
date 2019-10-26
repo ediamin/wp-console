@@ -9,7 +9,7 @@
     position: absolute !important;
     top: 5px;
     left: calc(50% - 250px);
-    z-index: 1;
+    z-index: 3;
     width: 500px;
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
 
@@ -50,7 +50,7 @@
 
 .components-notice__dismiss {
     position: absolute;
-    top: 10px;
+    top: 8px;
     right: 5px;
     color: $dark-gray-300;
 

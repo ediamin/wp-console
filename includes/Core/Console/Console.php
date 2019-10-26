@@ -32,7 +32,7 @@ class Console {
      * @return void
      */
     public function add_controller( $controllers ) {
-        $controllers['console'] = new Controller();
+        $controllers->console = new Controller();
         return $controllers;
     }
 
@@ -46,7 +46,7 @@ class Console {
      * @return void
      */
     public function add_rest_controller( $controllers ) {
-        $controllers['console'] = new RestController();
+        $controllers->console = new RestController();
         return $controllers;
     }
 

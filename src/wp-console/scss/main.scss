@@ -29,7 +29,7 @@ body.wp-console-active {
         z-index: 99999;
         width: 100%;
         height: 100%;
-        background-color: #fff;
+        background-color: #f1f1f1;
     }
 
     .CodeMirror-code {
@@ -41,9 +41,38 @@ body.wp-console-active {
             }
         }
     }
+
+    .empty-content {
+        margin-top: 50px;
+        text-align: center;
+        color: rgba(68, 68, 68, 0.7);
+
+        span {
+            position: relative;
+
+            svg {
+                position: absolute;
+                top: -7px;
+                left: -30px;
+                fill: rgba(68, 68, 68, 0.83);
+
+                &.icon-terminal {
+                    fill: #fff;
+                    background-color: #444;
+                    border: 1px solid #111;
+                    padding: 3px 5px;
+                    border-radius: 3px;
+                    width: 29px;
+                    top: -6px;
+                    left: -35px;
+                }
+            }
+        }
+    }
 }
 
 .wp-console-header {
+    position: relative;
     padding: 15px 20px;
     background-color: #f1f1f1;
     border-bottom: 1px solid #ccc;
@@ -59,10 +88,31 @@ body.wp-console-active {
 .wp-console-header-buttons {
     margin: 0;
 
-    .keyboard-shortcut {
-        margin-right: 30px !important;
-        font-style: italic;
-        opacity: 0.6;
+    .panel-buttons {
+        position: absolute;
+        width: 62px;
+        top: calc(50% - 12px);
+        right: 100px;
+    }
+
+    .components-button {
+
+        svg {
+            width: 13px;
+            height: auto;
+            fill: #444;
+        }
+
+        &.active,
+        &.active:focus {
+            border-color: #111;
+            background-color: #444;
+            box-shadow: inset 0 -1px 0 #111;
+
+            svg {
+                fill: #fff;
+            }
+        }
     }
 }
 
@@ -125,6 +175,31 @@ body.wp-console-active {
 
     pre {
         margin: 0;
+    }
+}
+
+#wp-console-debug-log {
+
+    pre {
+        max-height: calc(100vh - 115px);
+        overflow: auto;
+        margin: 0;
+        padding: 10px;
+        border-left: 25px solid #f1f1f1;
+        border-bottom: 1px solid #ccc;
+        background-color: #fff;
+    }
+}
+
+.wp-console-spinner {
+    position: relative;
+    text-align: center;
+    padding-top: 90px;
+
+    .components-spinner {
+        position: absolute;
+        top: 50px;
+        left: calc(50% - 29px);
     }
 }
 

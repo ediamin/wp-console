@@ -56,7 +56,7 @@ class OutputFormatterStyle extends SymfonyOutputFormatterStyle {
      * @param string|null $background The style background color name
      * @param array       $options    The style options
      */
-    public function __construct( string $foreground = null, string $background = null, array $options = [] ) {
+    public function __construct( $foreground = null, $background = null, $options = [] ) {
         if ( null !== $foreground ) {
             $this->setForeground( $foreground );
         }

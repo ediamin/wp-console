@@ -53,7 +53,7 @@ class VarDumper {
             };
         }
 
-        return ( self::$handler )( $var );
+        return call_user_func( self::$handler, $var );
     }
 
     /**
