@@ -2,7 +2,7 @@
 Contributors: ediamin
 Tags: console, repl, browser, psysh, shell, dump
 Requires at least: 5.0
-Tested up to: 5.2.2
+Tested up to: 5.3
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv3
@@ -32,6 +32,10 @@ Please note that, currently PsySH commands like `ls`, `doc`, `show` etc and Magi
 5. Browser console UI
 
 == Changelog ==
+
+1.3.0 - October 26, 2019
+* New - Fetch debug.log contents
+* Tweak - Support PHP version 5.6
 
 1.2.0 - July 27, 2019
 * New - Add autocompletion data(WP functions, PHP booleans, constants, functions, keywords)

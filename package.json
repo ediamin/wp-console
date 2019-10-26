@@ -1,6 +1,6 @@
 {
   "name": "wp-console",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "WordPress PHP Console powered by PsySH",
   "main": "index.js",
   "scripts": {

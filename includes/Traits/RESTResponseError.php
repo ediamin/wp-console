@@ -11,7 +11,7 @@ trait RESTResponseError {
     /**
      * Send REST error response
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.3.0
      *
      * @param \Exception $e
      * @param string     $default_message

@@ -9,7 +9,7 @@ class WPConsoleException extends Exception {
     /**
      * Error code
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.3.0
      *
      * @var string
      */
@@ -18,7 +18,7 @@ class WPConsoleException extends Exception {
     /**
      * Class constructor
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.3.0
      *
      * @param string $error_code
      * @param string $message
@@ -33,7 +33,7 @@ class WPConsoleException extends Exception {
     /**
      * Get error code
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.3.0
      *
      * @return string
      */
@@ -44,7 +44,7 @@ class WPConsoleException extends Exception {
     /**
      * Get error message
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.3.0
      *
      * @return string
      */
@@ -55,7 +55,7 @@ class WPConsoleException extends Exception {
     /**
      * Get error status code
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 1.3.0
      *
      * @return int
      */
