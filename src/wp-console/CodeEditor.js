@@ -1,9 +1,4 @@
 /**
- * External dependencies
- */
-import $ from 'jquery';
-
-/**
  * WordPress dependencies
  */
 import { Component } from '@wordpress/element';
@@ -25,7 +20,7 @@ class CodeEditor extends Component {
     hintTriggers = {};
 
     componentDidMount() {
-        $( '#wp-console' ).on( 'wp-console:open', this.initializeCodeMirror );
+        this.initializeCodeMirror();
     }
 
     render() {

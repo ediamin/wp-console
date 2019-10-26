@@ -61,8 +61,29 @@ body.wp-console-active {
 
     .keyboard-shortcut {
         margin-right: 30px !important;
+        margin-left: 50px;
         font-style: italic;
         opacity: 0.6;
+    }
+
+    .components-button {
+
+        svg {
+            width: 13px;
+            height: auto;
+            fill: #444;
+        }
+
+        &.active,
+        &.active:focus {
+            border-color: #111;
+            background-color: #444;
+            box-shadow: inset 0 -1px 0 #111;
+
+            svg {
+                fill: #fff;
+            }
+        }
     }
 }
 
@@ -125,6 +146,46 @@ body.wp-console-active {
 
     pre {
         margin: 0;
+    }
+}
+
+#wp-console-debug-log {
+
+    .wp-console-spinner {
+        position: relative;
+        text-align: center;
+        padding-top: 90px;
+
+        .components-spinner {
+            position: absolute;
+            top: 50px;
+            left: calc(50% - 29px);
+        }
+    }
+
+    pre {
+        max-height: calc(100vh - 82px);
+        overflow: auto;
+        margin: 0;
+        padding: 10px;
+        border-left: 25px solid #f1f1f1;
+    }
+
+    .empty-log {
+        margin-top: 50px;
+        text-align: center;
+        color: rgba(68, 68, 68, 0.7);
+
+        span {
+            position: relative;
+
+            svg {
+                position: absolute;
+                top: -7px;
+                left: -30px;
+                fill: rgba(68, 68, 68, 0.83);
+            }
+        }
     }
 }
 

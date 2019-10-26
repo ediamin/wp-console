@@ -49,7 +49,9 @@ final class WPConsole {
      *
      * @var array
      */
-    private $controllers = [];
+    private $controllers = null;
+
+    public $rest_controllers = null;
 
     /**
      * Bootstrap the plugin
@@ -77,8 +79,8 @@ final class WPConsole {
      * @return mixed
      */
     public function __get( $prop ) {
-        if ( isset( $this->controllers[ $prop ] ) ) {
-            return $this->controllers[ $prop ];
+        if ( isset( $this->controllers->$prop ) ) {
+            return $this->controllers->$prop;
         }
     }
 
@@ -171,6 +173,7 @@ final class WPConsole {
      */
     private function load_core() {
         new \WPConsole\Core\Console\Console();
+        new \WPConsole\Core\DebugLog\DebugLog();
 
         /**
          * Fires after finished loading the plugin core
@@ -198,7 +201,7 @@ final class WPConsole {
          *
          * @var array
          */
-        $this->controllers = apply_filters( 'wp_console_controllers', [] );
+        $this->controllers = apply_filters( 'wp_console_controllers', (object) [] );
     }
 
     /**
@@ -225,6 +228,6 @@ final class WPConsole {
          *
          * @since 1.0.0
          */
-        apply_filters( 'wp_console_rest_controllers', [] );
+        $this->rest_controllers = apply_filters( 'wp_console_rest_controllers', (object) [] );
     }
 }

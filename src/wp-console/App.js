@@ -1,10 +1,15 @@
 /**
+ * External dependencies
+ */
+import $ from 'jquery';
+
+/**
  * WordPress dependencies
  */
 import apiFetch from '@wordpress/api-fetch';
 import { Component } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
-import { Notice } from '@wordpress/components';
+import { Notice, Tooltip, ButtonGroup, Button } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -12,6 +17,8 @@ import { Notice } from '@wordpress/components';
 import CodeEditor from './CodeEditor';
 import Output from './Output';
 import Dump from './Dump';
+import DebugLog from './DebugLog';
+import { terminalIcon, bugIcon } from './Icons';
 
 class App extends Component {
     state = {
@@ -19,7 +26,17 @@ class App extends Component {
         dump: null,
         errorMessage: null,
         errorTrace: null,
+        showDebugLog: false,
+        activePanel: null,
     };
+
+    componentDidMount() {
+        $( '#wp-console' ).on( 'wp-console:open', () => {
+            this.setState( {
+                activePanel: 'console',
+            } );
+        } );
+    }
 
     reset() {
         this.setState( {
@@ -27,6 +44,7 @@ class App extends Component {
             dump: null,
             errorMessage: null,
             errorTrace: null,
+            showDebugLog: false,
         } );
     }
 
@@ -94,11 +112,43 @@ class App extends Component {
         } );
     }
 
+    codeEditor = () => {
+        return (
+            <section>
+                <CodeEditor onExecute={ this.onExecute } />
+                <section id={ 'wp-console-outputs' }>
+                    { this.stackTrace() }
+                    { this.output() }
+                    { this.dump() }
+                </section>
+            </section>
+        );
+    }
+
+    showDebugLog = () => {
+        this.setState( {
+            showDebugLog: ! this.state.showDebugLog,
+        } );
+    }
+
+    activatePanel = ( panel ) => {
+        this.setState( {
+            activePanel: panel,
+        } );
+    }
+
     render() {
         let notice;
+        let activePanel = null;
 
         if ( this.state.errorMessage ) {
             notice = <Notice status="error" onRemove={ this.onDismiss }>{ this.state.errorMessage }</Notice>;
+        }
+
+        if ( this.state.activePanel === 'console' ) {
+            activePanel = this.codeEditor();
+        } else if ( this.state.activePanel === 'debug-log' ) {
+            activePanel = <DebugLog />;
         }
 
         return (
@@ -107,6 +157,21 @@ class App extends Component {
                 <header className="wp-console-header clearfix">
                     <h4 className="wp-console-title">{ __( 'WP Console', 'wp-console' ) }</h4>
                     <ul className="wp-console-header-buttons list-inline float-right">
+                        <li className="list-inline-item debug-log-button">
+                            <ButtonGroup>
+                                <Tooltip text={ __( 'Console', 'wp-console' ) }>
+                                    <Button isDefault isSmall className={ this.state.activePanel === 'console' ? 'active' : '' } onClick={ this.activatePanel.bind( this, 'console' ) }>
+                                        { terminalIcon }
+                                    </Button>
+                                </Tooltip>
+
+                                <Tooltip text={ __( 'Debug Log', 'wp-console' ) }>
+                                    <Button isDefault isSmall className={ this.state.activePanel === 'debug-log' ? 'active' : '' } onClick={ this.activatePanel.bind( this, 'debug-log' ) }>
+                                        { bugIcon }
+                                    </Button>
+                                </Tooltip>
+                            </ButtonGroup>
+                        </li>
                         <li className="list-inline-item keyboard-shortcut">
                             { sprintf( __( 'press `%s` to run', 'wp-console' ), 'shift+enter' ) }
                         </li>
@@ -115,12 +180,8 @@ class App extends Component {
                         </li>
                     </ul>
                 </header>
-                <CodeEditor onExecute={ this.onExecute } />
-                <section id={ 'wp-console-outputs' }>
-                    { this.stackTrace() }
-                    { this.output() }
-                    { this.dump() }
-                </section>
+
+                { activePanel }
             </section>
         );
     }

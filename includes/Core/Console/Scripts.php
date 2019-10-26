@@ -27,7 +27,7 @@ class Scripts {
      * @return void
      */
     public function register_scripts() {
-        wp_register_style( 'wp-console', WP_CONSOLE_ASSETS . '/css/wp-console.css', [], WP_CONSOLE_VERSION );
+        wp_register_style( 'wp-console', WP_CONSOLE_ASSETS . '/css/wp-console.css', [ 'wp-components' ], WP_CONSOLE_VERSION );
 
         $deps_file = WP_CONSOLE_ABSPATH . '/assets/js/wp-console.deps.json';
         $deps      = file_exists( $deps_file ) ? json_decode( file_get_contents( $deps_file ) ) : [];
