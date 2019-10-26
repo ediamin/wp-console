@@ -9,7 +9,7 @@ import $ from 'jquery';
 import apiFetch from '@wordpress/api-fetch';
 import { Component } from '@wordpress/element';
 import { __, sprintf } from '@wordpress/i18n';
-import { Notice, Tooltip, ButtonGroup, Button } from '@wordpress/components';
+import { Notice, Spinner, Tooltip, ButtonGroup, Button } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -28,6 +28,7 @@ class App extends Component {
         errorTrace: null,
         showDebugLog: false,
         activePanel: null,
+        isFetching: false,
     };
 
     componentDidMount() {
@@ -52,6 +53,10 @@ class App extends Component {
         code = code.replace( /^\<\?php/, '' ).trim();
 
         this.reset();
+
+        this.setState( {
+            isFetching: true,
+        } );
 
         apiFetch( {
             path: '/wp-console/v1/console',
@@ -86,6 +91,10 @@ class App extends Component {
                     errorTrace: response.data.trace,
                 } );
             }
+        } ).then( () => {
+            this.setState( {
+                isFetching: false,
+            } );
         } );
     }
 
@@ -113,6 +122,22 @@ class App extends Component {
     }
 
     codeEditor = () => {
+        let content = null;
+
+        if ( this.state.isFetching ) {
+            content = (
+                <div className="wp-console-spinner">
+                    <Spinner />
+                </div>
+            );
+        } else if ( ! ( this.state.output || this.state.dump || this.state.errorTrace ) ) {
+            content = (
+                <p className="empty-content">
+                    <span>{ terminalIcon } { sprintf( __( 'press `%s` to run', 'wp-console' ), 'shift+enter' ) }</span>
+                </p>
+            );
+        }
+
         return (
             <section>
                 <CodeEditor onExecute={ this.onExecute } />
@@ -120,6 +145,7 @@ class App extends Component {
                     { this.stackTrace() }
                     { this.output() }
                     { this.dump() }
+                    { content }
                 </section>
             </section>
         );
@@ -157,7 +183,7 @@ class App extends Component {
                 <header className="wp-console-header clearfix">
                     <h4 className="wp-console-title">{ __( 'WP Console', 'wp-console' ) }</h4>
                     <ul className="wp-console-header-buttons list-inline float-right">
-                        <li className="list-inline-item debug-log-button">
+                        <li className="list-inline-item panel-buttons">
                             <ButtonGroup>
                                 <Tooltip text={ __( 'Console', 'wp-console' ) }>
                                     <Button isDefault isSmall className={ this.state.activePanel === 'console' ? 'active' : '' } onClick={ this.activatePanel.bind( this, 'console' ) }>
@@ -171,9 +197,6 @@ class App extends Component {
                                     </Button>
                                 </Tooltip>
                             </ButtonGroup>
-                        </li>
-                        <li className="list-inline-item keyboard-shortcut">
-                            { sprintf( __( 'press `%s` to run', 'wp-console' ), 'shift+enter' ) }
                         </li>
                         <li className="list-inline-item">
                             <a href="#close-wp-console" className="close">&times;</a>

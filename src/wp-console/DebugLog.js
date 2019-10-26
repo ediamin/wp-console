@@ -75,7 +75,7 @@ class DebugLog extends Component {
             content = <pre>{ this.state.debugLog }</pre>;
         } else {
             content = (
-                <p className="empty-log">
+                <p className="empty-content">
                     <span>{ bugIcon } { __( 'Your debug.log is empty', 'wp-console' ) }</span>
                 </p>
             );
