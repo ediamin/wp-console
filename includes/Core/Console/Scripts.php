@@ -27,10 +27,10 @@ class Scripts {
      * @return void
      */
     public function register_scripts() {
-        wp_register_style( 'wp-console', WP_CONSOLE_ASSETS . '/css/wp-console.css', [ 'wp-components' ], WP_CONSOLE_VERSION );
+        $assets = require_once WP_CONSOLE_ABSPATH . '/assets/js/wp-console.asset.php';
+        $deps   = $assets['dependencies'];
 
-        $deps_file = WP_CONSOLE_ABSPATH . '/assets/js/wp-console.deps.json';
-        $deps      = file_exists( $deps_file ) ? json_decode( file_get_contents( $deps_file ) ) : [];
+        wp_register_style( 'wp-console', WP_CONSOLE_ASSETS . '/css/wp-console.css', [ 'wp-components' ], $assets['version'] );
 
         wp_register_script( 'code-editor-addon-closebrackets', WP_CONSOLE_ASSETS . '/vendor/codemirror/addon/edit/closebrackets.js', [ 'code-editor' ], '5.48.0', true );
         wp_register_script( 'code-editor-addon-matchbrackets', WP_CONSOLE_ASSETS . '/vendor/codemirror/addon/edit/matchbrackets.js', [ 'code-editor' ], '5.48.0', true );
@@ -40,7 +40,7 @@ class Scripts {
             'code-editor-addon-matchbrackets',
         ] );
 
-        wp_register_script( 'wp-console', WP_CONSOLE_ASSETS . '/js/wp-console.js', $deps, WP_CONSOLE_VERSION, true );
+        wp_register_script( 'wp-console', WP_CONSOLE_ASSETS . '/js/wp-console.js', $deps, $assets['version'], true );
     }
 
     /**
