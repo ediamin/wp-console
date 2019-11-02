@@ -90,6 +90,18 @@ class CodeEditor extends Component {
                 } );
             }
         } );
+
+        if ( window.localStorage ) {
+            this.editor.codemirror.on( 'change', ( codemirror ) => {
+                localStorage.setItem( 'wp_console_code', codemirror.getValue() );
+            } );
+
+            const consoleCode = localStorage.getItem( 'wp_console_code' );
+
+            if ( consoleCode ) {
+                this.editor.codemirror.setValue( consoleCode );
+            }
+        }
     }
 
     hint = ( codemirror ) => {
