@@ -7,12 +7,13 @@
 body.wp-console-active {
     overflow: hidden;
 
-    ul.CodeMirror-hints {
+    ul.CodeMirror-hints { /* stylelint-disable-line */
         z-index: 99999;
     }
 }
 
 #wp-console {
+
     @import "bootstrap";
     @import "icon-button";
     @import "notice";
@@ -32,11 +33,11 @@ body.wp-console-active {
         background-color: #f1f1f1;
     }
 
-    .CodeMirror-code {
+    .CodeMirror-code { /* stylelint-disable-line */
 
-        & > div:first-child {
+        > div:first-child {
 
-            .CodeMirror-line {
+            .CodeMirror-line { /* stylelint-disable-line */
                 opacity: 0.65;
             }
         }
@@ -69,6 +70,37 @@ body.wp-console-active {
             }
         }
     }
+
+    .wp-console-header-buttons {
+        margin: 0;
+
+        .panel-buttons {
+            position: absolute;
+            width: 62px;
+            top: calc(50% - 12px);
+            right: 100px;
+        }
+
+        .components-button {
+
+            svg {
+                width: 13px;
+                height: auto;
+                fill: #444;
+            }
+
+            &.active,
+            &.active:focus {
+                border-color: #111;
+                background-color: #444;
+                box-shadow: inset 0 -1px 0 #111;
+
+                svg {
+                    fill: #fff;
+                }
+            }
+        }
+    }
 }
 
 .wp-console-header {
@@ -85,41 +117,23 @@ body.wp-console-active {
     font-weight: 400;
 }
 
-.wp-console-header-buttons {
-    margin: 0;
-
-    .panel-buttons {
-        position: absolute;
-        width: 62px;
-        top: calc(50% - 12px);
-        right: 100px;
-    }
-
-    .components-button {
-
-        svg {
-            width: 13px;
-            height: auto;
-            fill: #444;
-        }
-
-        &.active,
-        &.active:focus {
-            border-color: #111;
-            background-color: #444;
-            box-shadow: inset 0 -1px 0 #111;
-
-            svg {
-                fill: #fff;
-            }
-        }
-    }
-}
-
 #wp-console-code-editor-wrapper {
     padding: 0 0 0 20px;
     background-color: #f7f7f7;
     border-bottom: 1px solid #ccc;
+}
+
+#wp-console-debug-log {
+
+    pre {
+        max-height: calc(100vh - 115px);
+        overflow: auto;
+        margin: 0;
+        padding: 10px;
+        border-left: 25px solid #f1f1f1;
+        border-bottom: 1px solid #ccc;
+        background-color: #fff;
+    }
 }
 
 #wp-console-outputs {
@@ -140,54 +154,41 @@ body.wp-console-active {
             overflow: auto;
         }
     }
-}
 
-.wp-console-output {
-    background-color: #f1f1f1;
-    border-bottom: 1px solid #ccc;
-
-    &.has-dump {
-        border-bottom: 0;
-    }
-
-    h4 {
+    .wp-console-output {
         background-color: #f1f1f1;
-        margin: 0;
         border-bottom: 1px solid #ccc;
-        padding: 15px 20px;
-        font-size: 15px;
-        font-weight: 400;
+
+        &.has-dump {
+            border-bottom: 0;
+        }
+
+        h4 {
+            background-color: #f1f1f1;
+            margin: 0;
+            border-bottom: 1px solid #ccc;
+            padding: 15px 20px;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        pre {
+            padding: 10px 20px 10px 10px;
+            font-size: 13px;
+            margin: 0 0 0 20px;
+            background-color: #fff;
+            border-left: 1px solid #ccc;
+        }
     }
 
-    pre {
-        padding: 10px 20px 10px 10px;
-        font-size: 13px;
-        margin: 0 0 0 20px;
-        background-color: #fff;
-        border-left: 1px solid #ccc;
-    }
-}
-
-.wp-console-dump {
-    padding-left: 20px;
-    background-color: #f1f1f1;
-    border-bottom: 1px solid #ccc;
-
-    pre {
-        margin: 0;
-    }
-}
-
-#wp-console-debug-log {
-
-    pre {
-        max-height: calc(100vh - 115px);
-        overflow: auto;
-        margin: 0;
-        padding: 10px;
-        border-left: 25px solid #f1f1f1;
+    .wp-console-dump {
+        padding-left: 20px;
+        background-color: #f1f1f1;
         border-bottom: 1px solid #ccc;
-        background-color: #fff;
+
+        pre {
+            margin: 0;
+        }
     }
 }
 

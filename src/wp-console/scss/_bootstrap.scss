@@ -13,6 +13,7 @@ a {
 }
 
 .list-inline {
+
     @include list-unstyled;
 }
 

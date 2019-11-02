@@ -39,10 +39,12 @@
 }
 
 .components-notice__action.components-button {
+
     &,
     &.is-link {
         margin-left: 4px;
     }
+
     &.is-default {
         vertical-align: initial;
     }
@@ -54,9 +56,9 @@
     right: 5px;
     color: $dark-gray-300;
 
+    &:not(:disabled):not([aria-disabled="true"]):focus,
     &:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover,
-    &:not(:disabled):not([aria-disabled="true"]):not(.is-default):active,
-    &:not(:disabled):not([aria-disabled="true"]):focus {
+    &:not(:disabled):not([aria-disabled="true"]):not(.is-default):active {
         color: $alert-red;
         background-color: transparent;
     }

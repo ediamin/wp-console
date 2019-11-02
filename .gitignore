@@ -16,5 +16,6 @@ dump.rdb
 /vendor/
 /assets/js/
 /assets/css/
+/languages/
 /build/wp-console
 /build/wp-console*

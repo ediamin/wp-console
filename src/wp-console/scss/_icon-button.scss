@@ -16,7 +16,8 @@
         flex: 0 0 auto;
     }
 
-    // Ensure that even SVG icons that don't include the .dashicon class are colored.
+    // Ensure that even SVG icons that don't include
+    // the .dashicon class are colored.
     svg {
         fill: currentColor;
         outline: none;
@@ -26,16 +27,18 @@
         margin-right: 4px;
     }
 
+    &:disabled:focus,
+    &[aria-disabled="true"]:focus {
+        box-shadow: none;
+    }
+
     &:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover {
+
         @include button-style__hover;
     }
 
     &:not(:disabled):not([aria-disabled="true"]):not(.is-default):active {
-        @include button-style__active;
-    }
 
-    &[aria-disabled="true"]:focus,
-    &:disabled:focus {
-        box-shadow: none;
+        @include button-style__active;
     }
 }

@@ -85,6 +85,7 @@ class RestController extends WP_REST_Controller {
             if ( ! file_exists( $log_file ) ) {
                 throw new WPConsoleException(
                     'wp_console_rest_error',
+                    /* translators: %s: log file */
                     sprintf( __( 'Log file: `%s` not found in your system.', 'wp-console' ), $log_file  )
                 );
             }
