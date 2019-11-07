@@ -33,6 +33,9 @@ Please note that, currently PsySH commands like `ls`, `doc`, `show` etc and Magi
 
 == Changelog ==
 
+1.5.0 - November 07, 2019
+* Tweak - Change `dump` function name to `_dump` to resolve conflict with wp-erp
+
 1.4.0 - November 02, 2019
 * New - Save code editor history in localStorage
 * Tweak - Use wp-scripts for assets build process
