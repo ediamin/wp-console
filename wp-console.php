@@ -31,7 +31,7 @@ define( 'WP_CONSOLE_ABSPATH', dirname( WP_CONSOLE_FILE ) );
  *
  * @return mixed
  */
-function dump( $var, ...$moreVars ) {
+function _dump( $var, ...$moreVars ) {
     VarDumper::dump($var);
 
     foreach ( $moreVars as $v ) {
