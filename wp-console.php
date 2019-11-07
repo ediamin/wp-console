@@ -3,7 +3,7 @@
  * Plugin Name: WP Console
  * Plugin URI: https://github.com/ediamin/wp-console
  * Description: WordPress PHP Console powered by PsySH
- * Version: 1.4.0
+ * Version: 1.5.0
  * Author: Edi Amin
  * Author URI: https://github.com/ediamin
  * Text Domain: wp-console
@@ -31,7 +31,7 @@ define( 'WP_CONSOLE_ABSPATH', dirname( WP_CONSOLE_FILE ) );
  *
  * @return mixed
  */
-function dump( $var, ...$moreVars ) {
+function _dump( $var, ...$moreVars ) {
     VarDumper::dump($var);
 
     foreach ( $moreVars as $v ) {

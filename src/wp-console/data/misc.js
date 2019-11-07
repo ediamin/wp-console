@@ -5,8 +5,8 @@ import { __ } from '@wordpress/i18n';
 
 export default [
     {
-        prefix: 'dump',
-        body: 'dump',
+        prefix: '_dump',
+        body: '_dump',
         description: __( 'Symfony VarDumper', 'wp-console' ),
     },
 ];
