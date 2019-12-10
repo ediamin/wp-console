@@ -50,9 +50,10 @@ class RestController extends WP_REST_Controller {
     public function register_routes() {
         register_rest_route( $this->namespace, '/' . $this->base, [
             [
-                'methods'  => WP_REST_Server::CREATABLE,
-                'callback' => [ $this, 'create_item' ],
-                'args'     => [
+                'methods'             => WP_REST_Server::CREATABLE,
+                'callback'            => [ $this, 'create_item' ],
+                'permission_callback' => [ $this, 'can_manage_options' ],
+                'args'                => [
                     'input' => [
                         'required'          => true,
                         'type'              => 'string',
@@ -62,6 +63,19 @@ class RestController extends WP_REST_Controller {
                 ],
             ],
         ] );
+    }
+
+    /**
+     * Check if current user has manage_options capability
+     *
+     * @since WP_CONSOLE_SINCE
+     *
+     * @param \WP_REST_Request $request
+     *
+     * @return bool
+     */
+    public function can_manage_options( $request ) {
+        return current_user_can( 'manage_options' );
     }
 
     /**

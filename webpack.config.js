@@ -22,10 +22,8 @@ module.exports = {
     resolve: {
         alias: {
             ...defaultConfig.resolve.alias,
-            '@': resolve( 'src' ),
-            '@wp-console': resolve( 'src/wp-console' ),
-            bootstrap: resolve( 'node_modules/bootstrap/scss' ),
-        }
+            '.@': resolve( 'src' ),
+        },
     },
 
     module: {
@@ -42,6 +40,6 @@ module.exports = {
                     'sass-loader',
                 ],
             },
-        ]
-    }
+        ],
+    },
 };

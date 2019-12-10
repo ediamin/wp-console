@@ -27,4 +27,17 @@ class WPConsoleDumper extends HtmlDumper {
             $wp_console_dump .= str_repeat( $indentPad, $depth ) . $line . "\n";
         }
     }
+
+    /**
+     * Dumps the HTML header
+     *
+     * Override to remove JS and CSS from REST response
+     *
+     * @since WP_CONSOLE_SINCE
+     *
+     * @return void
+     */
+    protected function getDumpHeader() {
+        return;
+    }
 }
