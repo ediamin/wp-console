@@ -165,3 +165,32 @@ body.wp-console-active {
     }
 }
 
+#wp-console-panel-console {
+
+    &.is-vertical {
+
+        #wp-console-code-editor-wrapper {
+            border-bottom: 0;
+        }
+
+        #wp-console-code-editor-wrapper,
+        #wp-console-panel-console-results {
+            width: 50%;
+            height: calc(100vh - (32px + 50px));
+        }
+
+        #wp-console-panel-console-results {
+            border-left: 1px solid $border-color;
+        }
+
+        #wp-console-code-editor {
+            height: 100%;
+        }
+
+        #wp-console-editor-output pre {
+            height: calc(100vh - (32px + 50px + 52px));
+            margin-left: 0;
+            border-left: 0;
+        }
+    }
+}

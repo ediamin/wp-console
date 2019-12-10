@@ -27,8 +27,6 @@ const PanelButtons = () => {
                 <Button
                     className="wp-console-panel-button wp-console-button-no-style"
                     isSmall
-                    isBusy={ isExecuting }
-                    disabled={ isExecuting }
                     onClick={ () => setUserSettings( 'console', 'window_split', newSplitSetting, setNotice ) }
                 ><IconSplit /> { __( 'Split', 'wp-console' ) }</Button>
             </li>
