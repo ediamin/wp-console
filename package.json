@@ -23,7 +23,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@wordpress/scripts": "^5.1.0",
+    "@wordpress/scripts": "^6.0.0",
     "css-loader": "^3.3.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
