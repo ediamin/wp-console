@@ -9,8 +9,10 @@ import { useDispatch } from '@wordpress/data';
 import storeSelectors from '.@/utils/store-selectors';
 import Console from '.@/Console/Console';
 import DebugLog from '.@/DebugLog/DebugLog';
+import saveUserSettings from './save-user-settings';
 
 const DEFAULT_STATE = {
+    userSettings: wpConsole.user_settings,
     panels: [ Console, DebugLog ],
     activePanelId: 'console',
     notice: {
@@ -20,6 +22,17 @@ const DEFAULT_STATE = {
 };
 
 const actions = {
+    setUserSettings( section, option, value, setNotice ) {
+        saveUserSettings( section, option, value, setNotice );
+
+        return {
+            type: 'SET_USER_SETTINGS',
+            section,
+            option,
+            value,
+        };
+    },
+
     setActivePanelId( activePanelId ) {
         return {
             type: 'SET_ACTIVE_PANEL',
@@ -40,6 +53,18 @@ const actions = {
 
 const reducer = ( state = DEFAULT_STATE, action ) => {
     switch ( action.type ) {
+    case 'SET_USER_SETTINGS':
+        state = {
+            ...state,
+            userSettings: {
+                ...state.userSettings,
+                [ action.section ]: {
+                    ...action.section,
+                    [ action.option ]: action.value,
+                },
+            },
+        };
+        break;
     case 'SET_ACTIVE_PANEL':
         state = {
             ...state,
@@ -62,6 +87,10 @@ const reducer = ( state = DEFAULT_STATE, action ) => {
 };
 
 const selectors = {
+    getUserSettings( state ) {
+        return state.userSettings;
+    },
+
     getPanels( state ) {
         return state.panels;
     },
@@ -89,6 +118,7 @@ export const select = () => {
     const globalSelectors = new storeSelectors( 'wp-console/global' );
 
     return {
+        userSettings: globalSelectors.get( 'getUserSettings' ),
         panels: globalSelectors.get( 'getPanels' ),
         activePanelId: globalSelectors.get( 'getActivePanelId' ),
         activePanel: globalSelectors.get( 'getActivePanel' ),

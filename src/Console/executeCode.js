@@ -14,7 +14,7 @@ const executeCode = async ( code, dispatches, setNotice ) => {
     try {
         const response = await apiFetch( {
             path: '/wp-console/v1/console',
-            method: 'POST',
+            method: 'post',
             data: {
                 input: code,
             },

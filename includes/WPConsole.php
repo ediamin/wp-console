@@ -176,6 +176,7 @@ final class WPConsole {
         new \WPConsole\AdminBar();
         new \WPConsole\Core\Console\Console();
         new \WPConsole\Core\DebugLog\DebugLog();
+        new \WPConsole\Core\UserSettings\UserSettings();
 
         /**
          * Fires after finished loading the plugin core

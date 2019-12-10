@@ -27,7 +27,7 @@ trait RESTResponseError {
             );
         }
 
-        $default_message = $default_message ? $default_message : __( 'Something went wrong', 'dokan-lite' );
+        $default_message = $default_message ? $default_message : __( 'Something went wrong', 'wp-console' );
 
         return new WP_Error(
             'something_went_wrong',

@@ -23,6 +23,7 @@ class Scripts {
      *
      * @since 1.0.0
      * @since 1.2.0 Add codemirror closebrackets, matchbrackets addon scripts
+     * @since WP_CONSOLE_SINCE Remove codemirror and add AceEditor.
      *
      * @return void
      */
@@ -53,6 +54,7 @@ class Scripts {
      * Enqueue console scripts
      *
      * @since 1.0.0
+     * @since WP_CONSOLE_SINCE remove `rest`, add `url` and `user_settings` data
      *
      * @return void
      */
@@ -60,10 +62,13 @@ class Scripts {
         wp_enqueue_style( 'wp-console' );
         wp_enqueue_script( 'wp-console' );
 
+        $user_settings = wp_console()->user_settings->get( get_current_user_id() );
+
         $data = [
             'url' => [
                 'assests' => WP_CONSOLE_ASSETS,
             ],
+            'user_settings' => $user_settings,
         ];
 
         wp_localize_script( 'wp-console', 'wpConsole', $data );

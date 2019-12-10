@@ -12,7 +12,7 @@ class DebugLog {
      * @return void
      */
     public function __construct() {
-        add_action( 'wp_console_rest_controllers', [ $this, 'add_rest_controller' ] );
+        add_filter( 'wp_console_rest_controllers', [ $this, 'add_rest_controller' ] );
     }
 
     /**
