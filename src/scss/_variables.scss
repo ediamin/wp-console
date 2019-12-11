@@ -1,0 +1,12 @@
+@import "colors";
+
+$font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen-sans, ubuntu, cantarell, "Helvetica Neue", sans-serif;
+$font-family-monospace: monospace;
+$body-background-color: #f1f1f1 !default;
+$text-color: #444 !default;
+$link-color: #0073aa !default;
+$border-color: #ccc;
+$border-width: 1px !default;
+
+// gutenberg variable overrides
+$icon-button-size-small: 24px;

@@ -20,7 +20,7 @@ final class WPConsole {
      *
      * @var string
      */
-    public $version = '1.5.0';
+    public $version = '2.0.0';
 
     /**
      * Minimum PHP version required
@@ -172,8 +172,11 @@ final class WPConsole {
      * @return void
      */
     private function load_core() {
+        new \WPConsole\Scripts();
+        new \WPConsole\AdminBar();
         new \WPConsole\Core\Console\Console();
         new \WPConsole\Core\DebugLog\DebugLog();
+        new \WPConsole\Core\UserSettings\UserSettings();
 
         /**
          * Fires after finished loading the plugin core

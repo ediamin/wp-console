@@ -2,8 +2,6 @@
 
 namespace WPConsole\Core\Console;
 
-use WPConsole\Core\Console\Scripts;
-
 class Console {
 
     /**
@@ -14,26 +12,8 @@ class Console {
      * @return void
      */
     public function __construct() {
-        add_action( 'wp_console_controllers', [ $this, 'add_controller' ] );
-        add_action( 'wp_console_rest_controllers', [ $this, 'add_rest_controller' ] );
-        add_action( 'wp_before_admin_bar_render', [ $this, 'add_admin_bar_quick_link' ] );
-        add_action( 'wp_after_admin_bar_render', [ $this, 'add_footer' ] );
-
-        new Scripts();
-    }
-
-    /**
-     * Add chainable controller
-     *
-     * @since 1.0.0
-     *
-     * @param array $controllers
-     *
-     * @return void
-     */
-    public function add_controller( $controllers ) {
-        $controllers->console = new Controller();
-        return $controllers;
+        add_filter( 'wp_console_rest_controllers', [ $this, 'add_rest_controller' ] );
+        add_filter( 'wp_console_user_settings_schema', [ $this, 'add_user_settings_schema' ] );
     }
 
     /**
@@ -51,30 +31,29 @@ class Console {
     }
 
     /**
-     * Add admin bar quick link
+     * Add user settings schema
      *
-     * @since 1.0.0
+     * @since 2.0.0
      *
-     * @return void
+     * @param array $settings
+     *
+     * @return array
      */
-    public function add_admin_bar_quick_link() {
-        global $wp_admin_bar;
-
-        $wp_admin_bar->add_menu( array(
-            'id'     => 'wp-console',
-            'parent' => 'top-secondary',
-            'title'  => __( 'Console', 'wp-console' ),
-        ) );
-    }
-
-    /**
-     * Add footer
-     *
-     * @since 1.0.0
-     *
-     * @return void
-     */
-    public function add_footer() {
-        echo '<div id="wp-console"></div>';
+    public function add_user_settings_schema( $schema ) {
+        $schema['console'] = [
+            'description' => __( 'User settings for Console panel', 'wp-console' ),
+            'type'        => 'object',
+            'context'     => [ 'view', 'edit' ],
+            'properties'  => [
+                'window_split' => [
+                    'description' => __( 'Console panel window split type', 'wp-console' ),
+                    'type'        => 'string',
+                    'enum'        => [ 'horizontal', 'vertical' ],
+                    'default'     => 'horizontal',
+                    'context'     => [ 'view', 'edit' ],
+                ],
+            ],
+        ];
+        return $schema;
     }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "wp-console",
+  "name": "ediamin/wp-console",
   "description": "WordPress PHP Console",
   "type": "wordpress-plugin",
   "license": "GPL-3.0-or-later",
@@ -7,13 +7,13 @@
   "minimum-stability": "dev",
   "authors": [
     {
-        "name": "Edi Amin",
-        "email": "to.ediamin@gmail.com"
+      "name": "Edi Amin",
+      "email": "to.ediamin@gmail.com"
     }
   ],
   "autoload" : {
     "psr-4": {
-        "WPConsole\\": "includes/"
+      "WPConsole\\": "includes/"
     }
   },
   "require": {

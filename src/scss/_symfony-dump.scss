@@ -1,0 +1,216 @@
+// styles creates in loop
+pre.sf-dump,
+pre.sf-dump .sf-dump-default {
+    background-color: #18171b;
+    color: #ff8400;
+    line-height: 1.6;
+    font-family: Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    position: relative;
+    z-index: 99999;
+    word-break: break-all;
+}
+
+.sf-dump-num {
+    font-weight: 600;
+    color: #1299da;
+}
+
+.sf-dump-const {
+    font-weight: 600;
+}
+
+.sf-dump-str {
+    font-weight: 600;
+    color: #56db3a;
+}
+
+.sf-dump-note {
+    color: #1299da;
+}
+
+.sf-dump-ref {
+    color: #a0a0a0;
+}
+
+.sf-dump-public {
+    color: #fff;
+}
+
+.sf-dump-protected {
+    color: #fff;
+}
+
+.sf-dump-private {
+    color: #fff;
+}
+
+.sf-dump-meta {
+    color: #b729d9;
+}
+
+.sf-dump-key {
+    color: #56db3a;
+}
+
+.sf-dump-index {
+    color: #1299da;
+}
+
+.sf-dump-ellipsis {
+    color: #ff8400;
+}
+
+// common styles
+pre.sf-dump {
+    display: block;
+    white-space: pre;
+    padding: 5px;
+    border-radius: 0;
+    border: 0;
+    font-family: $font-family-monospace;
+    font-size: 12px;
+}
+
+pre.sf-dump::after {
+    content: "";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+pre.sf-dump span {
+    display: inline;
+}
+
+pre.sf-dump .sf-dump-compact {
+    display: none;
+}
+
+pre.sf-dump abbr {
+    text-decoration: none;
+    border: none;
+    cursor: help;
+}
+
+pre.sf-dump a {
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    color: inherit;
+}
+
+pre.sf-dump .sf-dump-ellipsis {
+    display: inline-block;
+    overflow: visible;
+    text-overflow: ellipsis;
+    max-width: 5em;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+pre.sf-dump .sf-dump-ellipsis + .sf-dump-ellipsis {
+    max-width: none;
+}
+
+pre.sf-dump code {
+    display: inline;
+    padding: 0;
+    background: none;
+}
+
+.sf-dump-str-collapse .sf-dump-str-collapse {
+    display: none;
+}
+
+.sf-dump-str-expand .sf-dump-str-expand {
+    display: none;
+}
+
+.sf-dump-public.sf-dump-highlight,
+.sf-dump-protected.sf-dump-highlight,
+.sf-dump-private.sf-dump-highlight,
+.sf-dump-str.sf-dump-highlight,
+.sf-dump-key.sf-dump-highlight {
+    background: rgba(111, 172, 204, 0.3);
+    border: 1px solid #7da0b1;
+    border-radius: 3px;
+}
+
+.sf-dump-public.sf-dump-highlight-active,
+.sf-dump-protected.sf-dump-highlight-active,
+.sf-dump-private.sf-dump-highlight-active,
+.sf-dump-str.sf-dump-highlight-active,
+.sf-dump-key.sf-dump-highlight-active {
+    background: rgba(253, 175, 0, 0.4);
+    border: 1px solid #ffa500;
+    border-radius: 3px;
+}
+
+pre.sf-dump .sf-dump-search-hidden {
+    display: none;
+}
+
+pre.sf-dump .sf-dump-search-wrapper {
+    float: right;
+    font-size: 0;
+    white-space: nowrap;
+    max-width: 100%;
+    text-align: right;
+}
+
+pre.sf-dump .sf-dump-search-wrapper > * {
+    vertical-align: top;
+    box-sizing: border-box;
+    height: 21px;
+    font-weight: 400;
+    border-radius: 0;
+    background: #fff;
+    color: #757575;
+    border: 1px solid #bbb;
+}
+
+pre.sf-dump .sf-dump-search-wrapper > input.sf-dump-search-input {
+    padding: 3px;
+    height: 21px;
+    font-size: 12px;
+    border-right: none;
+    width: 140px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    color: #000;
+}
+
+pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next,
+pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-previous {
+    background: #f2f2f2;
+    outline: none;
+    border-left: none;
+    font-size: 0;
+    line-height: 0;
+}
+
+pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-next > svg,
+pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-input-previous > svg {
+    pointer-events: none;
+    width: 12px;
+    height: 12px;
+}
+
+pre.sf-dump .sf-dump-search-wrapper > .sf-dump-search-count {
+    display: inline-block;
+    padding: 0 5px;
+    margin: 0;
+    border-left: none;
+    line-height: 21px;
+    font-size: 12px;
+}

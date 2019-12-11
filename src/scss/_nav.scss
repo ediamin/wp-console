@@ -1,0 +1,63 @@
+#wp-console-navbar {
+    height: 50px;
+    padding: 0 15px;
+    align-items: center;
+    border: 1px solid $border-color;
+
+    .wp-console-navbar-left {
+        width: 50%;
+        height: 100%;
+    }
+
+    .wp-console-navbar-right {
+        width: 50%;
+        height: 100%;
+        justify-content: flex-end;
+
+        .wp-console-nav-buttons {
+            margin-left: 70px;
+        }
+
+        .button-close {
+            width: 25px;
+            height: 25px;
+            opacity: 0.6;
+        }
+    }
+}
+
+#wp-console-logo {
+    font-family: $font-family;
+    margin: 0 40px 0 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#wp-console-panel-names {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        margin: 0;
+        padding: 12px;
+        border-bottom: 3px solid $body-background-color;
+        cursor: default;
+
+        &.active {
+            border-bottom: 3px solid $text-color;
+        }
+
+        svg {
+            background-color: $text-color;
+            fill: #fff;
+            border-radius: 3px;
+            padding: 4px;
+            height: 16px;
+            width: 16px;
+            position: relative;
+            top: 3px;
+            margin-right: 2px;
+        }
+    }
+}

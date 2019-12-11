@@ -13,25 +13,51 @@ WordPress PHP Console powered by PsySH
 == Description ==
 WP Console brings the famous PsySH on your browser. PsySH is a runtime developer console, interactive debugger and REPL for PHP.
 
-Write your code in code editor, press `Shift+Enter` and get your output in your browser.
+Write your code in code editor, press Cmd-Enter(mac) or Ctrl-Enter(win/linux) and get your output in your browser.
 
-You can also use PsySH with wp-cli with the command `wp shell`. wp-cli has built-in support for psysh already. You need to just active WP Console to use this.
+You can also use PsySH with wp-cli with the command `wp shell`. wp-cli has built-in support for psysh already. You need to just activate WP Console to use this.
 
 WP Console requires WordPress v5.0 or later.
 
+=== Features ==
+- Powerful code editor powered by Ace Editor.
+- PHP core and WordPress functions live autocompletion with placeholders.
+- `_dump` as the alternative to `var_dump` which uses Symfony VarDumper.
+- Get debug.log contents and clear them right from your browser.
+- Advanced shell powered by psySH for `wp shell`
+- Custom code snippet(coming soon).
+- Change editor theme(coming soon).
+- WordPress function definition docblock(coming soon).
+- Customized editor key bindings(coming soon).
+
 Please note that, currently PsySH commands like `ls`, `doc`, `show` etc and Magic variables like `$_`, `$__class` etc are not supported in browser console.
 
-👉 GitHub Repo: [wp-console](https://github.com/ediamin/wp-console)
+👉 WP Console uses Gutenberg packages and components for its UI/UX. Checkout the GitHub repo here [wp-console](https://github.com/ediamin/wp-console).
+
+== Security Concern ==
+WP Console explicitly checks for `manage_options` permission to display the UI and perform other actions. Yet, this plugin should not be used in production server.
 
 == Screenshots ==
 
-1. Basic input/output
-2. dump command
-3. Error in code
-4. wp shell command
-5. Browser console UI
+1. Basic input output
+2. _dump command
+3. Vertical splitted window
+4. Live Autocompletion
+5. Autocompletion with placeholder
+6. Display errors
+7. wp shell command
+8. Get debug.log contents
+9. Clear debug.log 
 
 == Changelog ==
+
+2.0.0 - December 11, 2019
+* Revamp UI/UX.
+* Add Ace editor as code editor plugin. Remove CodeMirror.
+* Live autocompletion with placeholders.
+* Option to vertically split editor and output window.
+* Add ability to clear debug.log.
+* Restrict plugin UI and REST APIs for users who have manage_options capability. 
 
 1.5.0 - November 07, 2019
 * Tweak - Change `dump` function name to `_dump` to resolve conflict with wp-erp
