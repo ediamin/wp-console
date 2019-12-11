@@ -7,7 +7,7 @@ class UserSettings {
     /**
      * Class constructor
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @return void
      */
@@ -19,7 +19,7 @@ class UserSettings {
     /**
      * Add chainable controller
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @param object $controllers
      *
@@ -33,7 +33,7 @@ class UserSettings {
     /**
      * Add REST controller
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @param array $controllers
      *

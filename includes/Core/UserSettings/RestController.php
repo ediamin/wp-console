@@ -15,7 +15,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Endpoint namespace
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @var string
      */
@@ -24,7 +24,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Route name
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @var string
      */
@@ -33,7 +33,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Class constructor
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @return void
      */
@@ -44,7 +44,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Register REST routes
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @return void
      */
@@ -64,7 +64,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Check if current user has manage_options capability
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @param \WP_REST_Request $request
      *
@@ -77,7 +77,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Update user settings
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @param \WP_REST_Request $request
      *
@@ -98,7 +98,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Endpoint schema
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @return array
      */

@@ -39,13 +39,25 @@ WP Console explicitly checks for `manage_options` permission to display the UI a
 
 == Screenshots ==
 
-1. Basic input/output
-2. dump command
-3. Error in code
-4. wp shell command
-5. Browser console UI
+1. Basic input output
+2. _dump command
+3. Vertical splitted window
+4. Live Autocompletion
+5. Autocompletion with placeholder
+6. Display errors
+7. wp shell command
+8. Get debug.log contents
+9. Clear debug.log 
 
 == Changelog ==
+
+2.0.0 - December 11, 2019
+* Revamp UI/UX.
+* Add Ace editor as code editor plugin. Remove CodeMirror.
+* Live autocompletion with placeholders.
+* Option to vertically split editor and output window.
+* Add ability to clear debug.log.
+* Restrict plugin UI and REST APIs for users who have manage_options capability. 
 
 1.5.0 - November 07, 2019
 * Tweak - Change `dump` function name to `_dump` to resolve conflict with wp-erp

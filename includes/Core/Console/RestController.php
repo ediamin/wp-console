@@ -68,7 +68,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Check if current user has manage_options capability
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @param \WP_REST_Request $request
      *

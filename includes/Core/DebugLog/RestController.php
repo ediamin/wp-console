@@ -66,7 +66,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Check if current user has manage_options capability
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @param \WP_REST_Request $request
      *
@@ -137,7 +137,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Erase/Clear debug.log
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @param \WP_REST_Request $request
      *
@@ -164,7 +164,7 @@ class RestController extends WP_REST_Controller {
      * Copied from `wp-includes/functions.php` to give support
      * WordPress older than Version 5.3.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @return string PHP timezone string or a ±HH:MM offset.
      */
