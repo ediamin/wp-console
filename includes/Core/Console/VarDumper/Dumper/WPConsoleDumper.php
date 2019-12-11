@@ -33,7 +33,7 @@ class WPConsoleDumper extends HtmlDumper {
      *
      * Override to remove JS and CSS from REST response
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @return void
      */

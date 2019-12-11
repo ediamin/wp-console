@@ -23,7 +23,7 @@ class Scripts {
      *
      * @since 1.0.0
      * @since 1.2.0 Add codemirror closebrackets, matchbrackets addon scripts
-     * @since WP_CONSOLE_SINCE Remove codemirror and add AceEditor.
+     * @since 2.0.0 Remove codemirror and add AceEditor.
      *
      * @return void
      */
@@ -54,7 +54,7 @@ class Scripts {
      * Enqueue console scripts
      *
      * @since 1.0.0
-     * @since WP_CONSOLE_SINCE remove `rest`, add `url` and `user_settings` data
+     * @since 2.0.0 remove `rest`, add `url` and `user_settings` data
      *
      * @return void
      */

@@ -7,7 +7,7 @@ class Controller {
     /**
      * Settings schema
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @return array
      */
@@ -18,7 +18,7 @@ class Controller {
     /**
      * Get user settings
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @param int $user_id
      *
@@ -51,7 +51,7 @@ class Controller {
     /**
      * Save user settings
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.0.0
      *
      * @param int $user_id
      * @param array $settings
