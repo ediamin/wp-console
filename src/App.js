@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-import { Notice } from '@wordpress/components';
-import { Fragment } from '@wordpress/element';
+import { Notice, Spinner } from '@wordpress/components';
+import { Fragment, Suspense } from '@wordpress/element';
 
 /**
  * Internal dependencies
@@ -14,12 +14,19 @@ const App = () => {
     const { notice, activePanel } = select();
     const { setNotice } = dispatch();
     const Panel = activePanel.Panel;
+    const suspenseLoader = (
+        <div className="wp-console-spinner">
+            <Spinner />
+        </div>
+    );
 
     return (
         <Fragment>
             <NavBar />
             <div id="wp-console-panel">
-                <Panel />
+                <Suspense fallback={ suspenseLoader }>
+                    <Panel />
+                </Suspense>
             </div>
             { notice.message && <Notice status={ notice.type } onRemove={ () => setNotice( '' ) }>{ notice.message }</Notice> }
         </Fragment>

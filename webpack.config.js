@@ -19,6 +19,13 @@ module.exports = {
 
     plugins,
 
+    output: {
+        filename: '[name].js',
+        path: resolve( 'assets', 'js' ),
+        chunkFilename: 'chunks/[chunkhash].js',
+        jsonpFunction: 'wpConsoleWebpack'
+    },
+
     resolve: {
         alias: {
             ...defaultConfig.resolve.alias,

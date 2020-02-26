@@ -22,6 +22,8 @@ registerStore( 'wp-console/global', globalStore );
 registerStore( 'wp-console/console', consoleStore );
 registerStore( 'wp-console/debug-log', debugLogStore );
 
+__webpack_public_path__ = `${ wpConsole.url.assests }/js/`; // eslint-disable-line camelcase, no-undef
+
 $( document ).ready( function() {
     if ( ! $( '#wp-console' ).length ) {
         return;
