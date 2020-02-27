@@ -47,50 +47,50 @@ const actions = {
 
 const reducer = ( state = DEFAULT_STATE, action ) => {
     switch ( action.type ) {
-    case 'START_CLEARING_LOG':
-        state = {
-            ...state,
-            clearingLog: true,
-        };
-        break;
+        case 'START_CLEARING_LOG':
+            state = {
+                ...state,
+                clearingLog: true,
+            };
+            break;
 
-    case 'FINISH_CLEARING_LOG':
-        state = {
-            ...state,
-            clearingLog: false,
-        };
-        break;
+        case 'FINISH_CLEARING_LOG':
+            state = {
+                ...state,
+                clearingLog: false,
+            };
+            break;
 
-    case 'START_FETCHING_LOG':
-        state = {
-            ...state,
-            fetchingLog: true,
-        };
-        break;
+        case 'START_FETCHING_LOG':
+            state = {
+                ...state,
+                fetchingLog: true,
+            };
+            break;
 
-    case 'FINISH_FETCHING_LOG':
-        state = {
-            ...state,
-            fetchingLog: false,
-        };
-        break;
+        case 'FINISH_FETCHING_LOG':
+            state = {
+                ...state,
+                fetchingLog: false,
+            };
+            break;
 
-    case 'SET_LOG':
-        state = {
-            ...state,
-            log: action.log,
-        };
-        break;
+        case 'SET_LOG':
+            state = {
+                ...state,
+                log: action.log,
+            };
+            break;
 
-    case 'SET_EXTRA_INFO':
-        state = {
-            ...state,
-            extraInfo: action.extraInfo,
-        };
-        break;
+        case 'SET_EXTRA_INFO':
+            state = {
+                ...state,
+                extraInfo: action.extraInfo,
+            };
+            break;
 
-    default:
-        break;
+        default:
+            break;
     }
 
     return state;

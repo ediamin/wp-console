@@ -4,7 +4,10 @@
 import { compose } from '@wordpress/compose';
 import { withSelect, withDispatch } from '@wordpress/data';
 
-function withSelectDispatch( { select: _select = [], dispatch: _dispatch = [] } ) {
+function withSelectDispatch( {
+    select: _select = [],
+    dispatch: _dispatch = [],
+} ) {
     return compose(
         withSelect( ( select ) => {
             const selects = {};
@@ -23,7 +26,8 @@ function withSelectDispatch( { select: _select = [], dispatch: _dispatch = [] } 
             const wpConsoleDispatches = dispatch( 'wp-console' );
 
             for ( let i = 0; i < _dispatch.length; i++ ) {
-                dispatches[ _dispatch[ i ] ] = wpConsoleDispatches[ _dispatch[ i ] ];
+                dispatches[ _dispatch[ i ] ] =
+                    wpConsoleDispatches[ _dispatch[ i ] ];
             }
 
             return dispatches;

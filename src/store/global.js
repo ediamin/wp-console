@@ -47,34 +47,34 @@ const actions = {
 
 const reducer = ( state = DEFAULT_STATE, action ) => {
     switch ( action.type ) {
-    case 'SET_USER_SETTINGS':
-        state = {
-            ...state,
-            userSettings: {
-                ...state.userSettings,
-                [ action.section ]: {
-                    ...action.section,
-                    [ action.option ]: action.value,
+        case 'SET_USER_SETTINGS':
+            state = {
+                ...state,
+                userSettings: {
+                    ...state.userSettings,
+                    [ action.section ]: {
+                        ...action.section,
+                        [ action.option ]: action.value,
+                    },
                 },
-            },
-        };
-        break;
-    case 'SET_ACTIVE_PANEL':
-        state = {
-            ...state,
-            activePanelId: action.activePanelId,
-        };
-        break;
+            };
+            break;
+        case 'SET_ACTIVE_PANEL':
+            state = {
+                ...state,
+                activePanelId: action.activePanelId,
+            };
+            break;
 
-    case 'SET_NOTICE':
-        state = {
-            ...state,
-            notice: action.notice,
-        };
-        break;
+        case 'SET_NOTICE':
+            state = {
+                ...state,
+                notice: action.notice,
+            };
+            break;
 
-    default:
-        break;
+        default:
+            break;
     }
 
     return state;
@@ -94,7 +94,9 @@ const selectors = {
     },
 
     activePanel( { globalStore } ) {
-        return globalStore.panels.filter( ( panel ) => panel.id === globalStore.activePanelId )[ 0 ];
+        return globalStore.panels.filter(
+            ( panel ) => panel.id === globalStore.activePanelId
+        )[ 0 ];
     },
 
     notice( { globalStore } ) {

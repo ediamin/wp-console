@@ -15,8 +15,12 @@ import clearLog from './clearLog';
 const PanelButtons = ( props ) => {
     const { clearingLog, fetchingLog } = props;
 
-    const clearLogButtonTxt = clearingLog ? `${ __( 'Clearing Log', 'wp-console' ) }...` : __( 'Clear Log', 'wp-console' );
-    const fetchLogButtonTxt = fetchingLog ? `${ __( 'Fetching Log', 'wp-console' ) }...` : __( 'Fetch Log', 'wp-console' );
+    const clearLogButtonTxt = clearingLog
+        ? `${ __( 'Clearing Log', 'wp-console' ) }...`
+        : __( 'Clear Log', 'wp-console' );
+    const fetchLogButtonTxt = fetchingLog
+        ? `${ __( 'Fetching Log', 'wp-console' ) }...`
+        : __( 'Fetch Log', 'wp-console' );
 
     return (
         <ul className="list-inline">
@@ -27,7 +31,9 @@ const PanelButtons = ( props ) => {
                     isBusy={ clearingLog }
                     disabled={ clearingLog || fetchingLog }
                     onClick={ () => clearLog( props ) }
-                ><IconEraser /> { clearLogButtonTxt }</Button>
+                >
+                    <IconEraser /> { clearLogButtonTxt }
+                </Button>
             </li>
             <li className="list-inline-item">
                 <Button
@@ -36,17 +42,16 @@ const PanelButtons = ( props ) => {
                     isBusy={ fetchingLog }
                     disabled={ fetchingLog || clearingLog }
                     onClick={ () => fetchLog( props ) }
-                ><IconBug /> { fetchLogButtonTxt }</Button>
+                >
+                    <IconBug /> { fetchLogButtonTxt }
+                </Button>
             </li>
         </ul>
     );
 };
 
 export default withSelectDispatch( {
-    select: [
-        'clearingLog',
-        'fetchingLog',
-    ],
+    select: [ 'clearingLog', 'fetchingLog' ],
 
     dispatch: [
         'setNotice',

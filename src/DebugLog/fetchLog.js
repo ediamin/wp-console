@@ -28,7 +28,9 @@ const fetchLog = async ( props ) => {
         } );
 
         const log = await response.json();
-        const extraInfo = JSON.parse( response.headers.get( 'X-WP-Console-Debug-Log-Extra-Info' ) );
+        const extraInfo = JSON.parse(
+            response.headers.get( 'X-WP-Console-Debug-Log-Extra-Info' )
+        );
 
         setLog( log.trim() );
         setExtraInfo( extraInfo );

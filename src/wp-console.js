@@ -31,9 +31,6 @@ $( document ).ready( function() {
             return;
         }
 
-        render(
-            <App />,
-            document.getElementById( 'wp-console' )
-        );
+        render( <App />, document.getElementById( 'wp-console' ) );
     } );
 } );

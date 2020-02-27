@@ -12,7 +12,12 @@ import executeCode from './executeCode';
 import './autocompletions/mode-php';
 
 function protectFirstLine( editor ) {
-    const whitelistCommands = [ 'golineup', 'gotoright', 'golinedown', 'gotoleft' ];
+    const whitelistCommands = [
+        'golineup',
+        'gotoright',
+        'golinedown',
+        'gotoleft',
+    ];
 
     editor.commands.on( 'exec', function( e ) {
         const commandName = e.command.name;
@@ -98,10 +103,7 @@ const CodeEditor = ( props ) => {
 };
 
 export default withSelectDispatch( {
-    select: [
-        'code',
-        'keyBindings',
-    ],
+    select: [ 'code', 'keyBindings' ],
 
     dispatch: [
         'setNotice',

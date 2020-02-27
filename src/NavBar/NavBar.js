@@ -18,11 +18,19 @@ import { IconTimes } from '.@/Icons';
 const closeWindow = ( e, resetConsoleResponses ) => {
     e.preventDefault();
     $( 'body' ).removeClass( 'wp-console-active' );
-    $( '#wp-console' ).removeClass( 'active' ).trigger( 'wp-console:close' );
+    $( '#wp-console' )
+        .removeClass( 'active' )
+        .trigger( 'wp-console:close' );
     resetConsoleResponses();
 };
 
-const NavBar = ( { panels, activePanel, activePanelId, setActivePanelId, resetConsoleResponses } ) => {
+const NavBar = ( {
+    panels,
+    activePanel,
+    activePanelId,
+    setActivePanelId,
+    resetConsoleResponses,
+} ) => {
     const PanelButtons = activePanel.PanelButtons;
 
     return (
@@ -37,9 +45,13 @@ const NavBar = ( { panels, activePanel, activePanelId, setActivePanelId, resetCo
                         <li
                             key={ panel.id }
                             role="presentation"
-                            className={ activePanelId === panel.id ? 'active' : '' }
+                            className={
+                                activePanelId === panel.id ? 'active' : ''
+                            }
                             onClick={ () => setActivePanelId( panel.id ) }
-                        >{ panel.icon } { panel.name }</li>
+                        >
+                            { panel.icon } { panel.name }
+                        </li>
                     ) ) }
                 </ul>
             </div>
@@ -48,7 +60,12 @@ const NavBar = ( { panels, activePanel, activePanelId, setActivePanelId, resetCo
                     <PanelButtons />
                 </div>
                 <div className="wp-console-nav-buttons align-self-center">
-                    <Button className="button-close" onClick={ ( e ) => ( closeWindow( e, resetConsoleResponses ) ) }>
+                    <Button
+                        className="button-close"
+                        onClick={ ( e ) =>
+                            closeWindow( e, resetConsoleResponses )
+                        }
+                    >
                         <IconTimes />
                     </Button>
                 </div>
@@ -58,14 +75,7 @@ const NavBar = ( { panels, activePanel, activePanelId, setActivePanelId, resetCo
 };
 
 export default withSelectDispatch( {
-    select: [
-        'panels',
-        'activePanel',
-        'activePanelId',
-    ],
+    select: [ 'panels', 'activePanel', 'activePanelId' ],
 
-    dispatch: [
-        'setActivePanelId',
-        'resetConsoleResponses',
-    ],
+    dispatch: [ 'setActivePanelId', 'resetConsoleResponses' ],
 } )( NavBar );

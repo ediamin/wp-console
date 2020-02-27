@@ -75,69 +75,69 @@ const actions = {
 
 const reducer = ( state = DEFAULT_STATE, action ) => {
     switch ( action.type ) {
-    case 'UPDATE_CODE':
-        state = {
-            ...state,
-            code: action.code,
-        };
-        break;
+        case 'UPDATE_CODE':
+            state = {
+                ...state,
+                code: action.code,
+            };
+            break;
 
-    case 'SET_OUTPUT':
-        state = {
-            ...state,
-            output: action.output,
-        };
-        break;
+        case 'SET_OUTPUT':
+            state = {
+                ...state,
+                output: action.output,
+            };
+            break;
 
-    case 'SET_DUMP':
-        state = {
-            ...state,
-            dump: action.dump,
-        };
-        break;
+        case 'SET_DUMP':
+            state = {
+                ...state,
+                dump: action.dump,
+            };
+            break;
 
-    case 'SET_ERROR_TRACE':
-        state = {
-            ...state,
-            errorTrace: action.errorTrace,
-        };
-        break;
+        case 'SET_ERROR_TRACE':
+            state = {
+                ...state,
+                errorTrace: action.errorTrace,
+            };
+            break;
 
-    case 'RESET_CONSOLE_RESPONSES':
-        state = {
-            ...state,
-            output: DEFAULT_STATE.output,
-            dump: DEFAULT_STATE.dump,
-            errorTrace: DEFAULT_STATE.errorTrace,
-        };
-        break;
+        case 'RESET_CONSOLE_RESPONSES':
+            state = {
+                ...state,
+                output: DEFAULT_STATE.output,
+                dump: DEFAULT_STATE.dump,
+                errorTrace: DEFAULT_STATE.errorTrace,
+            };
+            break;
 
-    case 'START_EXECUTING':
-        state = {
-            ...state,
-            isExecuting: true,
-        };
-        break;
+        case 'START_EXECUTING':
+            state = {
+                ...state,
+                isExecuting: true,
+            };
+            break;
 
-    case 'FINISH_EXECUTING':
-        state = {
-            ...state,
-            isExecuting: false,
-        };
-        break;
+        case 'FINISH_EXECUTING':
+            state = {
+                ...state,
+                isExecuting: false,
+            };
+            break;
 
-    case 'TOGGLE_HORIZONTAL_SPLIT':
-        state = {
-            ...state,
-            settings: {
-                ...state.settings,
-                horizontalSplit: ! state.settings.horizontalSplit,
-            },
-        };
-        break;
+        case 'TOGGLE_HORIZONTAL_SPLIT':
+            state = {
+                ...state,
+                settings: {
+                    ...state.settings,
+                    horizontalSplit: ! state.settings.horizontalSplit,
+                },
+            };
+            break;
 
-    default:
-        break;
+        default:
+            break;
     }
 
     return state;

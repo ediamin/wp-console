@@ -13,37 +13,60 @@ import CodeEditor from './CodeEditor';
 import Output from './Output';
 import { IconTerminal } from '.@/Icons';
 
-const Panel = ( { userSettings, output, dump, errorTrace, keyBindings, isExecuting } ) => {
+const Panel = ( {
+    userSettings,
+    output,
+    dump,
+    errorTrace,
+    keyBindings,
+    isExecuting,
+} ) => {
     const windowSplit = userSettings.console.window_split;
 
     const editor = null;
     const platform = /mac/i.exec( navigator.platform ) ? 'mac' : 'win';
-    const execKey = keyBindings.execCode[ platform ].split( '|' ).join( __( ' or ', 'wp-console' ) );
+    const execKey = keyBindings.execCode[ platform ]
+        .split( '|' )
+        .join( __( ' or ', 'wp-console' ) );
 
     return (
-        <div id="wp-console-panel-console" className={ windowSplit === 'vertical' ? 'is-vertical display-flex' : '' }>
+        <div
+            id="wp-console-panel-console"
+            className={
+                windowSplit === 'vertical' ? 'is-vertical display-flex' : ''
+            }
+        >
             <CodeEditor editor={ editor } />
             <div id="wp-console-panel-console-results">
-                {
-                    ( output || dump || errorTrace ) ? (
-                        <Output output={ output } dump={ dump } errorTrace={ errorTrace } />
-                    ) : (
-                        <Fragment>
-                            {
-                                isExecuting ? (
-                                    <div className="wp-console-spinner">
-                                        <Spinner />
-                                        { __( 'Executing code', 'wp-console' ) }...
-                                    </div>
-                                ) : (
-                                    <p className="empty-content">
-                                        <span><IconTerminal /> { sprintf( __( 'use %s to execute code', 'wp-console' ), execKey ) }</span>
-                                    </p>
-                                )
-                            }
-                        </Fragment>
-                    )
-                }
+                { output || dump || errorTrace ? (
+                    <Output
+                        output={ output }
+                        dump={ dump }
+                        errorTrace={ errorTrace }
+                    />
+                ) : (
+                    <Fragment>
+                        { isExecuting ? (
+                            <div className="wp-console-spinner">
+                                <Spinner />
+                                { __( 'Executing code', 'wp-console' ) }...
+                            </div>
+                        ) : (
+                            <p className="empty-content">
+                                <span>
+                                    <IconTerminal />{ ' ' }
+                                    { sprintf(
+                                        __(
+                                            'use %s to execute code',
+                                            'wp-console'
+                                        ),
+                                        execKey
+                                    ) }
+                                </span>
+                            </p>
+                        ) }
+                    </Fragment>
+                ) }
             </div>
         </div>
     );

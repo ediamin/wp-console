@@ -26,18 +26,20 @@ const App = ( { notice, activePanel, setNotice } ) => {
                     <Panel />
                 </Suspense>
             </div>
-            { notice.message && <Notice status={ notice.type } onRemove={ () => setNotice( '' ) }>{ notice.message }</Notice> }
+            { notice.message && (
+                <Notice
+                    status={ notice.type }
+                    onRemove={ () => setNotice( '' ) }
+                >
+                    { notice.message }
+                </Notice>
+            ) }
         </Fragment>
     );
 };
 
 export default withSelectDispatch( {
-    select: [
-        'notice',
-        'activePanel',
-    ],
+    select: [ 'notice', 'activePanel' ],
 
-    dispatch: [
-        'setNotice',
-    ],
+    dispatch: [ 'setNotice' ],
 } )( App );
