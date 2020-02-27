@@ -1,15 +1,9 @@
 /**
- * WordPress dependencies
- */
-import { useDispatch } from '@wordpress/data';
-
-/**
  * Internal dependencies
  */
-import storeSelectors from '.@/utils/store-selectors';
 import Console from '.@/Console/Console';
 import DebugLog from '.@/DebugLog/DebugLog';
-import saveUserSettings from './save-user-settings';
+import saveUserSettings from '../utils/save-user-settings';
 
 const DEFAULT_STATE = {
     userSettings: wpConsole.user_settings,
@@ -87,24 +81,24 @@ const reducer = ( state = DEFAULT_STATE, action ) => {
 };
 
 const selectors = {
-    getUserSettings( state ) {
-        return state.userSettings;
+    userSettings( { globalStore } ) {
+        return globalStore.userSettings;
     },
 
-    getPanels( state ) {
-        return state.panels;
+    panels( { globalStore } ) {
+        return globalStore.panels;
     },
 
-    getActivePanelId( state ) {
-        return state.activePanelId;
+    activePanelId( { globalStore } ) {
+        return globalStore.activePanelId;
     },
 
-    getActivePanel( state ) {
-        return state.panels.filter( ( panel ) => panel.id === state.activePanelId )[ 0 ];
+    activePanel( { globalStore } ) {
+        return globalStore.panels.filter( ( panel ) => panel.id === globalStore.activePanelId )[ 0 ];
     },
 
-    getNotice( state ) {
-        return state.notice;
+    notice( { globalStore } ) {
+        return globalStore.notice;
     },
 };
 
@@ -113,17 +107,3 @@ export const store = {
     reducer,
     selectors,
 };
-
-export const select = () => {
-    const globalSelectors = new storeSelectors( 'wp-console/global' );
-
-    return {
-        userSettings: globalSelectors.get( 'getUserSettings' ),
-        panels: globalSelectors.get( 'getPanels' ),
-        activePanelId: globalSelectors.get( 'getActivePanelId' ),
-        activePanel: globalSelectors.get( 'getActivePanel' ),
-        notice: globalSelectors.get( 'getNotice' ),
-    };
-};
-
-export const dispatch = () => useDispatch( 'wp-console/global' ); // eslint-disable-line

@@ -1,12 +1,6 @@
 /**
- * WordPress dependencies
- */
-import { useDispatch } from '@wordpress/data';
-
-/**
  * Internal dependencies
  */
-import storeSelectors from '.@/utils/store-selectors';
 import bindKey from '.@/utils/bind-key';
 
 const DEFAULT_STATE = {
@@ -150,32 +144,32 @@ const reducer = ( state = DEFAULT_STATE, action ) => {
 };
 
 const selectors = {
-    getCode( state ) {
-        return state.code;
+    code( { consoleStore } ) {
+        return consoleStore.code;
     },
 
-    getOutput( state ) {
-        return state.output;
+    output( { consoleStore } ) {
+        return consoleStore.output;
     },
 
-    getDump( state ) {
-        return state.dump;
+    dump( { consoleStore } ) {
+        return consoleStore.dump;
     },
 
-    getErrorTrace( state ) {
-        return state.errorTrace;
+    errorTrace( { consoleStore } ) {
+        return consoleStore.errorTrace;
     },
 
-    getIsExecuting( state ) {
-        return state.isExecuting;
+    isExecuting( { consoleStore } ) {
+        return consoleStore.isExecuting;
     },
 
-    getHorizontalSplit( state ) {
-        return state.settings.horizontalSplit;
+    horizontalSplit( { consoleStore } ) {
+        return consoleStore.settings.horizontalSplit;
     },
 
-    getKeyBindings( state ) {
-        return state.keyBindings;
+    keyBindings( { consoleStore } ) {
+        return consoleStore.keyBindings;
     },
 };
 
@@ -184,19 +178,3 @@ export const store = {
     reducer,
     selectors,
 };
-
-export const select = () => {
-    const consoleSelectors = new storeSelectors( 'wp-console/console' );
-
-    return {
-        code: consoleSelectors.get( 'getCode' ),
-        output: consoleSelectors.get( 'getOutput' ),
-        dump: consoleSelectors.get( 'getDump' ),
-        errorTrace: consoleSelectors.get( 'getErrorTrace' ),
-        isExecuting: consoleSelectors.get( 'getIsExecuting' ),
-        horizontalSplit: consoleSelectors.get( 'getHorizontalSplit' ),
-        keyBindings: consoleSelectors.get( 'getKeyBindings' ),
-    };
-};
-
-export const dispatch = () => useDispatch( 'wp-console/console' ); // eslint-disable-line

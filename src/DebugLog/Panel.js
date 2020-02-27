@@ -8,18 +8,15 @@ import { __, sprintf } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { dispatch as globalDispatch } from '.@/global-store';
-import { select, dispatch } from './store';
+import withSelectDispatch from '../store/with-select-dispatch';
 import fetchLog from './fetchLog';
 import { IconBug } from '.@/Icons';
 
-const Panel = () => {
-    const { fetchingLog, clearingLog, log, extraInfo } = select();
-    const dispatches = dispatch();
-    const { setNotice } = globalDispatch();
+const Panel = ( props ) => {
+    const { fetchingLog, clearingLog, log, extraInfo } = props;
 
     useEffect( () => {
-        fetchLog( dispatches, setNotice );
+        fetchLog( props );
     }, [] );
 
     return (
@@ -69,4 +66,19 @@ const Panel = () => {
     );
 };
 
-export default Panel;
+export default withSelectDispatch( {
+    select: [
+        'fetchingLog',
+        'clearingLog',
+        'log',
+        'extraInfo',
+    ],
+
+    dispatch: [
+        'setNotice',
+        'startFetchingLog',
+        'finishFetchingLog',
+        'setLog',
+        'setExtraInfo',
+    ],
+} )( Panel );

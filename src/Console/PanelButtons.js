@@ -7,16 +7,13 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
+import withSelectDispatch from '../store/with-select-dispatch';
 import { IconPlay, IconSplitWindowHorizontal, IconSplitWindowVertical } from '.@/Icons';
-import { select as globalSelect, dispatch as globalDispatch } from '.@/global-store';
-import { select, dispatch } from './store';
 import executeCode from './executeCode';
 
-const PanelButtons = () => {
-    const { code, isExecuting } = select();
-    const dispatches = dispatch();
-    const { setUserSettings, setNotice } = globalDispatch();
-    const { userSettings } = globalSelect();
+const PanelButtons = ( props ) => {
+    const { userSettings, code, isExecuting, setUserSettings, setNotice } = props;
+
     const windowSplit = userSettings.console.window_split;
     const newSplitSetting = ( windowSplit === 'horizontal' ) ? 'vertical' : 'horizontal';
     const IconSplit = ( windowSplit === 'horizontal' ) ? IconSplitWindowHorizontal : IconSplitWindowVertical;
@@ -36,11 +33,28 @@ const PanelButtons = () => {
                     isSmall
                     isBusy={ isExecuting }
                     disabled={ isExecuting }
-                    onClick={ () => executeCode( code, dispatches, setNotice ) }
+                    onClick={ () => executeCode( code, props ) }
                 ><IconPlay /> { __( 'Run', 'wp-console' ) }</Button>
             </li>
         </ul>
     );
 };
 
-export default PanelButtons;
+export default withSelectDispatch( {
+    select: [
+        'userSettings',
+        'code',
+        'isExecuting',
+    ],
+
+    dispatch: [
+        'setUserSettings',
+        'setNotice',
+        'setOutput',
+        'setDump',
+        'setErrorTrace',
+        'reset',
+        'startExecuting',
+        'finishExecuting',
+    ],
+} )( PanelButtons );

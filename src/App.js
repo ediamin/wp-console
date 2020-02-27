@@ -7,12 +7,10 @@ import { Fragment, Suspense } from '@wordpress/element';
 /**
  * Internal dependencies
  */
-import { select, dispatch } from '.@/global-store';
+import withSelectDispatch from './store/with-select-dispatch';
 import NavBar from '.@/NavBar/NavBar';
 
-const App = () => {
-    const { notice, activePanel } = select();
-    const { setNotice } = dispatch();
+const App = ( { notice, activePanel, setNotice } ) => {
     const Panel = activePanel.Panel;
     const suspenseLoader = (
         <div className="wp-console-spinner">
@@ -33,4 +31,13 @@ const App = () => {
     );
 };
 
-export default App;
+export default withSelectDispatch( {
+    select: [
+        'notice',
+        'activePanel',
+    ],
+
+    dispatch: [
+        'setNotice',
+    ],
+} )( App );

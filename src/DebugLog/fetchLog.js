@@ -3,8 +3,14 @@
  */
 import apiFetch from '@wordpress/api-fetch';
 
-const fetchLog = async ( dispatches, setNotice ) => {
-    const { startFetchingLog, finishFetchingLog, setLog, setExtraInfo } = dispatches;
+const fetchLog = async ( props ) => {
+    const {
+        setNotice,
+        startFetchingLog,
+        finishFetchingLog,
+        setLog,
+        setExtraInfo,
+    } = props;
 
     startFetchingLog();
     setNotice( '' );

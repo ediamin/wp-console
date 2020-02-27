@@ -8,15 +8,12 @@ import { Spinner } from '@wordpress/components';
 /**
  * Internal dependencies
  */
-import { select } from './store';
-import { select as globalSelect } from '.@/global-store';
+import withSelectDispatch from '../store/with-select-dispatch';
 import CodeEditor from './CodeEditor';
 import Output from './Output';
 import { IconTerminal } from '.@/Icons';
 
-const Panel = () => {
-    const { output, dump, errorTrace, keyBindings, isExecuting } = select();
-    const { userSettings } = globalSelect();
+const Panel = ( { userSettings, output, dump, errorTrace, keyBindings, isExecuting } ) => {
     const windowSplit = userSettings.console.window_split;
 
     const editor = null;
@@ -52,4 +49,13 @@ const Panel = () => {
     );
 };
 
-export default Panel;
+export default withSelectDispatch( {
+    select: [
+        'userSettings',
+        'output',
+        'dump',
+        'errorTrace',
+        'keyBindings',
+        'isExecuting',
+    ],
+} )( Panel );

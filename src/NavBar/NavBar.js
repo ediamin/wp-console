@@ -12,7 +12,7 @@ import { Button } from '@wordpress/components';
 /**
  * Internal dependencies
  */
-import { select, dispatch } from '.@/global-store';
+import withSelectDispatch from '../store/with-select-dispatch';
 import { IconTimes } from '.@/Icons';
 
 const closeWindow = ( e ) => {
@@ -21,10 +21,7 @@ const closeWindow = ( e ) => {
     $( '#wp-console' ).removeClass( 'active' ).trigger( 'wp-console:close' );
 };
 
-const NavBar = () => {
-    const { panels, activePanel, activePanelId } = select();
-    const { setActivePanelId } = dispatch();
-
+const NavBar = ( { panels, activePanel, activePanelId, setActivePanelId } ) => {
     const PanelButtons = activePanel.PanelButtons;
 
     return (
@@ -59,4 +56,14 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default withSelectDispatch( {
+    select: [
+        'panels',
+        'activePanel',
+        'activePanelId',
+    ],
+
+    dispatch: [
+        'setActivePanelId',
+    ],
+} )( NavBar );
