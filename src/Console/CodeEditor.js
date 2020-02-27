@@ -109,7 +109,7 @@ export default withSelectDispatch( {
         'setOutput',
         'setDump',
         'setErrorTrace',
-        'reset',
+        'resetConsoleResponses',
         'startExecuting',
         'finishExecuting',
     ],

@@ -46,14 +46,14 @@ const actions = {
         };
     },
 
-    reset() {
+    resetConsoleResponses() {
         return {
-            type: 'RESET',
+            type: 'RESET_CONSOLE_RESPONSES',
         };
     },
 
-    startExecuting( reset ) {
-        reset();
+    startExecuting( resetConsoleResponses ) {
+        resetConsoleResponses();
 
         return {
             type: 'START_EXECUTING',
@@ -103,7 +103,7 @@ const reducer = ( state = DEFAULT_STATE, action ) => {
         };
         break;
 
-    case 'RESET':
+    case 'RESET_CONSOLE_RESPONSES':
         state = {
             ...state,
             output: DEFAULT_STATE.output,

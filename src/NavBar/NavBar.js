@@ -15,13 +15,14 @@ import { Button } from '@wordpress/components';
 import withSelectDispatch from '../store/with-select-dispatch';
 import { IconTimes } from '.@/Icons';
 
-const closeWindow = ( e ) => {
+const closeWindow = ( e, resetConsoleResponses ) => {
     e.preventDefault();
     $( 'body' ).removeClass( 'wp-console-active' );
     $( '#wp-console' ).removeClass( 'active' ).trigger( 'wp-console:close' );
+    resetConsoleResponses();
 };
 
-const NavBar = ( { panels, activePanel, activePanelId, setActivePanelId } ) => {
+const NavBar = ( { panels, activePanel, activePanelId, setActivePanelId, resetConsoleResponses } ) => {
     const PanelButtons = activePanel.PanelButtons;
 
     return (
@@ -47,7 +48,7 @@ const NavBar = ( { panels, activePanel, activePanelId, setActivePanelId } ) => {
                     <PanelButtons />
                 </div>
                 <div className="wp-console-nav-buttons align-self-center">
-                    <Button className="button-close" onClick={ closeWindow }>
+                    <Button className="button-close" onClick={ ( e ) => ( closeWindow( e, resetConsoleResponses ) ) }>
                         <IconTimes />
                     </Button>
                 </div>
@@ -65,5 +66,6 @@ export default withSelectDispatch( {
 
     dispatch: [
         'setActivePanelId',
+        'resetConsoleResponses',
     ],
 } )( NavBar );

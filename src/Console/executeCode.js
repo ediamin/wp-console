@@ -9,14 +9,14 @@ const executeCode = async ( code, props ) => {
         setOutput,
         setDump,
         setErrorTrace,
-        reset,
+        resetConsoleResponses,
         startExecuting,
         finishExecuting,
     } = props;
 
     code = code.replace( /^\<\?php/, '' ).trim();
 
-    startExecuting( reset );
+    startExecuting( resetConsoleResponses );
     setNotice( '' );
 
     try {
