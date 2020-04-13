@@ -2,7 +2,7 @@
 Contributors: ediamin
 Tags: console, repl, browser, psysh, shell, dump
 Requires at least: 5.0
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv3
@@ -50,6 +50,13 @@ WP Console explicitly checks for `manage_options` permission to display the UI a
 9. Clear debug.log 
 
 == Changelog ==
+
+2.1.0 - April 14, 2020
+* Lazy load React components to improve performance
+* Use a single store source for all components
+* Reset console responses after close app window
+* Fix navigation button icon css for WP v5.4
+* Resize editor screen after toggle split mode
 
 2.0.0 - December 11, 2019
 * Revamp UI/UX.
