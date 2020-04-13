@@ -172,6 +172,7 @@ final class WPConsole {
      * @return void
      */
     private function load_core() {
+        new \WPConsole\Hooks();
         new \WPConsole\Scripts();
         new \WPConsole\AdminBar();
         new \WPConsole\Core\Console\Console();
