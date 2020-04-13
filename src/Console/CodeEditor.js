@@ -39,7 +39,20 @@ const CodeEditor = ( props ) => {
     let { editor } = props;
 
     useEffect( () => {
-        return initializeEditor();
+        initializeEditor();
+
+        wpConsole.hooks.addAction(
+            'wp_console_console_toggle_window_split',
+            'wp_console',
+            () => editor.resize()
+        );
+
+        return () => {
+            wpConsole.hooks.removeAction(
+                'wp_console_console_toggle_window_split',
+                'wp_console'
+            );
+        };
     }, [] );
 
     const initializeEditor = () => {

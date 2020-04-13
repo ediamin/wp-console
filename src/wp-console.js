@@ -7,6 +7,7 @@ import $ from 'jquery';
  * WordPress dependencies
  */
 import { render } from '@wordpress/element';
+import { createHooks } from '@wordpress/hooks';
 
 /**
  * Internal dependencies
@@ -16,6 +17,8 @@ import './scss/main.scss';
 import App from './App';
 
 __webpack_public_path__ = `${ wpConsole.url.assests }/js/`; // eslint-disable-line camelcase, no-undef
+
+wpConsole.hooks = createHooks();
 
 $( document ).ready( function() {
     if ( ! $( '#wp-console' ).length ) {

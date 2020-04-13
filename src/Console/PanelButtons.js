@@ -25,12 +25,25 @@ const PanelButtons = ( props ) => {
     } = props;
 
     const windowSplit = userSettings.console.window_split;
-    const newSplitSetting =
-        windowSplit === 'horizontal' ? 'vertical' : 'horizontal';
     const IconSplit =
         windowSplit === 'horizontal'
             ? IconSplitWindowHorizontal
             : IconSplitWindowVertical;
+
+    const toggleWindowSplit = async () => {
+        const newSplitSetting =
+            windowSplit === 'horizontal' ? 'vertical' : 'horizontal';
+        await setUserSettings(
+            'console',
+            'window_split',
+            newSplitSetting,
+            setNotice
+        );
+        wpConsole.hooks.doAction(
+            'wp_console_console_toggle_window_split',
+            newSplitSetting
+        );
+    };
 
     return (
         <ul className="list-inline">
@@ -38,14 +51,7 @@ const PanelButtons = ( props ) => {
                 <Button
                     className="wp-console-panel-button wp-console-button-no-style"
                     isSmall
-                    onClick={ () =>
-                        setUserSettings(
-                            'console',
-                            'window_split',
-                            newSplitSetting,
-                            setNotice
-                        )
-                    }
+                    onClick={ () => toggleWindowSplit() }
                 >
                     <IconSplit /> { __( 'Split', 'wp-console' ) }
                 </Button>
