@@ -1,12 +1,10 @@
-const defaultConfig = require( '@wordpress/scripts/config/.eslintrc.js' );
+const defaultConfig = require( '@wordpress/scripts/config/.eslintrc' );
 
 module.exports = {
     ...defaultConfig,
     rules: {
+        ...defaultConfig.rules,
         '@wordpress/dependency-group': 'error',
-        indent: [ 'error', 4 ],
-        'react/jsx-indent': [ 'error', 4 ],
-        'react/jsx-indent-props': [ 'error', 4 ],
     },
     globals: {
         wpConsole: true,

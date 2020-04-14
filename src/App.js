@@ -1,29 +1,45 @@
 /**
  * WordPress dependencies
  */
-import { Notice } from '@wordpress/components';
-import { Fragment } from '@wordpress/element';
+import { Notice, Spinner } from '@wordpress/components';
+import { Fragment, Suspense } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
-import { select, dispatch } from '.@/global-store';
+import withSelectDispatch from './store/with-select-dispatch';
 import NavBar from '.@/NavBar/NavBar';
 
-const App = () => {
-    const { notice, activePanel } = select();
-    const { setNotice } = dispatch();
+const App = ( { notice, activePanel, setNotice } ) => {
     const Panel = activePanel.Panel;
+    const suspenseLoader = (
+        <div className="wp-console-spinner">
+            <Spinner />
+        </div>
+    );
 
     return (
         <Fragment>
             <NavBar />
             <div id="wp-console-panel">
-                <Panel />
+                <Suspense fallback={ suspenseLoader }>
+                    <Panel />
+                </Suspense>
             </div>
-            { notice.message && <Notice status={ notice.type } onRemove={ () => setNotice( '' ) }>{ notice.message }</Notice> }
+            { notice.message && (
+                <Notice
+                    status={ notice.type }
+                    onRemove={ () => setNotice( '' ) }
+                >
+                    { notice.message }
+                </Notice>
+            ) }
         </Fragment>
     );
 };
 
-export default App;
+export default withSelectDispatch( {
+    select: [ 'notice', 'activePanel' ],
+
+    dispatch: [ 'setNotice' ],
+} )( App );

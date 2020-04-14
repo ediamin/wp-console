@@ -12,19 +12,25 @@ import { Button } from '@wordpress/components';
 /**
  * Internal dependencies
  */
-import { select, dispatch } from '.@/global-store';
+import withSelectDispatch from '../store/with-select-dispatch';
 import { IconTimes } from '.@/Icons';
 
-const closeWindow = ( e ) => {
+const closeWindow = ( e, resetConsoleResponses ) => {
     e.preventDefault();
     $( 'body' ).removeClass( 'wp-console-active' );
-    $( '#wp-console' ).removeClass( 'active' ).trigger( 'wp-console:close' );
+    $( '#wp-console' )
+        .removeClass( 'active' )
+        .trigger( 'wp-console:close' );
+    resetConsoleResponses();
 };
 
-const NavBar = () => {
-    const { panels, activePanel, activePanelId } = select();
-    const { setActivePanelId } = dispatch();
-
+const NavBar = ( {
+    panels,
+    activePanel,
+    activePanelId,
+    setActivePanelId,
+    resetConsoleResponses,
+} ) => {
     const PanelButtons = activePanel.PanelButtons;
 
     return (
@@ -39,9 +45,13 @@ const NavBar = () => {
                         <li
                             key={ panel.id }
                             role="presentation"
-                            className={ activePanelId === panel.id ? 'active' : '' }
+                            className={
+                                activePanelId === panel.id ? 'active' : ''
+                            }
                             onClick={ () => setActivePanelId( panel.id ) }
-                        >{ panel.icon } { panel.name }</li>
+                        >
+                            { panel.icon } { panel.name }
+                        </li>
                     ) ) }
                 </ul>
             </div>
@@ -50,7 +60,12 @@ const NavBar = () => {
                     <PanelButtons />
                 </div>
                 <div className="wp-console-nav-buttons align-self-center">
-                    <Button className="button-close" onClick={ closeWindow }>
+                    <Button
+                        className="button-close"
+                        onClick={ ( e ) =>
+                            closeWindow( e, resetConsoleResponses )
+                        }
+                    >
                         <IconTimes />
                     </Button>
                 </div>
@@ -59,4 +74,8 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default withSelectDispatch( {
+    select: [ 'panels', 'activePanel', 'activePanelId' ],
+
+    dispatch: [ 'setActivePanelId', 'resetConsoleResponses' ],
+} )( NavBar );

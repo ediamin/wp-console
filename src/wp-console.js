@@ -7,20 +7,18 @@ import $ from 'jquery';
  * WordPress dependencies
  */
 import { render } from '@wordpress/element';
-import { registerStore } from '@wordpress/data';
+import { createHooks } from '@wordpress/hooks';
 
 /**
  * Internal dependencies
  */
+import './store';
 import './scss/main.scss';
-import { store as globalStore } from '.@/global-store';
-import { store as consoleStore } from '.@/Console/store';
-import { store as debugLogStore } from '.@/DebugLog/store';
 import App from './App';
 
-registerStore( 'wp-console/global', globalStore );
-registerStore( 'wp-console/console', consoleStore );
-registerStore( 'wp-console/debug-log', debugLogStore );
+__webpack_public_path__ = `${ wpConsole.url.assests }/js/`; // eslint-disable-line camelcase, no-undef
+
+wpConsole.hooks = createHooks();
 
 $( document ).ready( function() {
     if ( ! $( '#wp-console' ).length ) {
@@ -36,9 +34,6 @@ $( document ).ready( function() {
             return;
         }
 
-        render(
-            <App />,
-            document.getElementById( 'wp-console' )
-        );
+        render( <App />, document.getElementById( 'wp-console' ) );
     } );
 } );

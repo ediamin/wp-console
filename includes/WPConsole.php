@@ -20,7 +20,7 @@ final class WPConsole {
      *
      * @var string
      */
-    public $version = '2.0.0';
+    public $version = '2.1.0';
 
     /**
      * Minimum PHP version required
@@ -172,6 +172,7 @@ final class WPConsole {
      * @return void
      */
     private function load_core() {
+        new \WPConsole\Hooks();
         new \WPConsole\Scripts();
         new \WPConsole\AdminBar();
         new \WPConsole\Core\Console\Console();

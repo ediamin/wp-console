@@ -1,13 +1,3 @@
-/**
- * WordPress dependencies
- */
-import { useDispatch } from '@wordpress/data';
-
-/**
- * Internal dependencies
- */
-import storeSelectors from '.@/utils/store-selectors';
-
 const DEFAULT_STATE = {
     clearingLog: false,
     fetchingLog: false,
@@ -57,70 +47,70 @@ const actions = {
 
 const reducer = ( state = DEFAULT_STATE, action ) => {
     switch ( action.type ) {
-    case 'START_CLEARING_LOG':
-        state = {
-            ...state,
-            clearingLog: true,
-        };
-        break;
+        case 'START_CLEARING_LOG':
+            state = {
+                ...state,
+                clearingLog: true,
+            };
+            break;
 
-    case 'FINISH_CLEARING_LOG':
-        state = {
-            ...state,
-            clearingLog: false,
-        };
-        break;
+        case 'FINISH_CLEARING_LOG':
+            state = {
+                ...state,
+                clearingLog: false,
+            };
+            break;
 
-    case 'START_FETCHING_LOG':
-        state = {
-            ...state,
-            fetchingLog: true,
-        };
-        break;
+        case 'START_FETCHING_LOG':
+            state = {
+                ...state,
+                fetchingLog: true,
+            };
+            break;
 
-    case 'FINISH_FETCHING_LOG':
-        state = {
-            ...state,
-            fetchingLog: false,
-        };
-        break;
+        case 'FINISH_FETCHING_LOG':
+            state = {
+                ...state,
+                fetchingLog: false,
+            };
+            break;
 
-    case 'SET_LOG':
-        state = {
-            ...state,
-            log: action.log,
-        };
-        break;
+        case 'SET_LOG':
+            state = {
+                ...state,
+                log: action.log,
+            };
+            break;
 
-    case 'SET_EXTRA_INFO':
-        state = {
-            ...state,
-            extraInfo: action.extraInfo,
-        };
-        break;
+        case 'SET_EXTRA_INFO':
+            state = {
+                ...state,
+                extraInfo: action.extraInfo,
+            };
+            break;
 
-    default:
-        break;
+        default:
+            break;
     }
 
     return state;
 };
 
 const selectors = {
-    getClearingLog( state ) {
-        return state.clearingLog;
+    clearingLog( { debugLogStore } ) {
+        return debugLogStore.clearingLog;
     },
 
-    getFetchingLog( state ) {
-        return state.fetchingLog;
+    fetchingLog( { debugLogStore } ) {
+        return debugLogStore.fetchingLog;
     },
 
-    getLog( state ) {
-        return state.log;
+    log( { debugLogStore } ) {
+        return debugLogStore.log;
     },
 
-    getExtraInfo( state ) {
-        return state.extraInfo;
+    extraInfo( { debugLogStore } ) {
+        return debugLogStore.extraInfo;
     },
 };
 
@@ -129,16 +119,3 @@ export const store = {
     reducer,
     selectors,
 };
-
-export const select = () => {
-    const debugLogSelectors = new storeSelectors( 'wp-console/debug-log' );
-
-    return {
-        clearingLog: debugLogSelectors.get( 'getClearingLog' ),
-        fetchingLog: debugLogSelectors.get( 'getFetchingLog' ),
-        log: debugLogSelectors.get( 'getLog' ),
-        extraInfo: debugLogSelectors.get( 'getExtraInfo' ),
-    };
-};
-
-export const dispatch = () => useDispatch( 'wp-console/debug-log' ); // eslint-disable-line

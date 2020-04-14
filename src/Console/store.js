@@ -1,12 +1,6 @@
 /**
- * WordPress dependencies
- */
-import { useDispatch } from '@wordpress/data';
-
-/**
  * Internal dependencies
  */
-import storeSelectors from '.@/utils/store-selectors';
 import bindKey from '.@/utils/bind-key';
 
 const DEFAULT_STATE = {
@@ -52,14 +46,14 @@ const actions = {
         };
     },
 
-    reset() {
+    resetConsoleResponses() {
         return {
-            type: 'RESET',
+            type: 'RESET_CONSOLE_RESPONSES',
         };
     },
 
-    startExecuting( reset ) {
-        reset();
+    startExecuting( resetConsoleResponses ) {
+        resetConsoleResponses();
 
         return {
             type: 'START_EXECUTING',
@@ -81,101 +75,101 @@ const actions = {
 
 const reducer = ( state = DEFAULT_STATE, action ) => {
     switch ( action.type ) {
-    case 'UPDATE_CODE':
-        state = {
-            ...state,
-            code: action.code,
-        };
-        break;
+        case 'UPDATE_CODE':
+            state = {
+                ...state,
+                code: action.code,
+            };
+            break;
 
-    case 'SET_OUTPUT':
-        state = {
-            ...state,
-            output: action.output,
-        };
-        break;
+        case 'SET_OUTPUT':
+            state = {
+                ...state,
+                output: action.output,
+            };
+            break;
 
-    case 'SET_DUMP':
-        state = {
-            ...state,
-            dump: action.dump,
-        };
-        break;
+        case 'SET_DUMP':
+            state = {
+                ...state,
+                dump: action.dump,
+            };
+            break;
 
-    case 'SET_ERROR_TRACE':
-        state = {
-            ...state,
-            errorTrace: action.errorTrace,
-        };
-        break;
+        case 'SET_ERROR_TRACE':
+            state = {
+                ...state,
+                errorTrace: action.errorTrace,
+            };
+            break;
 
-    case 'RESET':
-        state = {
-            ...state,
-            output: DEFAULT_STATE.output,
-            dump: DEFAULT_STATE.dump,
-            errorTrace: DEFAULT_STATE.errorTrace,
-        };
-        break;
+        case 'RESET_CONSOLE_RESPONSES':
+            state = {
+                ...state,
+                output: DEFAULT_STATE.output,
+                dump: DEFAULT_STATE.dump,
+                errorTrace: DEFAULT_STATE.errorTrace,
+            };
+            break;
 
-    case 'START_EXECUTING':
-        state = {
-            ...state,
-            isExecuting: true,
-        };
-        break;
+        case 'START_EXECUTING':
+            state = {
+                ...state,
+                isExecuting: true,
+            };
+            break;
 
-    case 'FINISH_EXECUTING':
-        state = {
-            ...state,
-            isExecuting: false,
-        };
-        break;
+        case 'FINISH_EXECUTING':
+            state = {
+                ...state,
+                isExecuting: false,
+            };
+            break;
 
-    case 'TOGGLE_HORIZONTAL_SPLIT':
-        state = {
-            ...state,
-            settings: {
-                ...state.settings,
-                horizontalSplit: ! state.settings.horizontalSplit,
-            },
-        };
-        break;
+        case 'TOGGLE_HORIZONTAL_SPLIT':
+            state = {
+                ...state,
+                settings: {
+                    ...state.settings,
+                    horizontalSplit: ! state.settings.horizontalSplit,
+                },
+            };
+            break;
 
-    default:
-        break;
+        default:
+            break;
     }
 
     return state;
 };
 
 const selectors = {
-    getCode( state ) {
-        return state.code;
+    code( { consoleStore } ) {
+        return consoleStore.code;
     },
 
-    getOutput( state ) {
-        return state.output;
+    output( { consoleStore } ) {
+        return consoleStore.output;
     },
 
-    getDump( state ) {
-        return state.dump;
+    dump( { consoleStore } ) {
+        return consoleStore.dump;
     },
 
-    getErrorTrace( state ) {
-        return state.errorTrace;
+    errorTrace( { consoleStore } ) {
+        return consoleStore.errorTrace;
     },
 
-    getIsExecuting( state ) {
-        return state.isExecuting;
+    isExecuting( { consoleStore } ) {
+        return consoleStore.isExecuting;
     },
 
-    getHorizontalSplit( state ) {
-        return state.settings.horizontalSplit;
+    horizontalSplit( { consoleStore } ) {
+        return consoleStore.settings.horizontalSplit;
     },
 
-    getKeyBindings( state ) {
-        return state.keyBindings;
+    keyBindings( { consoleStore } ) {
+        return consoleStore.keyBindings;
     },
 };
 
@@ -184,19 +178,3 @@ export const store = {
     reducer,
     selectors,
 };
-
-export const select = () => {
-    const consoleSelectors = new storeSelectors( 'wp-console/console' );
-
-    return {
-        code: consoleSelectors.get( 'getCode' ),
-        output: consoleSelectors.get( 'getOutput' ),
-        dump: consoleSelectors.get( 'getDump' ),
-        errorTrace: consoleSelectors.get( 'getErrorTrace' ),
-        isExecuting: consoleSelectors.get( 'getIsExecuting' ),
-        horizontalSplit: consoleSelectors.get( 'getHorizontalSplit' ),
-        keyBindings: consoleSelectors.get( 'getKeyBindings' ),
-    };
-};
-
-export const dispatch = () => useDispatch( 'wp-console/console' ); // eslint-disable-line

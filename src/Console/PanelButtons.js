@@ -7,19 +7,43 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { IconPlay, IconSplitWindowHorizontal, IconSplitWindowVertical } from '.@/Icons';
-import { select as globalSelect, dispatch as globalDispatch } from '.@/global-store';
-import { select, dispatch } from './store';
+import withSelectDispatch from '../store/with-select-dispatch';
+import {
+    IconPlay,
+    IconSplitWindowHorizontal,
+    IconSplitWindowVertical,
+} from '.@/Icons';
 import executeCode from './executeCode';
 
-const PanelButtons = () => {
-    const { code, isExecuting } = select();
-    const dispatches = dispatch();
-    const { setUserSettings, setNotice } = globalDispatch();
-    const { userSettings } = globalSelect();
+const PanelButtons = ( props ) => {
+    const {
+        userSettings,
+        code,
+        isExecuting,
+        setUserSettings,
+        setNotice,
+    } = props;
+
     const windowSplit = userSettings.console.window_split;
-    const newSplitSetting = ( windowSplit === 'horizontal' ) ? 'vertical' : 'horizontal';
-    const IconSplit = ( windowSplit === 'horizontal' ) ? IconSplitWindowHorizontal : IconSplitWindowVertical;
+    const IconSplit =
+        windowSplit === 'horizontal'
+            ? IconSplitWindowHorizontal
+            : IconSplitWindowVertical;
+
+    const toggleWindowSplit = async () => {
+        const newSplitSetting =
+            windowSplit === 'horizontal' ? 'vertical' : 'horizontal';
+        await setUserSettings(
+            'console',
+            'window_split',
+            newSplitSetting,
+            setNotice
+        );
+        wpConsole.hooks.doAction(
+            'wp_console_console_toggle_window_split',
+            newSplitSetting
+        );
+    };
 
     return (
         <ul className="list-inline">
@@ -27,8 +51,10 @@ const PanelButtons = () => {
                 <Button
                     className="wp-console-panel-button wp-console-button-no-style"
                     isSmall
-                    onClick={ () => setUserSettings( 'console', 'window_split', newSplitSetting, setNotice ) }
-                ><IconSplit /> { __( 'Split', 'wp-console' ) }</Button>
+                    onClick={ () => toggleWindowSplit() }
+                >
+                    <IconSplit /> { __( 'Split', 'wp-console' ) }
+                </Button>
             </li>
             <li className="list-inline-item">
                 <Button
@@ -36,11 +62,26 @@ const PanelButtons = () => {
                     isSmall
                     isBusy={ isExecuting }
                     disabled={ isExecuting }
-                    onClick={ () => executeCode( code, dispatches, setNotice ) }
-                ><IconPlay /> { __( 'Run', 'wp-console' ) }</Button>
+                    onClick={ () => executeCode( code, props ) }
+                >
+                    <IconPlay /> { __( 'Run', 'wp-console' ) }
+                </Button>
             </li>
         </ul>
     );
 };
 
-export default PanelButtons;
+export default withSelectDispatch( {
+    select: [ 'userSettings', 'code', 'isExecuting' ],
+
+    dispatch: [
+        'setUserSettings',
+        'setNotice',
+        'setOutput',
+        'setDump',
+        'setErrorTrace',
+        'resetConsoleResponses',
+        'startExecuting',
+        'finishExecuting',
+    ],
+} )( PanelButtons );

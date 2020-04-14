@@ -4,8 +4,14 @@
 import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 
-const clearLog = async ( dispatches, setNotice ) => {
-    const { startClearingLog, finishClearingLog, setLog, setExtraInfo } = dispatches;
+const clearLog = async ( props ) => {
+    const {
+        setNotice,
+        startClearingLog,
+        finishClearingLog,
+        setLog,
+        setExtraInfo,
+    } = props;
 
     startClearingLog();
     setNotice( '' );

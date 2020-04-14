@@ -1,5 +1,6 @@
 {
   "extends": "stylelint-config-wordpress/scss",
+  "ignoreFiles": ["**/*.json"],
   "rules": {
     "indentation": 4
   }

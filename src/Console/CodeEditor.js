@@ -7,13 +7,17 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { dispatch as globalDispatch } from '.@/global-store';
-import { select, dispatch } from './store';
+import withSelectDispatch from '../store/with-select-dispatch';
 import executeCode from './executeCode';
 import './autocompletions/mode-php';
 
 function protectFirstLine( editor ) {
-    const whitelistCommands = [ 'golineup', 'gotoright', 'golinedown', 'gotoleft' ];
+    const whitelistCommands = [
+        'golineup',
+        'gotoright',
+        'golinedown',
+        'gotoleft',
+    ];
 
     editor.commands.on( 'exec', function( e ) {
         const commandName = e.command.name;
@@ -30,13 +34,25 @@ function protectFirstLine( editor ) {
     } );
 }
 
-const CodeEditor = ( { editor } ) => {
-    const { code, keyBindings } = select();
-    const dispatches = dispatch();
-    const { setNotice } = globalDispatch();
+const CodeEditor = ( props ) => {
+    const { code, keyBindings, updateCode } = props;
+    let { editor } = props;
 
     useEffect( () => {
-        return initializeEditor();
+        initializeEditor();
+
+        wpConsole.hooks.addAction(
+            'wp_console_console_toggle_window_split',
+            'wp_console',
+            () => editor.resize()
+        );
+
+        return () => {
+            wpConsole.hooks.removeAction(
+                'wp_console_console_toggle_window_split',
+                'wp_console'
+            );
+        };
     }, [] );
 
     const initializeEditor = () => {
@@ -63,7 +79,7 @@ const CodeEditor = ( { editor } ) => {
             name: 'execCode',
             description: __( 'Execute Code', 'wp-console' ),
             bindKey: keyBindings.execCode,
-            exec: () => executeCode( editor.getValue(), dispatches, setNotice ),
+            exec: () => executeCode( editor.getValue(), props ),
         } );
 
         // set editor value and update store on change
@@ -81,7 +97,7 @@ const CodeEditor = ( { editor } ) => {
                 return;
             }
 
-            dispatches.updateCode( editor.session.getValue() );
+            updateCode( editor.session.getValue() );
         } );
 
         // protect first line from changing
@@ -99,4 +115,17 @@ const CodeEditor = ( { editor } ) => {
     );
 };
 
-export default CodeEditor;
+export default withSelectDispatch( {
+    select: [ 'code', 'keyBindings' ],
+
+    dispatch: [
+        'setNotice',
+        'updateCode',
+        'setOutput',
+        'setDump',
+        'setErrorTrace',
+        'resetConsoleResponses',
+        'startExecuting',
+        'finishExecuting',
+    ],
+} )( CodeEditor );

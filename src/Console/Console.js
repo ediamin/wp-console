@@ -2,13 +2,14 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { lazy } from '@wordpress/element';
 
 /**
  * Internal dependencies
  */
 import { IconTerminal } from '.@/Icons';
 import PanelButtons from './PanelButtons';
-import Panel from './Panel';
+const Panel = lazy( () => import( './Panel' ) );
 
 export default {
     id: 'console',
