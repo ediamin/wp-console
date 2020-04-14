@@ -7,7 +7,7 @@ class Hooks {
     /**
      * Class constructor
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.1.0
      *
      * @return void
      */
@@ -19,7 +19,7 @@ class Hooks {
     /**
      * Add additional body classes
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.1.0
      *
      * @param array|string $classes array for frontend, string for backend
      *
