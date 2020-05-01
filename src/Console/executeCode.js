@@ -14,7 +14,7 @@ const executeCode = async ( code, props ) => {
         finishExecuting,
     } = props;
 
-    code = code.replace( /^\<\?php/, '' ).trim();
+    code = code.replace( /^\<\?php/, '//' ).trim();
 
     startExecuting( resetConsoleResponses );
     setNotice( '' );
