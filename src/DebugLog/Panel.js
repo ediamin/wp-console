@@ -26,10 +26,12 @@ const Panel = ( props ) => {
                     <Spinner />
                     { fetchingLog
                         ? sprintf(
+                              // translators: %s: Fetching debug.log indicator
                               __( 'Fetching %s', 'wp-console' ),
                               'debug.log'
                           )
                         : sprintf(
+                              // translators: %s: Clearing debug.log indicator
                               __( 'Clearing %s', 'wp-console' ),
                               'debug.log'
                           ) }

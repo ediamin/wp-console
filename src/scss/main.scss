@@ -4,7 +4,7 @@
 body.wp-console-active {
     overflow: hidden;
 
-    .ace_tooltip {
+    .ace_tooltip { // stylelint-disable-line selector-class-pattern
         white-space: normal;
         max-width: 370px;
         line-height: 1.6;
@@ -154,11 +154,11 @@ body.wp-console-active {
     width: 100%;
     height: 300px;
 
-    .ace_content {
+    .ace_content { // stylelint-disable-line selector-class-pattern
 
-        .ace_text-layer {
+        .ace_text-layer { // stylelint-disable-line selector-class-pattern
 
-            .ace_line:first-child {
+            .ace_line:first-child { // stylelint-disable-line selector-class-pattern
                 opacity: 0.4;
             }
         }

@@ -19,7 +19,7 @@ function protectFirstLine( editor ) {
         'gotoleft',
     ];
 
-    editor.commands.on( 'exec', function( e ) {
+    editor.commands.on( 'exec', function ( e ) {
         const commandName = e.command.name;
         const rowCol = editor.selection.getCursor();
 
