@@ -58,6 +58,15 @@ body.wp-console-active {
 
     .components-button {
         padding: 0 8px;
+        font-family: $font-family;
+        font-weight: 400;
+        text-transform: none;
+        letter-spacing: normal;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
     }
 
     .empty-content {
@@ -75,8 +84,6 @@ body.wp-console-active {
                 border: 1px solid #111;
                 padding: 3px 5px;
                 border-radius: 3px;
-                width: 29px;
-                height: 29px;
                 top: -6px;
                 left: -35px;
             }

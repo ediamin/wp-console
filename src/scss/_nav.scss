@@ -49,12 +49,11 @@
         }
 
         svg {
+            display: inline-block;
             background-color: $text-color;
             fill: #fff;
             border-radius: 3px;
             padding: 4px;
-            height: 16px;
-            width: 16px;
             position: relative;
             top: 3px;
             margin-right: 2px;

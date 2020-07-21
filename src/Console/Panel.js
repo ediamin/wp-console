@@ -54,7 +54,7 @@ const Panel = ( {
                         ) : (
                             <p className="empty-content">
                                 <span>
-                                    <IconTerminal />{ ' ' }
+                                    <IconTerminal width="29" height="29" />{ ' ' }
                                     { sprintf(
                                         // translators: %s: Keyboard shortcut to execute command
                                         __(

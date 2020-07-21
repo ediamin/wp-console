@@ -50,7 +50,7 @@ const Panel = ( props ) => {
                     ) : (
                         <p className="empty-content">
                             <span>
-                                <IconBug />{ ' ' }
+                                <IconBug width="29" height="29" />{ ' ' }
                                 { __(
                                     'Your debug.log is empty',
                                     'wp-console'

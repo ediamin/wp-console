@@ -14,13 +14,18 @@ import { faHistory } from '@fortawesome/free-solid-svg-icons/faHistory';
 import { faEraser } from '@fortawesome/free-solid-svg-icons/faEraser';
 
 const SVGIcon = ( props ) => {
+    const width = props.width || 13;
+    const height = props.height || 13;
+
     return (
         <SVG
             className={ `wp-console-icon icon-${ props.iconName }` }
             xmlns="http://www.w3.org/2000/svg"
-            width={ props.width || 13 }
-            height={ props.height || 13 }
             viewBox={ `0 0 ${ props.icon[ 0 ] } ${ props.icon[ 1 ] }` }
+            style={ {
+                width: `${width}px`,
+                height: `${height}px`,
+            } }
         >
             <Path d={ props.icon[ 4 ] }></Path>
         </SVG>
