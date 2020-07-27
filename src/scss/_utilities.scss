@@ -20,6 +20,7 @@
 }
 
 .list-inline {
+    display: inline-block;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -88,6 +89,16 @@
     margin: 0;
     border-bottom: 1px solid $border-color;
     padding: 15px 20px;
-    font-size: 15px;
-    font-weight: 400;
+
+    h4 {
+        display: inline-block;
+        margin: 0;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    .panel-buttons {
+        margin-left: 10px;
+        opacity: 0.7;
+    }
 }

@@ -12,6 +12,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay';
 import { faHistory } from '@fortawesome/free-solid-svg-icons/faHistory';
 import { faEraser } from '@fortawesome/free-solid-svg-icons/faEraser';
+import { faClone } from '@fortawesome/free-solid-svg-icons/faClone';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons/faCheckCircle';
 
 const SVGIcon = ( props ) => {
     const width = props.width || 13;
@@ -23,8 +25,8 @@ const SVGIcon = ( props ) => {
             xmlns="http://www.w3.org/2000/svg"
             viewBox={ `0 0 ${ props.icon[ 0 ] } ${ props.icon[ 1 ] }` }
             style={ {
-                width: `${width}px`,
-                height: `${height}px`,
+                width: `${ width }px`,
+                height: `${ height }px`,
             } }
         >
             <Path d={ props.icon[ 4 ] }></Path>
@@ -38,6 +40,9 @@ export const IconTimes = ( props ) => SVGIcon( { ...props, ...faTimes } );
 export const IconPlay = ( props ) => SVGIcon( { ...props, ...faPlay } );
 export const IconHistory = ( props ) => SVGIcon( { ...props, ...faHistory } );
 export const IconEraser = ( props ) => SVGIcon( { ...props, ...faEraser } );
+export const IconClone = ( props ) => SVGIcon( { ...props, ...faClone } );
+export const IconCheckCircle = ( props ) =>
+    SVGIcon( { ...props, ...faCheckCircle } );
 
 export const IconSplitWindowHorizontal = ( props ) =>
     SVGIcon( {
