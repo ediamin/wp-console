@@ -17,13 +17,14 @@ const DEFAULT_STATE = {
 
 const actions = {
     setUserSettings( section, option, value, setNotice ) {
-        saveUserSettings( section, option, value, setNotice );
+        const response = saveUserSettings( section, option, value, setNotice );
 
         return {
             type: 'SET_USER_SETTINGS',
             section,
             option,
             value,
+            response,
         };
     },
 
@@ -53,7 +54,7 @@ const reducer = ( state = DEFAULT_STATE, action ) => {
                 userSettings: {
                     ...state.userSettings,
                     [ action.section ]: {
-                        ...action.section,
+                        ...state.userSettings[ action.section ],
                         [ action.option ]: action.value,
                     },
                 },

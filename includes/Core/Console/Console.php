@@ -21,7 +21,7 @@ class Console {
      *
      * @since 1.0.0
      *
-     * @param array $controllers
+     * @param object $controllers
      *
      * @return void
      */
@@ -52,8 +52,35 @@ class Console {
                     'default'     => 'horizontal',
                     'context'     => [ 'view', 'edit' ],
                 ],
+                'snippets' => [
+                    'description' => __( 'User defined custom snippets', 'wp-console' ),
+                    'type'        => 'array',
+                    'default'     => [],
+                    'context'     => [ 'view', 'edit' ],
+                    'items'       => [
+                        'type'       => 'object',
+                        'properties' => [
+                            'id'    => [
+                                'description' => __( 'Snippet group id', 'wp-console' ),
+                                'type'        => 'string',
+                                'required'    => true,
+                            ],
+                            'title' => [
+                                'description' => __( 'Snippet group title', 'wp-console' ),
+                                'type'        => 'string',
+                                'required'    => true,
+                            ],
+                            'snippets' => [
+                                'description'       => __( 'VSCode compatible snippets in JSON format', 'wp-console' ),
+                                'type'              => 'string',
+                                'required'          => true,
+                            ],
+                        ]
+                    ],
+                ],
             ],
         ];
+
         return $schema;
     }
 }

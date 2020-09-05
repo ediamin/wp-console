@@ -35,7 +35,7 @@ class UserSettings {
      *
      * @since 2.0.0
      *
-     * @param array $controllers
+     * @param object $controllers
      *
      * @return void
      */

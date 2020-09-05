@@ -26,7 +26,7 @@ class Controller {
      */
     public function get( $user_id ) {
         $user_settings  = [];
-        $saved_settings = get_user_option( 'wp_console_user_settings', $user_id );
+        $saved_settings = get_user_meta( $user_id, 'wp_console_user_settings', true );
         $saved_settings = is_array( $saved_settings ) ? $saved_settings : [];
 
         $settings_schema = $this->get_settings_schema();
@@ -71,7 +71,7 @@ class Controller {
             }
         }
 
-        update_user_option( $user_id, 'wp_console_user_settings', $updated_settings );
+        update_user_meta( $user_id, 'wp_console_user_settings', $updated_settings );
 
         return $updated_settings;
     }

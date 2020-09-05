@@ -24,6 +24,8 @@
     "@babel/plugin-proposal-optional-chaining": "^7.10.4",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@wordpress/scripts": "^12.1.1",
+    "jsonminify": "^0.4.1",
+    "nanoid": "^3.1.12",
     "prettier": "npm:wp-prettier@^2.0.5",
     "shelljs": "^0.8.4"
   },

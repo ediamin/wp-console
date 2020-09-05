@@ -7,6 +7,12 @@ module.exports = {
         ...defaultConfig.rules,
         '@wordpress/dependency-group': 'error',
         'prettier/prettier': [ 'error', prettierConfig ],
+        'no-unused-expressions': [
+            'error',
+            {
+                allowShortCircuit: true,
+            }
+        ]
     },
     globals: {
         wpConsole: true,

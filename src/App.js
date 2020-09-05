@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { Notice, Spinner } from '@wordpress/components';
+import { Spinner } from '@wordpress/components';
 import { Fragment, Suspense } from '@wordpress/element';
 
 /**
@@ -9,8 +9,9 @@ import { Fragment, Suspense } from '@wordpress/element';
  */
 import withSelectDispatch from './store/with-select-dispatch';
 import NavBar from '.@/NavBar/NavBar';
+import AppNotice from './AppNotice';
 
-const App = ( { notice, activePanel, setNotice } ) => {
+const App = ( { notice, activePanel } ) => {
     const Panel = activePanel.Panel;
     const suspenseLoader = (
         <div className="wp-console-spinner">
@@ -26,20 +27,11 @@ const App = ( { notice, activePanel, setNotice } ) => {
                     <Panel />
                 </Suspense>
             </div>
-            { notice.message && (
-                <Notice
-                    status={ notice.type }
-                    onRemove={ () => setNotice( '' ) }
-                >
-                    { notice.message }
-                </Notice>
-            ) }
+            { notice.message && <AppNotice /> }
         </Fragment>
     );
 };
 
 export default withSelectDispatch( {
     select: [ 'notice', 'activePanel' ],
-
-    dispatch: [ 'setNotice' ],
 } )( App );

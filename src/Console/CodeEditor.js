@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { useEffect } from '@wordpress/element';
+import { select } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -11,7 +12,9 @@ import withSelectDispatch from '../store/with-select-dispatch';
 import executeCode from './executeCode';
 import './autocompletions/mode-php';
 
-function protectFirstLine( editor ) {
+let editor = null;
+
+function protectFirstLine() {
     const whitelistCommands = [
         'golineup',
         'gotoright',
@@ -35,27 +38,48 @@ function protectFirstLine( editor ) {
 }
 
 const CodeEditor = ( props ) => {
-    const { code, keyBindings, updateCode } = props;
-    let { editor } = props;
+    const { code, keyBindings, userSettings, updateCode } = props;
 
     useEffect( () => {
-        initializeEditor();
+        initializeEditor( code );
+
+        userSettings?.console?.snippets &&
+            addCustomSnippets( userSettings.console.snippets );
 
         wpConsole.hooks.addAction(
             'wp_console_console_toggle_window_split',
-            'wp_console',
+            'Console/CodeEditor',
             () => editor.resize()
         );
 
+        wpConsole.hooks.addAction(
+            'wp_console_after_save_user_settings_console_snippets',
+            'Console/CodeEditor',
+            async ( snippets ) => {
+                editor.destroy();
+                editor = null;
+                initializeEditor( select( 'wp-console' ).code() );
+                addCustomSnippets( snippets );
+            }
+        );
+
         return () => {
+            editor.destroy();
+            editor = null;
+
             wpConsole.hooks.removeAction(
                 'wp_console_console_toggle_window_split',
-                'wp_console'
+                'Console/CodeEditor'
+            );
+
+            wpConsole.hooks.removeAction(
+                'wp_console_after_save_user_settings_console_snippets',
+                'Console/CodeEditor'
             );
         };
     }, [] );
 
-    const initializeEditor = () => {
+    const initializeEditor = ( consoleCode ) => {
         // instances
         editor = ace.edit( 'wp-console-code-editor' );
         ace.require( 'ace/ext/language_tools' );
@@ -83,11 +107,10 @@ const CodeEditor = ( props ) => {
         } );
 
         // set editor value and update store on change
-        editor.session.setValue( code );
+        editor.session.setValue( consoleCode );
         editor.session.on( 'change', () => {
             if ( editor.session.getLength() === 1 ) {
                 let value = '';
-
                 if ( ! editor.session.getValue() ) {
                     value = `<?php\n`;
                 }
@@ -101,11 +124,54 @@ const CodeEditor = ( props ) => {
         } );
 
         // protect first line from changing
-        protectFirstLine( editor );
+        protectFirstLine();
 
         // focus editor on load
         editor.focus();
         editor.gotoLine( 2 );
+    };
+
+    const addCustomSnippets = ( snippets ) => {
+        const allSnippets = [];
+
+        snippets.forEach( ( group ) => {
+            const snippetGroup = JSON.parse( group.snippets );
+            let key = null;
+
+            if ( typeof snippetGroup !== 'object' ) {
+                return;
+            }
+
+            for ( key in snippetGroup ) {
+                const snippet = snippetGroup[ key ].body;
+
+                allSnippets.push( {
+                    caption: snippetGroup[ key ].prefix,
+                    snippet: Array.isArray( snippet )
+                        ? snippet.join( '\n' )
+                        : snippet,
+                    meta: snippetGroup[ key ].description,
+                    score: 1000001,
+                } );
+            }
+        } );
+
+        // First remove existing snippets
+        const index = editor.completers.findIndex(
+            ( item ) => item.id === 'wp-console-custom-snippets'
+        );
+
+        if ( index >= 0 ) {
+            editor.completers.splice( index, 1 );
+        }
+
+        // Now add our snippets
+        editor.completers.push( {
+            id: 'wp-console-custom-snippets',
+            getCompletions( aceEditor, session, pos, prefix, callback ) {
+                callback( null, allSnippets );
+            },
+        } );
     };
 
     return (
@@ -116,7 +182,7 @@ const CodeEditor = ( props ) => {
 };
 
 export default withSelectDispatch( {
-    select: [ 'code', 'keyBindings' ],
+    select: [ 'code', 'keyBindings', 'userSettings' ],
 
     dispatch: [
         'setNotice',
