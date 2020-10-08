@@ -190,6 +190,7 @@ body.wp-console-active {
         }
 
         #wp-console-editor-output pre {
+            width: 100%;
             height: calc(100vh - (32px + 50px + 52px));
             margin-left: 0;
             border-left: 0;
