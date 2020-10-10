@@ -1,11 +1,10 @@
 .wp-console-snippet-manager-modal {
 
-    .components-modal__content {
+    .components-modal__content { /* stylelint-disable-line selector-class-pattern */
         padding: 0;
     }
 
-    .components-modal__header {
-        margin-bottom: 0;
+    .components-modal__header { /* stylelint-disable-line selector-class-pattern */
         height: 48px;
         padding: 0 20px;
         margin: 0;
@@ -22,7 +21,7 @@
     height: 400px;
 
     .is-saving-snippets & {
-        opacity: .5;
+        opacity: 0.5;
         pointer-events: none;
     }
 }
