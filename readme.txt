@@ -8,7 +8,7 @@ Stable tag: trunk
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-WordPress PHP Console powered by PsySH
+An in-browser PHP console for WordPress powered by PsySH
 
 == Description ==
 WP Console brings the famous PsySH on your browser. PsySH is a runtime developer console, interactive debugger and REPL for PHP.
@@ -47,7 +47,7 @@ WP Console explicitly checks for `manage_options` permission to display the UI a
 6. Display errors
 7. wp shell command
 8. Get debug.log contents
-9. Clear debug.log 
+9. Clear debug.log
 
 == Changelog ==
 
@@ -64,7 +64,7 @@ WP Console explicitly checks for `manage_options` permission to display the UI a
 * Live autocompletion with placeholders.
 * Option to vertically split editor and output window.
 * Add ability to clear debug.log.
-* Restrict plugin UI and REST APIs for users who have manage_options capability. 
+* Restrict plugin UI and REST APIs for users who have manage_options capability.
 
 1.5.0 - November 07, 2019
 * Tweak - Change `dump` function name to `_dump` to resolve conflict with wp-erp

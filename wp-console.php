@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Console
  * Plugin URI: https://github.com/ediamin/wp-console
- * Description: WordPress PHP Console powered by PsySH
+ * Description: An in-browser PHP console for WordPress powered by PsySH
  * Version: 2.1.0
  * Author: Edi Amin
  * Author URI: https://github.com/ediamin
