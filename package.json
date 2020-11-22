@@ -1,7 +1,7 @@
 {
   "name": "wp-console",
-  "version": "2.1.0",
-  "description": "WordPress PHP Console powered by PsySH",
+  "version": "2.2.0",
+  "description": "An in-browser PHP console for WordPress powered by PsySH",
   "author": "Edi Amin <to.ediamin@gmail.com>",
   "license": "GPL-3.0",
   "keywords": [
@@ -21,14 +21,12 @@
     "url": "https://github.com/ediamin/wp-console/issues"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
-    "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@wordpress/scripts": "^7.2.0",
-    "css-loader": "^3.5.2",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.13.1",
-    "sass-loader": "^8.0.2",
-    "shelljs": "^0.8.3"
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@wordpress/scripts": "^12.3.0",
+    "jsonminify": "^0.4.1",
+    "nanoid": "^3.1.12",
+    "prettier": "npm:wp-prettier@^2.0.5",
+    "shelljs": "^0.8.4"
   },
   "scripts": {
     "dev": "wp-scripts start src/wp-console.js --output-path=assets/js/",

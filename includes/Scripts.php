@@ -12,6 +12,10 @@ class Scripts {
      * @return void
      */
     public function __construct() {
+        if ( ! current_user_can( 'manage_options' ) ) {
+            return;
+        }
+
         add_action( 'init', [ $this, 'register_scripts' ] );
         add_action( 'init', [ $this, 'load_translation' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );

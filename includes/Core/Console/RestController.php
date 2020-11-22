@@ -2,7 +2,7 @@
 
 namespace WPConsole\Core\Console;
 
-use Exception;
+use Throwable;
 use WPConsole\Core\Console\Psy\Output\ShellOutput;
 use WPConsole\Core\Console\Psy\Shell;
 use WP_Error;
@@ -154,7 +154,9 @@ class RestController extends WP_REST_Controller {
 
             return rest_ensure_response( $data );
 
-        } catch ( Exception $e ) {
+        } catch ( Throwable $e ) {
+            ob_end_flush();
+
             return new WP_Error( 'wp_console_rest_error', $e->getMessage(), [
                 'input'  => $request['input'],
                 'status' => 422,

@@ -54,7 +54,7 @@ class RestController extends WP_REST_Controller {
                 'methods'             => WP_REST_Server::EDITABLE,
                 'callback'            => [ $this, 'update_item' ],
                 'permission_callback' => [ $this, 'can_manage_options' ],
-                'args'                => $this->get_endpoint_args_for_item_schema( WP_REST_Server::EDITABLE ),
+                'args'                => $this->get_endpoint_args_for_item_schema( WP_REST_Server::CREATABLE ),
             ],
 
             'schema' => [ $this, 'get_public_item_schema' ],
@@ -66,11 +66,9 @@ class RestController extends WP_REST_Controller {
      *
      * @since 2.0.0
      *
-     * @param \WP_REST_Request $request
-     *
      * @return bool
      */
-    public function can_manage_options( $request ) {
+    public function can_manage_options() {
         return current_user_can( 'manage_options' );
     }
 

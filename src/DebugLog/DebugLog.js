@@ -14,7 +14,7 @@ const Panel = lazy( () => import( './Panel' ) );
 export default {
     id: 'debug-log',
     name: __( 'Debug Log', 'wp-console' ),
-    icon: <IconBug />,
+    icon: <IconBug width="16" height="16" />,
     PanelButtons,
     Panel,
 };

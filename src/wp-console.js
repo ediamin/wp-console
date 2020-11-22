@@ -20,7 +20,7 @@ __webpack_public_path__ = `${ wpConsole.url.assests }/js/`; // eslint-disable-li
 
 wpConsole.hooks = createHooks();
 
-$( document ).ready( function() {
+$( document ).ready( function () {
     if ( ! $( '#wp-console' ).length ) {
         return;
     }

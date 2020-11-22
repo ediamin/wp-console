@@ -23,8 +23,7 @@ const Panel = ( {
 } ) => {
     const windowSplit = userSettings.console.window_split;
 
-    const editor = null;
-    const platform = /mac/i.exec( navigator.platform ) ? 'mac' : 'win';
+    const platform = /mac/i.exec( window.navigator.platform ) ? 'mac' : 'win';
     const execKey = keyBindings.execCode[ platform ]
         .split( '|' )
         .join( __( ' or ', 'wp-console' ) );
@@ -36,7 +35,7 @@ const Panel = ( {
                 windowSplit === 'vertical' ? 'is-vertical display-flex' : ''
             }
         >
-            <CodeEditor editor={ editor } />
+            <CodeEditor />
             <div id="wp-console-panel-console-results">
                 { output || dump || errorTrace ? (
                     <Output
@@ -54,8 +53,9 @@ const Panel = ( {
                         ) : (
                             <p className="empty-content">
                                 <span>
-                                    <IconTerminal />{ ' ' }
+                                    <IconTerminal width="29" height="29" />{ ' ' }
                                     { sprintf(
+                                        // translators: %s: Keyboard shortcut to execute command
                                         __(
                                             'use %s to execute code',
                                             'wp-console'

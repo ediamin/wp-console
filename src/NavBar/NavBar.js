@@ -18,9 +18,7 @@ import { IconTimes } from '.@/Icons';
 const closeWindow = ( e, resetConsoleResponses ) => {
     e.preventDefault();
     $( 'body' ).removeClass( 'wp-console-active' );
-    $( '#wp-console' )
-        .removeClass( 'active' )
-        .trigger( 'wp-console:close' );
+    $( '#wp-console' ).removeClass( 'active' ).trigger( 'wp-console:close' );
     resetConsoleResponses();
 };
 

@@ -1,0 +1,53 @@
+.wp-console-snippet-manager-modal {
+
+    .components-modal__content { /* stylelint-disable-line selector-class-pattern */
+        padding: 0;
+    }
+
+    .components-modal__header { /* stylelint-disable-line selector-class-pattern */
+        height: 48px;
+        padding: 0 20px;
+        margin: 0;
+    }
+}
+
+#wp-console-snippet-manager {
+    min-width: 700px;
+}
+
+
+#wp-console-snippet-manager-main {
+    width: 100%;
+    height: 400px;
+
+    .is-saving-snippets & {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+#wp-console-snippet-manager-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    z-index: 4;
+    padding: 8px 20px;
+    background-color: $body-background-color;
+    border-top: 1px solid $border-color;
+
+    .components-button {
+        margin-left: 10px;
+    }
+}
+
+#wp-conoele-snippet-manager-update-message {
+    color: $alert-green;
+
+    svg {
+        position: relative;
+        top: 2px;
+        fill: $alert-green;
+    }
+}
