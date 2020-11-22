@@ -2,7 +2,7 @@
 Contributors: ediamin
 Tags: console, repl, browser, psysh, shell, dump
 Requires at least: 5.0
-Tested up to: 5.4
+Tested up to: 5.6
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv3
@@ -24,15 +24,12 @@ WP Console requires WordPress v5.0 or later.
 - PHP core and WordPress functions live autocompletion with placeholders.
 - `_dump` as the alternative to `var_dump` which uses Symfony VarDumper.
 - Get debug.log contents and clear them right from your browser.
-- Advanced shell powered by psySH for `wp shell`
-- Custom code snippet(coming soon).
-- Change editor theme(coming soon).
-- WordPress function definition docblock(coming soon).
-- Customized editor key bindings(coming soon).
+- Advanced shell powered by psySH for `wp shell`.
+- Custom code snippet. Supports VS Code supported code snippets. For example you can use [this WooCommerce snippets](https://github.com/claudiosanches/vscode-woocommerce/blob/master/snippets/functions.json).
 
 Please note that, currently PsySH commands like `ls`, `doc`, `show` etc and Magic variables like `$_`, `$__class` etc are not supported in browser console.
 
-👉 WP Console uses Gutenberg packages and components for its UI/UX. Checkout the GitHub repo here [wp-console](https://github.com/ediamin/wp-console).
+👉 WP Console uses Gutenberg packages and components for its UI/UX. Checkout the GitHub repo here [ediamin/wp-console](https://github.com/ediamin/wp-console).
 
 == Security Concern ==
 WP Console explicitly checks for `manage_options` permission to display the UI and perform other actions. Yet, this plugin should not be used in production server.
@@ -48,8 +45,21 @@ WP Console explicitly checks for `manage_options` permission to display the UI a
 7. wp shell command
 8. Get debug.log contents
 9. Clear debug.log
+10. Add/Edit custom snippets
+11. Custom snippets in action
 
 == Changelog ==
+
+2.2.0 - November 22, 2020
+* Add custom code snippet support. You can use VS Code supported PHP code snippets now.
+* Add Copy Output button.
+* Enqueue scripts only for manage_options capability owners.
+* Improve handling uncaught fatal errors.
+* Add Twenty Twenty theme compatibility.
+* Set default values for user Console settings in REST API.
+* Fix horizontal output scolling issue for vertically split console.
+* Fix close button get disappear in WooCommerce admin pages.
+* Fix error line no in console editor
 
 2.1.0 - April 14, 2020
 * Lazy load React components to improve performance
