@@ -8,7 +8,7 @@ import { ClipboardButton } from '@wordpress/components';
 /**
  * Internal dependencies
  */
-import { IconClone, IconCheckCircle } from '.@/Icons';
+import { IconClone, IconCheckCircle } from '../Icons';
 
 function formatOutput( output ) {
     // Strip all html tags.

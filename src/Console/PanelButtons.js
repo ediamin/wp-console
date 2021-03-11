@@ -14,7 +14,7 @@ import {
     IconSplitWindowHorizontal,
     IconSplitWindowVertical,
     IconCurlyBraces,
-} from '.@/Icons';
+} from '../Icons';
 import executeCode from './executeCode';
 import SnippetManager from './Snippet/Manager';
 

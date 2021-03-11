@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import bindKey from '.@/utils/bind-key';
+import bindKey from '../utils/bind-key';
 
 const DEFAULT_STATE = {
     code: `<?php\n`,

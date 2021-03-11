@@ -29,8 +29,8 @@
     "shelljs": "^0.8.4"
   },
   "scripts": {
-    "dev": "wp-scripts start src/wp-console.js --output-path=assets/js/",
-    "build": "wp-scripts build src/wp-console.js --output-path=assets/js/",
+    "dev": "wp-scripts start",
+    "build": "wp-scripts build",
     "lint:js": "wp-scripts lint-js src/",
     "lint:css": "wp-scripts lint-style src/",
     "make-pot": "wp i18n make-pot ./ languages/wp-console.pot --exclude=build,assets",

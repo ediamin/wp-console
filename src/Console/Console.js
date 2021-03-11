@@ -7,7 +7,7 @@ import { lazy } from '@wordpress/element';
 /**
  * Internal dependencies
  */
-import { IconTerminal } from '.@/Icons';
+import { IconTerminal } from '../Icons';
 import PanelButtons from './PanelButtons';
 const Panel = lazy( () => import( './Panel' ) );
 

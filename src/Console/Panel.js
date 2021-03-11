@@ -11,7 +11,7 @@ import { Spinner } from '@wordpress/components';
 import withSelectDispatch from '../store/with-select-dispatch';
 import CodeEditor from './CodeEditor';
 import Output from './Output';
-import { IconTerminal } from '.@/Icons';
+import { IconTerminal } from '../Icons';
 
 const Panel = ( {
     userSettings,

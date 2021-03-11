@@ -8,7 +8,7 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import withSelectDispatch from '../store/with-select-dispatch';
-import { IconBug, IconEraser } from '.@/Icons';
+import { IconBug, IconEraser } from '../Icons';
 import fetchLog from './fetchLog';
 import clearLog from './clearLog';
 

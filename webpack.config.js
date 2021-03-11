@@ -1,7 +1,5 @@
 const path = require( 'path' );
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
-const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const LiveReloadPlugin = require( 'webpack-livereload-plugin' );
 const plugins = [];
 
 function resolve( ...paths ) {
@@ -9,11 +7,13 @@ function resolve( ...paths ) {
 }
 
 defaultConfig.plugins.forEach( ( item ) => {
-    if ( item instanceof MiniCssExtractPlugin ) {
+    if ( item.constructor.name.toLowerCase() === 'minicssextractplugin' ) {
         item.options.filename = '../css/[name].css';
+        item.options.chunkFilename = '../css/[name].css';
+        item.options.esModule = true;
     }
 
-    if ( item instanceof LiveReloadPlugin ) {
+    if ( item.constructor.name.toLowerCase() === 'livereloadplugin' ) {
         return;
     }
 
@@ -25,17 +25,14 @@ module.exports = {
 
     plugins,
 
+    entry: {
+        'wp-console': resolve( 'src/wp-console.js' ),
+    },
+
     output: {
         filename: '[name].js',
         path: resolve( 'assets', 'js' ),
         chunkFilename: 'chunks/[chunkhash].js',
-        jsonpFunction: 'wpConsoleWebpack'
-    },
-
-    resolve: {
-        alias: {
-            ...defaultConfig.resolve.alias,
-            '.@': resolve( 'src' ),
-        },
+        jsonpFunction: 'wpConsoleWebpack',
     },
 };
