@@ -13,7 +13,7 @@ import { Button } from '@wordpress/components';
  * Internal dependencies
  */
 import withSelectDispatch from '../store/with-select-dispatch';
-import { IconTimes } from '.@/Icons';
+import { IconTimes } from '../Icons';
 
 const closeWindow = ( e, resetConsoleResponses ) => {
     e.preventDefault();

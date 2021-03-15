@@ -8,7 +8,7 @@ import { Fragment, Suspense } from '@wordpress/element';
  * Internal dependencies
  */
 import withSelectDispatch from './store/with-select-dispatch';
-import NavBar from '.@/NavBar/NavBar';
+import NavBar from './NavBar/NavBar';
 import AppNotice from './AppNotice';
 
 const App = ( { notice, activePanel } ) => {

@@ -10,7 +10,7 @@ import { __, sprintf } from '@wordpress/i18n';
  */
 import withSelectDispatch from '../store/with-select-dispatch';
 import fetchLog from './fetchLog';
-import { IconBug } from '.@/Icons';
+import { IconBug } from '../Icons';
 
 const Panel = ( props ) => {
     const { fetchingLog, clearingLog, log, extraInfo } = props;

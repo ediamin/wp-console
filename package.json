@@ -1,6 +1,6 @@
 {
   "name": "wp-console",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "An in-browser PHP console for WordPress powered by PsySH",
   "author": "Edi Amin <to.ediamin@gmail.com>",
   "license": "GPL-3.0",
@@ -20,22 +20,47 @@
   "bugs": {
     "url": "https://github.com/ediamin/wp-console/issues"
   },
-  "devDependencies": {
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@wordpress/scripts": "^12.3.0",
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@wordpress/api-fetch": "^3.21.5",
+    "@wordpress/components": "^12.0.8",
+    "@wordpress/compose": "^3.24.5",
+    "@wordpress/data": "^4.26.8",
+    "@wordpress/element": "^2.19.1",
+    "@wordpress/hooks": "^2.11.1",
+    "@wordpress/i18n": "^3.18.0",
+    "jquery": "^3.6.0",
     "jsonminify": "^0.4.1",
-    "nanoid": "^3.1.12",
-    "prettier": "npm:wp-prettier@^2.0.5",
+    "nanoid": "^3.1.20"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^13.0.3",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
+    "prettier": "npm:wp-prettier@^2.2.1-beta-1",
     "shelljs": "^0.8.4"
   },
   "scripts": {
-    "dev": "wp-scripts start src/wp-console.js --output-path=assets/js/",
-    "build": "wp-scripts build src/wp-console.js --output-path=assets/js/",
+    "dev": "wp-scripts start",
+    "build": "wp-scripts build",
     "lint:js": "wp-scripts lint-js src/",
     "lint:css": "wp-scripts lint-style src/",
     "make-pot": "wp i18n make-pot ./ languages/wp-console.pot --exclude=build,assets",
     "zip": "node build",
     "release": "npm run make-pot && npm run clean && npm run build && node build",
     "clean": "rimraf assets/css && rimraf assets/js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "wp-scripts lint-js"
+    ],
+    "*.scss": [
+      "wp-scripts lint-style"
+    ]
   }
 }

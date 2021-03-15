@@ -1,8 +1,8 @@
 /**
  * Internal dependencies
  */
-import Console from '.@/Console/Console';
-import DebugLog from '.@/DebugLog/DebugLog';
+import Console from '../Console/Console';
+import DebugLog from '../DebugLog/DebugLog';
 import saveUserSettings from '../utils/save-user-settings';
 
 const DEFAULT_STATE = {
