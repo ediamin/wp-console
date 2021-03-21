@@ -8,7 +8,7 @@ import { ClipboardButton } from '@wordpress/components';
 /**
  * Internal dependencies
  */
-import { IconClone, IconCheckCircle } from '../Icons';
+import { IconClone, IconCheckCircle, IconHourGlassHalf } from '../Icons';
 
 function formatOutput( output ) {
     // Strip all html tags.
@@ -19,7 +19,7 @@ function formatOutput( output ) {
     return output;
 }
 
-const Output = ( { output, dump, errorTrace } ) => {
+const Output = ( { output, dump, executionTime, errorTrace } ) => {
     const [ hasCopied, setHasCopied ] = useState( false );
     let textToCopy = '';
 
@@ -76,6 +76,12 @@ const Output = ( { output, dump, errorTrace } ) => {
                                 </ClipboardButton>
                             </li>
                         </ul>
+
+                        <div className="execution-time">
+                            <IconHourGlassHalf width="16" height="16" />{ ' ' }
+                            { __( 'Execution Time', 'wp-console' ) }
+                            <span>{ executionTime }</span>
+                        </div>
                     </div>
                     { dump ? (
                         <div

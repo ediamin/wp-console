@@ -15,6 +15,7 @@ const DEFAULT_STATE = {
     keyBindings: {
         execCode: bindKey( 'Ctrl-Enter', 'Cmd-Enter' ),
     },
+    executionTime: null,
 };
 
 const actions = {
@@ -69,6 +70,13 @@ const actions = {
     toggleHorizontalSplit() {
         return {
             type: 'TOGGLE_HORIZONTAL_SPLIT',
+        };
+    },
+
+    setExecutionTime( time ) {
+        return {
+            type: 'SET_EXECUTION_TIME',
+            time,
         };
     },
 };
@@ -136,6 +144,13 @@ const reducer = ( state = DEFAULT_STATE, action ) => {
             };
             break;
 
+        case 'SET_EXECUTION_TIME':
+            state = {
+                ...state,
+                executionTime: action.time,
+            };
+            break;
+
         default:
             break;
     }
@@ -170,6 +185,10 @@ const selectors = {
 
     keyBindings( { consoleStore } ) {
         return consoleStore.keyBindings;
+    },
+
+    getExecutionTime( { consoleStore } ) {
+        return consoleStore.executionTime;
     },
 };
 

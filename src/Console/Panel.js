@@ -20,6 +20,7 @@ const Panel = ( {
     errorTrace,
     keyBindings,
     isExecuting,
+    getExecutionTime,
 } ) => {
     const windowSplit = userSettings.console.window_split;
 
@@ -41,6 +42,7 @@ const Panel = ( {
                     <Output
                         output={ output }
                         dump={ dump }
+                        executionTime={ getExecutionTime }
                         errorTrace={ errorTrace }
                     />
                 ) : (
@@ -80,5 +82,6 @@ export default withSelectDispatch( {
         'errorTrace',
         'keyBindings',
         'isExecuting',
+        'getExecutionTime',
     ],
 } )( Panel );

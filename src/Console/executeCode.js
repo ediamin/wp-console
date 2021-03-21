@@ -8,6 +8,7 @@ const executeCode = async ( code, props ) => {
         setNotice,
         setOutput,
         setDump,
+        setExecutionTime,
         setErrorTrace,
         resetConsoleResponses,
         startExecuting,
@@ -37,6 +38,10 @@ const executeCode = async ( code, props ) => {
 
         if ( response.dump ) {
             setDump( response.dump );
+        }
+
+        if ( response.execution_time ) {
+            setExecutionTime( response.execution_time );
         }
     } catch ( error ) {
         if ( error.message ) {
