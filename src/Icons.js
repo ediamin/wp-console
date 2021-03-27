@@ -14,21 +14,31 @@ import { faHistory } from '@fortawesome/free-solid-svg-icons/faHistory';
 import { faEraser } from '@fortawesome/free-solid-svg-icons/faEraser';
 import { faClone } from '@fortawesome/free-solid-svg-icons/faClone';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons/faCheckCircle';
-import { faHourglassHalf } from '@fortawesome/free-solid-svg-icons/faHourglassHalf';
+import { faClock } from '@fortawesome/free-solid-svg-icons/faClock';
 
-const SVGIcon = ( props ) => {
+function iconStyle( props ) {
     const width = props.width || 13;
     const height = props.height || 13;
+    const style = {
+        width: `${ width }px`,
+        height: `${ height }px`,
+    };
 
+    if ( props.top ) {
+        style.position = 'relative';
+        style.top = `${ props.top }px`;
+    }
+
+    return style;
+}
+
+const SVGIcon = ( props ) => {
     return (
         <SVG
             className={ `wp-console-icon icon-${ props.iconName }` }
             xmlns="http://www.w3.org/2000/svg"
             viewBox={ `0 0 ${ props.icon[ 0 ] } ${ props.icon[ 1 ] }` }
-            style={ {
-                width: `${ width }px`,
-                height: `${ height }px`,
-            } }
+            style={ iconStyle( props ) }
         >
             <Path d={ props.icon[ 4 ] }></Path>
         </SVG>
@@ -42,10 +52,9 @@ export const IconPlay = ( props ) => SVGIcon( { ...props, ...faPlay } );
 export const IconHistory = ( props ) => SVGIcon( { ...props, ...faHistory } );
 export const IconEraser = ( props ) => SVGIcon( { ...props, ...faEraser } );
 export const IconClone = ( props ) => SVGIcon( { ...props, ...faClone } );
+export const IconClock = ( props ) => SVGIcon( { ...props, ...faClock } );
 export const IconCheckCircle = ( props ) =>
     SVGIcon( { ...props, ...faCheckCircle } );
-export const IconHourGlassHalf = ( props ) =>
-    SVGIcon( { ...props, ...faHourglassHalf } );
 
 export const IconSplitWindowHorizontal = ( props ) =>
     SVGIcon( {
@@ -77,15 +86,12 @@ export const IconSplitWindowVertical = ( props ) =>
         },
     } );
 
-export const IconCurlyBraces = ( { width = 13, height = 13 } ) => (
+export const IconCurlyBraces = ( props ) => (
     <SVG
         className="wp-console-icon icon-curly-braces"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1652 1478"
-        style={ {
-            width: `${ width }px`,
-            height: `${ height }px`,
-        } }
+        style={ iconStyle( props ) }
     >
         <G
             transform="translate(0.000000,1478.000000) scale(0.100000,-0.100000)"
@@ -96,6 +102,25 @@ export const IconCurlyBraces = ( { width = 13, height = 13 } ) => (
             <Path d="M11260 13862 l0 -922 173 0 c406 -1 756 -31 907 -80 150 -48 329 -188 383 -300 72 -150 99 -388 112 -1005 12 -556 44 -1306 71 -1650 48 -625 151 -1051 348 -1450 166 -333 361 -569 665 -805 91 -70 136 -102 300 -215 l63 -44 -47 -28 c-437 -256 -741 -570 -952 -984 -152 -296 -207 -448 -267 -729 -84 -397 -112 -711 -146 -1615 -5 -148 -12 -326 -15 -395 -3 -69 -10 -307 -15 -530 -10 -432 -21 -553 -66 -706 -30 -104 -43 -132 -102 -209 -100 -133 -249 -224 -450 -276 -154 -39 -495 -69 -794 -69 l-168 0 0 -925 0 -925 368 1 c935 3 1371 62 1845 250 186 74 286 125 457 233 294 185 484 407 632 741 139 314 201 634 242 1245 23 351 25 413 31 888 12 1029 19 1251 45 1492 34 302 118 615 224 829 144 292 339 511 553 619 116 59 333 120 503 141 52 7 122 16 156 22 33 5 83 9 110 9 27 0 59 3 72 6 l22 6 0 919 0 919 -43 0 c-66 0 -281 27 -397 50 -295 59 -592 205 -740 366 -147 159 -269 388 -359 676 -62 200 -101 475 -116 828 -4 80 -8 163 -10 185 -2 22 -7 261 -10 530 -10 960 -17 1184 -45 1510 -44 498 -104 769 -240 1070 -181 403 -517 743 -930 942 -434 210 -917 286 -1902 300 l-468 6 0 -921z" />
             <Path d="M7150 10410 l0 -1080 1080 2 1080 3 0 870 c0 479 0 963 0 1078 l0 207 -1080 0 -1080 0 0 -1080z" />
             <Path d="M7157 5473 c-4 -3 -7 -489 -7 -1080 l1 -1073 447 -1 c246 0 480 0 521 1 l74 1 -6 -138 c-16 -368 -129 -705 -312 -932 -130 -160 -296 -285 -540 -405 -93 -46 -212 -99 -263 -116 -104 -37 -102 -32 -57 -120 31 -61 195 -402 195 -406 0 -2 39 -83 86 -181 47 -98 90 -188 95 -200 8 -21 10 -22 46 -9 189 69 487 216 672 331 75 47 289 205 346 255 163 144 327 330 427 485 73 113 174 311 222 435 98 259 175 701 201 1158 4 73 8 1596 5 1989 0 10 -223 13 -1073 13 -591 0 -1077 -3 -1080 -7z" />
+        </G>
+    </SVG>
+);
+
+export const IconExecutionTime = ( props ) => (
+    <SVG
+        className="wp-console-icon icon-execution-time"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+        style={ iconStyle( props ) }
+    >
+        <G
+            transform="translate(0.000000,512) scale(0.100000,-0.100000)"
+            fill="#000000"
+            stroke="none"
+        >
+            <Path d="M1987 4795 c-129 -45 -168 -212 -72 -306 48 -47 85 -57 213 -58 l112 -1 0 -180 0 -180 -24 0 c-13 0 -79 -14 -146 -31 -711 -179 -1243 -733 -1396 -1454 -35 -164 -45 -473 -20 -645 160 -1102 1216 -1827 2299 -1578 l87 20 0 254 c0 140 -1 254 -3 254 -1 0 -29 -9 -61 -20 -280 -99 -622 -98 -906 2 -213 76 -393 192 -553 357 -194 201 -313 424 -373 702 -27 120 -27 428 0 549 40 183 115 360 223 523 66 100 268 299 373 368 162 107 329 177 510 216 66 14 129 18 285 18 185 0 208 -2 309 -28 344 -87 619 -270 823 -547 194 -264 295 -624 264 -940 -6 -62 -10 -114 -8 -116 17 -14 417 -254 425 -254 10 0 33 90 54 220 18 112 15 433 -6 555 -34 202 -80 349 -162 523 -189 401 -536 739 -942 917 -122 54 -297 108 -404 126 l-78 13 0 177 0 177 128 3 c116 4 132 6 164 28 125 86 111 270 -27 332 -37 17 -76 19 -545 18 -402 0 -513 -3 -543 -14z" />
+            <Path d="M2400 3228 c-49 -26 -50 -33 -50 -503 l-1 -440 -379 -254 c-365 -246 -400 -273 -400 -319 0 -26 128 -230 152 -243 11 -6 34 -9 52 -7 45 5 934 602 947 636 6 15 8 238 7 558 l-3 533 -23 23 c-21 21 -33 23 -150 26 -89 2 -134 -1 -152 -10z" />
+            <Path d="M3220 1420 c0 -614 3 -771 13 -767 31 13 1241 755 1244 763 2 7 -1209 756 -1249 772 -4 2 -8 -344 -8 -768z" />
         </G>
     </SVG>
 );

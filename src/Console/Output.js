@@ -3,12 +3,12 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Fragment, useState } from '@wordpress/element';
-import { ClipboardButton } from '@wordpress/components';
+import { ClipboardButton, Tooltip } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
-import { IconClone, IconCheckCircle, IconHourGlassHalf } from '../Icons';
+import { IconClone, IconCheckCircle, IconExecutionTime } from '../Icons';
 
 function formatOutput( output ) {
     // Strip all html tags.
@@ -41,10 +41,10 @@ const Output = ( { output, dump, executionTime, errorTrace } ) => {
                 </Fragment>
             ) : (
                 <Fragment>
-                    <div className="panel-title">
+                    <div className="panel-title clearfix">
                         <h4>{ __( 'Output', 'wp-console' ) }</h4>
                         <ul className="panel-buttons list-inline">
-                            <li className="list-inline-item">
+                            <li className="list-inline-item opacity-70">
                                 <ClipboardButton
                                     isPrimary
                                     text={ textToCopy }
@@ -76,12 +76,23 @@ const Output = ( { output, dump, executionTime, errorTrace } ) => {
                                 </ClipboardButton>
                             </li>
                         </ul>
-
-                        <div className="execution-time">
-                            <IconHourGlassHalf width="16" height="16" />{ ' ' }
-                            { __( 'Execution Time', 'wp-console' ) }
-                            <span>{ executionTime }</span>
-                        </div>
+                        <ul className="panel-buttons list-inline float-right">
+                            <Tooltip
+                                text={ __( 'Execution Time', 'wp-console' ) }
+                                position="middle left"
+                            >
+                                <li className="list-inline-item">
+                                    <span className="opacity-70 font-size-11">
+                                        <IconExecutionTime
+                                            width="16"
+                                            height="16"
+                                            top="4"
+                                        />{ ' ' }
+                                        { executionTime }s
+                                    </span>
+                                </li>
+                            </Tooltip>
+                        </ul>
                     </div>
                     { dump ? (
                         <div

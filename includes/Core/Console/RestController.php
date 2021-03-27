@@ -148,10 +148,12 @@ class RestController extends WP_REST_Controller {
                 throw $output->exception;
             }
 
+            $execution_time = microtime( true ) - $timer;
+
             $data = [
                 'output'         => $output->outputMessage,
                 'dump'           => $wp_console_dump,
-                'execution_time' => microtime( true ) - $timer,
+                'execution_time' => number_format( $execution_time, 3, '.', '' ),
             ];
 
             return rest_ensure_response( $data );
