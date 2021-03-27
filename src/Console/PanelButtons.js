@@ -115,5 +115,6 @@ export default withSelectDispatch( {
         'resetConsoleResponses',
         'startExecuting',
         'finishExecuting',
+        'setExecutionTime',
     ],
 } )( PanelButtons );

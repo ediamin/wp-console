@@ -101,4 +101,22 @@
         margin-left: 10px;
         opacity: 0.7;
     }
+
+    .execution-time {
+        float: right;
+
+        span {
+            margin-left: 10px;
+            border: 1px solid $border-color;
+            border-radius: 3px;
+            padding: 8px 10px;
+            background-color: $lite-white;
+        }
+
+        svg {
+            position: relative;
+            top: 3px;
+            fill: #444;
+        }
+    }
 }

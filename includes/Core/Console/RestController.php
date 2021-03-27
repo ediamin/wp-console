@@ -111,6 +111,7 @@ class RestController extends WP_REST_Controller {
         global $wp_console_dump;
 
         try {
+            $timer = microtime( true );
             $input = $request['input'];
 
             $config = new \Psy\Configuration( [
@@ -148,8 +149,9 @@ class RestController extends WP_REST_Controller {
             }
 
             $data = [
-                'output' => $output->outputMessage,
-                'dump'   => $wp_console_dump
+                'output'         => $output->outputMessage,
+                'dump'           => $wp_console_dump,
+                'execution_time' => microtime( true ) - $timer,
             ];
 
             return rest_ensure_response( $data );
