@@ -43,6 +43,7 @@
     "shelljs": "^0.8.4"
   },
   "scripts": {
+    "install": "wp core download --path=wordpress-core --force",
     "start": "wp-env start",
     "stop": "wp-env stop",
     "dev": "wp-scripts start",

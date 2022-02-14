@@ -1,6 +1,5 @@
 # Editors
 .idea
-.vscode
 *.code-workspace
 *.sublime-project
 *.sublime-workspace
@@ -20,4 +19,5 @@ dump.rdb
 /languages/
 /build/wp-console
 /build/wp-console*
+wordpress-core
 .wp-env.override.json
