@@ -43,9 +43,9 @@
     "shelljs": "^0.8.4"
   },
   "scripts": {
-    "install": "wp core download --path=wordpress-core --force",
-    "start": "wp-env start",
-    "stop": "wp-env stop",
+    "install": "npm run wp-core:download",
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
     "dev": "wp-scripts start",
     "build": "wp-scripts build",
     "lint:js": "wp-scripts lint-js src/ tests/js/",
@@ -55,7 +55,8 @@
     "release": "npm run make-pot && npm run clean && npm run build && node build",
     "clean": "rimraf assets/css && rimraf assets/js",
     "test:e2e": "wp-scripts test-e2e",
-    "test:e2e:debug": "wp-scripts --inspect-brk test-e2e --puppeteer-devtools"
+    "test:e2e:debug": "wp-scripts --inspect-brk test-e2e --puppeteer-devtools",
+    "wp-core:download": "wp core download --path=wordpress-core --force"
   },
   "husky": {
     "hooks": {
