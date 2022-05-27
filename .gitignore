@@ -19,5 +19,6 @@ dump.rdb
 /languages/
 /build/wp-console
 /build/wp-console*
+artifacts
 wordpress-core
 .wp-env.override.json

@@ -77,10 +77,10 @@
     }
 
     &[disabled] {
-        color: lighten($text-color, 25%);
+        color: lighten($text-color, 25%); /* stylelint-disable-line scss/no-global-function-names */
 
         svg {
-            fill: lighten($text-color, 25%);
+            fill: lighten($text-color, 25%); /* stylelint-disable-line scss/no-global-function-names */
         }
     }
 }

@@ -13,10 +13,12 @@ body.wp-console-active {
 
 #wp-console {
 
+    /* stylelint-disable no-invalid-position-at-import-rule */
     @import "utilities";
     @import "nav";
     @import "output-colors";
     @import "symfony-dump";
+    /* stylelint-enable no-invalid-position-at-import-rule */
 
     display: none;
     font-family: $font-family;
@@ -198,6 +200,8 @@ body.wp-console-active {
     }
 }
 
+/* stylelint-disable no-invalid-position-at-import-rule */
 @import "app-notice";
 @import "snippet-manager";
 @import "compat";
+/* stylelint-enable no-invalid-position-at-import-rule */
