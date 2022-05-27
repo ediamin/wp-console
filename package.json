@@ -53,6 +53,7 @@
     "build": "wp-scripts build",
     "lint:js": "wp-scripts lint-js src/ tests/js/",
     "lint:css": "wp-scripts lint-style src/",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
     "make-pot": "wp i18n make-pot . languages/wp-console.pot --include=includes,src --exclude=wordpress-core",
     "zip": "node build",
     "release": "npm run make-pot && npm run clean && npm run build && node build",
@@ -68,6 +69,9 @@
     ],
     "*.scss": [
       "wp-scripts lint-style"
+    ],
+    "package.json": [
+      "wp-scripts lint-pkg-json"
     ]
   }
 }
