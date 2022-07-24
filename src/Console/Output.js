@@ -2,13 +2,14 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Fragment, useState } from '@wordpress/element';
-import { ClipboardButton, Tooltip } from '@wordpress/components';
+import { Fragment } from '@wordpress/element';
+import { Tooltip } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
-import { IconClone, IconCheckCircle, IconExecutionTime } from '../Icons';
+import { IconExecutionTime } from '../Icons';
+import CopyOutputButton from './CopyOutputButton';
 
 function formatOutput( output ) {
     // Strip all html tags.
@@ -20,7 +21,6 @@ function formatOutput( output ) {
 }
 
 const Output = ( { output, dump, executionTime, errorTrace } ) => {
-    const [ hasCopied, setHasCopied ] = useState( false );
     let textToCopy = '';
 
     if ( output ) {
@@ -45,35 +45,7 @@ const Output = ( { output, dump, executionTime, errorTrace } ) => {
                         <h4>{ __( 'Output', 'wp-console' ) }</h4>
                         <ul className="panel-buttons list-inline">
                             <li className="list-inline-item opacity-70">
-                                <ClipboardButton
-                                    isPrimary
-                                    text={ textToCopy }
-                                    onCopy={ () => setHasCopied( true ) }
-                                    onFinishCopy={ () => setHasCopied( false ) }
-                                    isSmall
-                                    className="wp-console-button-no-style"
-                                >
-                                    { hasCopied ? (
-                                        <Fragment>
-                                            <IconCheckCircle
-                                                width="10"
-                                                height="10"
-                                            />{ ' ' }
-                                            { __(
-                                                'Output Copied!',
-                                                'wp-console'
-                                            ) }
-                                        </Fragment>
-                                    ) : (
-                                        <Fragment>
-                                            <IconClone width="10" height="10" />{ ' ' }
-                                            { __(
-                                                'Copy Output',
-                                                'wp-console'
-                                            ) }
-                                        </Fragment>
-                                    ) }
-                                </ClipboardButton>
+                                <CopyOutputButton text={ textToCopy } />
                             </li>
                         </ul>
                         <ul className="panel-buttons list-inline float-right">

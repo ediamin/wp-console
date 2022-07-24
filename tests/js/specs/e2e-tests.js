@@ -70,7 +70,7 @@ describe( 'WP Console plugin e2e tests.', () => {
             navigator.clipboard.readText()
         );
 
-        expect( copiedText ).toEqual( 'http://localhost:8889/wp-admin/' );
+        expect( copiedText ).toEqual( '"http://localhost:8889/wp-admin/"' );
     } );
 
     test( 'Dectivate the plugin without any error.', async () => {

@@ -1,7 +1,7 @@
 === WP Console - WordPress PHP Console powered by PsySH ===
 Contributors: ediamin
 Tags: console, repl, browser, psysh, shell, dump
-Requires at least: 5.0
+Requires at least: 5.3.12
 Tested up to: 5.7
 Requires PHP: 5.6
 Stable tag: trunk
