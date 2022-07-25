@@ -43,6 +43,7 @@
     "@wordpress/scripts": "23.1.0",
     "husky": "^8.0.0",
     "lint-staged": "12.4.2",
+    "minimist": "1.2.6",
     "shelljs": "0.8.5"
   },
   "scripts": {
