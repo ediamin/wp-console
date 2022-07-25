@@ -3,7 +3,6 @@
 namespace WPConsole\Core\UserSettings;
 
 use Exception;
-use WPConsole\Exceptions\WPConsoleException;
 use WPConsole\Traits\RESTResponseError;
 use WP_REST_Controller;
 use WP_REST_Server;

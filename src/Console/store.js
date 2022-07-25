@@ -10,7 +10,7 @@ const DEFAULT_STATE = {
     errorTrace: null,
     isExecuting: false,
     settings: {
-        horizontalSplit: true,
+        horizontalSplit: false,
     },
     keyBindings: {
         execCode: bindKey( 'Ctrl-Enter', 'Cmd-Enter' ),
