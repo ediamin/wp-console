@@ -81,8 +81,8 @@ const CodeEditor = ( props ) => {
 
     const initializeEditor = ( consoleCode ) => {
         // instances
-        editor = ace.edit( 'wp-console-code-editor' );
-        ace.require( 'ace/ext/language_tools' );
+        editor = wpConsoleAce.edit( 'wp-console-code-editor' );
+        wpConsoleAce.require( 'ace/ext/language_tools' );
 
         // theme, mode and primary options
         editor.setTheme( 'ace/theme/xcode' );

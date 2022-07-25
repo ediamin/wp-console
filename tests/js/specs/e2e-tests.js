@@ -3,7 +3,7 @@ import { activatePlugin, deactivatePlugin } from '@wordpress/e2e-test-utils';
 describe( 'WP Console plugin e2e tests.', () => {
     async function clearEditor() {
         await page.evaluate( () => {
-            const editor = ace.edit( 'wp-console-code-editor' );
+            const editor = wpConsoleAce.edit( 'wp-console-code-editor' );
             editor.setValue( '' );
             editor.focus();
             editor.gotoLine( 2 );

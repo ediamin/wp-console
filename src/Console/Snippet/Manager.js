@@ -59,7 +59,7 @@ const Manager = ( {
     }, [] );
 
     const initializeEditor = ( selectedGroup ) => {
-        editor = ace.edit( 'wp-console-snippet-manager-main' );
+        editor = wpConsoleAce.edit( 'wp-console-snippet-manager-main' );
 
         // theme, mode and primary options
         editor.setTheme( 'ace/theme/xcode' );
