@@ -2,12 +2,19 @@
 
     .components-modal__content { /* stylelint-disable-line selector-class-pattern */
         padding: 0;
+        margin-top: 0;
+
+        &::before {
+            margin-bottom: 0;
+        }
     }
 
     .components-modal__header { /* stylelint-disable-line selector-class-pattern */
         height: 48px;
         padding: 0 20px;
         margin: 0;
+        position: sticky;
+        background-color: #fff;
     }
 }
 
