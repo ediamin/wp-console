@@ -2,12 +2,13 @@
 
 namespace WPConsole\Core\Console;
 
-use Throwable;
-use WPConsole\Core\Console\Psy\Output\ShellOutput;
-use WPConsole\Core\Console\Psy\Shell;
 use WP_Error;
-use WP_REST_Controller;
+use Exception;
+use Throwable;
 use WP_REST_Server;
+use WP_REST_Controller;
+use WPConsole\Core\Console\Psy\Shell;
+use WPConsole\Core\Console\Psy\Output\ShellOutput;
 
 class RestController extends WP_REST_Controller {
 
@@ -158,14 +159,33 @@ class RestController extends WP_REST_Controller {
 
             return rest_ensure_response( $data );
 
-        } catch ( Throwable $e ) {
-            ob_end_flush();
+        } catch ( Throwable $error ) {
+            // Executed only in PHP 7, will not match in PHP 5.x
+            return $this->request_error( $request['input'], $error );
 
-            return new WP_Error( 'wp_console_rest_error', $e->getMessage(), [
-                'input'  => $request['input'],
-                'status' => 422,
-                'trace'  => $e->getTraceAsString(),
-            ] );
+        } catch ( Exception $error ) {
+            // Executed only in PHP 5.x, will not be reached in PHP 7
+            return $this->request_error( $request['input'], $error );
         }
+    }
+
+    /**
+     * Evaluate input code
+     *
+     * @since WP_CONSOLE_SINCE
+     *
+     * @param string     $input
+     * @param \Throwable $request
+     *
+     * @return \WP_Error
+     */
+    protected function request_error( $input, $error ) {
+        ob_end_flush();
+
+        return new WP_Error( 'wp_console_rest_error', $error->getMessage(), [
+            'input'  => $input,
+            'status' => 422,
+            'trace'  => $error->getTraceAsString(),
+        ] );
     }
 }

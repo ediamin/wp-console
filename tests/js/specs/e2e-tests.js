@@ -73,6 +73,27 @@ describe( 'WP Console plugin e2e tests.', () => {
         expect( copiedText ).toEqual( '"http://localhost:8889/wp-admin/"' );
     } );
 
+    test( 'Catch errors in the code and show it as an error notice.', async () => {
+        await clearEditor();
+        const code = `$a = 1;\necho $a + $b;`;
+        await page.keyboard.type( code );
+        await page.click( '#wp-console-console-run-button' );
+        await page.waitForSelector(
+            '#wp-console-app-notice > .components-notice.is-error.is-dismissible'
+        );
+
+        const content = await page.evaluate(
+            () =>
+                document.querySelector(
+                    '#wp-console-app-notice .components-notice__content'
+                ).textContent
+        );
+
+        expect( content ).toContain(
+            "PHP Notice:  Undefined variable: b in /var/www/html/wp-content/plugins/wp-console/includes/Core/Console/RestController.php(139) : eval()'d code on line 3"
+        );
+    } );
+
     test( 'Dectivate the plugin without any error.', async () => {
         await deactivatePlugin( 'wp-console' );
         expect( await page.$( '#wp-console' ) ).toBeFalsy();

@@ -31,9 +31,11 @@ const Output = ( { output, dump, executionTime, errorTrace } ) => {
         <div id="wp-console-editor-output">
             { errorTrace ? (
                 <Fragment>
-                    <h4 className="panel-title">
-                        { __( 'Error Traceback', 'wp-console' ) }
-                    </h4>
+                    <div className="panel-header">
+                        <span className="panel-title">
+                            { __( 'Error Traceback', 'wp-console' ) }
+                        </span>
+                    </div>
                     <pre
                         className="wp-console-output wp-console-error-trace"
                         dangerouslySetInnerHTML={ { __html: errorTrace } }
@@ -41,8 +43,10 @@ const Output = ( { output, dump, executionTime, errorTrace } ) => {
                 </Fragment>
             ) : (
                 <Fragment>
-                    <div className="panel-title clearfix">
-                        <h4>{ __( 'Output', 'wp-console' ) }</h4>
+                    <div className="panel-header clearfix">
+                        <span className="panel-title">
+                            { __( 'Output', 'wp-console' ) }
+                        </span>
                         <ul className="panel-buttons list-inline">
                             <li className="list-inline-item opacity-70">
                                 <CopyOutputButton text={ textToCopy } />

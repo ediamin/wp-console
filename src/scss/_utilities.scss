@@ -97,12 +97,12 @@
     }
 }
 
-.panel-title {
+.panel-header {
     margin: 0;
     border-bottom: 1px solid $border-color;
     padding: 15px 20px;
 
-    h4 {
+    .panel-title {
         display: inline-block;
         margin: 0;
         font-size: 15px;
