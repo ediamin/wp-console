@@ -1,6 +1,6 @@
 {
   "name": "wp-console",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "An in-browser PHP console for WordPress powered by PsySH",
   "author": "Edi Amin <to.ediamin@gmail.com>",
   "license": "GPL-3.0",
@@ -47,7 +47,6 @@
     "shelljs": "0.8.5"
   },
   "scripts": {
-    "install": "npm run wp-core:download",
     "env:start": "wp-env start",
     "env:stop": "wp-env stop",
     "dev": "wp-scripts start",
