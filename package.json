@@ -47,7 +47,6 @@
     "shelljs": "0.8.5"
   },
   "scripts": {
-    "install": "npm run wp-core:download",
     "env:start": "wp-env start",
     "env:stop": "wp-env stop",
     "dev": "wp-scripts start",
