@@ -172,7 +172,7 @@ class RestController extends WP_REST_Controller {
     /**
      * Evaluate input code
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.3.0
      *
      * @param string     $input
      * @param \Throwable $request
