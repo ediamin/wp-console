@@ -22,11 +22,11 @@ if ( args.version && args.version.match( semverRegex ) ) {
 
     console.log( 'Updating plugin version number' );
     [
-        `sed -i '' 's/"version": "${ currentVersion }"/"version": "${ version }"/g' package.json`,
+        `sed -i '' '3s/"version": "${ currentVersion }"/"version": "${ version }"/' package.json`,
+        `sed -i '' '3s/"version": "${ currentVersion }"/"version": "${ version }"/' package-lock.json`,
         `sed -i '' 's/* Version: ${ currentVersion }/* Version: ${ version }/g' wp-console.php`,
         `sed -i "" "s/= '${ currentVersion }'/= '${ version }'/g" includes/WPConsole.php`,
         `find includes -iname '*.php' -exec sed -i "" "s/WP_CONSOLE_SINCE/${ version }/g" {} \\\;`,
-        `npm install`,
     ].forEach( ( command ) => {
         shell.exec( command );
     } );
