@@ -3,12 +3,8 @@ body.wp-console-wp-lt-5-4 {
 
     #wp-console {
 
-        .wp-console-button-no-style {
-
-            svg {
-                position: relative;
-                top: 4px;
-            }
+        .components-button {
+            align-items: center;
         }
     }
 }

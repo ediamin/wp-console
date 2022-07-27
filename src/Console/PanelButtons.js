@@ -53,7 +53,10 @@ const PanelButtons = ( props ) => {
     return (
         <Fragment>
             <ul className="list-inline">
-                <li className="list-inline-item">
+                <li
+                    id="wp-console-console-snippets-button"
+                    className="list-inline-item"
+                >
                     <Button
                         className="wp-console-panel-button wp-console-button-no-style"
                         isSmall
@@ -62,7 +65,10 @@ const PanelButtons = ( props ) => {
                         <IconCurlyBraces /> { __( 'Snippets', 'wp-console' ) }
                     </Button>
                 </li>
-                <li className="list-inline-item">
+                <li
+                    id="wp-console-console-split-button"
+                    className="list-inline-item"
+                >
                     <Button
                         className="wp-console-panel-button wp-console-button-no-style"
                         isSmall
@@ -71,7 +77,10 @@ const PanelButtons = ( props ) => {
                         <IconSplit /> { __( 'Split', 'wp-console' ) }
                     </Button>
                 </li>
-                <li className="list-inline-item">
+                <li
+                    id="wp-console-console-run-button"
+                    className="list-inline-item"
+                >
                     <Button
                         className="wp-console-panel-button wp-console-button-no-style"
                         isSmall
@@ -115,5 +124,6 @@ export default withSelectDispatch( {
         'resetConsoleResponses',
         'startExecuting',
         'finishExecuting',
+        'setExecutionTime',
     ],
 } )( PanelButtons );

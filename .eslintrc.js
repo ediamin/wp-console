@@ -20,6 +20,6 @@ module.exports = {
     },
     globals: {
         wpConsole: true,
-        ace: true,
+        wpConsoleAce: true,
     },
 };

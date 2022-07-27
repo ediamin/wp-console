@@ -41,7 +41,7 @@ class Console {
      */
     public function add_user_settings_schema( $schema ) {
         $defaults = [
-            'window_split' => 'horizontal',
+            'window_split' => 'vertical',
             'snippets'     => [
                 [
                     'id'       => wp_generate_uuid4(),

@@ -33,6 +33,6 @@ module.exports = {
         filename: '[name].js',
         path: resolve( 'assets', 'js' ),
         chunkFilename: 'chunks/[chunkhash].js',
-        jsonpFunction: 'wpConsoleWebpack',
+        chunkLoadingGlobal: 'wpConsoleWebpack',
     },
 };

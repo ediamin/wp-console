@@ -1,8 +1,8 @@
 === WP Console - WordPress PHP Console powered by PsySH ===
 Contributors: ediamin
 Tags: console, repl, browser, psysh, shell, dump
-Requires at least: 5.0
-Tested up to: 5.7
+Requires at least: 5.3.12
+Tested up to: 6.0.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv3
@@ -16,8 +16,6 @@ WP Console brings the famous PsySH on your browser. PsySH is a runtime developer
 Write your code in code editor, press Cmd-Enter(mac) or Ctrl-Enter(win/linux) and get your output in your browser.
 
 You can also use PsySH with wp-cli with the command `wp shell`. wp-cli has built-in support for psysh already. You need to just activate WP Console to use this.
-
-WP Console requires WordPress v5.0 or later.
 
 === Features ==
 - Powerful code editor powered by Ace Editor.
@@ -50,6 +48,15 @@ WP Console explicitly checks for `manage_options` permission to display the UI a
 
 == Changelog ==
 
+2.3.0 - July 27, 2022
+* Add code execution time in console output panel.
+* Use ace.js with custom namespace to avoid conflict with other ace.js source.
+* Fix snippet manager module style.
+* Use verticle split as default in console panel.
+* Fix error handling for PHP v5.6.
+* Fix some UI issues in different WordPress versions.
+* Add wp-env and e2e testing with Jest using wp-scripts for developing the plugin.
+
 2.2.0 - November 22, 2020
 * Add custom code snippet support. You can use VS Code supported PHP code snippets now.
 * Add Copy Output button.
@@ -59,14 +66,14 @@ WP Console explicitly checks for `manage_options` permission to display the UI a
 * Set default values for user Console settings in REST API.
 * Fix horizontal output scolling issue for vertically split console.
 * Fix close button get disappear in WooCommerce admin pages.
-* Fix error line no in console editor
+* Fix error line no in console editor.
 
 2.1.0 - April 14, 2020
-* Lazy load React components to improve performance
-* Use a single store source for all components
-* Reset console responses after close app window
-* Fix navigation button icon css for WP v5.4
-* Resize editor screen after toggle split mode
+* Lazy load React components to improve performance.
+* Use a single store source for all components.
+* Reset console responses after close app window.
+* Fix navigation button icon css for WP v5.4.
+* Resize editor screen after toggle split mode.
 
 2.0.0 - December 11, 2019
 * Revamp UI/UX.
@@ -77,25 +84,25 @@ WP Console explicitly checks for `manage_options` permission to display the UI a
 * Restrict plugin UI and REST APIs for users who have manage_options capability.
 
 1.5.0 - November 07, 2019
-* Tweak - Change `dump` function name to `_dump` to resolve conflict with wp-erp
+* Tweak - Change `dump` function name to `_dump` to resolve conflict with wp-erp.
 
 1.4.0 - November 02, 2019
-* New - Save code editor history in localStorage
-* Tweak - Use wp-scripts for assets build process
+* New - Save code editor history in localStorage.
+* Tweak - Use wp-scripts for assets build process.
 
 1.3.0 - October 26, 2019
-* New - Fetch debug.log contents
-* Tweak - Support PHP version 5.6
+* New - Fetch debug.log contents.
+* Tweak - Support PHP version 5.6.
 
 1.2.0 - July 27, 2019
-* New - Add autocompletion data(WP functions, PHP booleans, constants, functions, keywords)
-* New - Add codemirror closebrackets, matchbrackets addon scripts
-* New - Show error stacktrace
+* New - Add autocompletion data(WP functions, PHP booleans, constants, functions, keywords).
+* New - Add codemirror closebrackets, matchbrackets addon scripts.
+* New - Show error stacktrace.
 
 1.1.0 - June 25, 2019
-* New - Use output buffer handler
-* New - Add build process
-* Tweak - Remove unnecessary code
+* New - Use output buffer handler.
+* New - Add build process.
+* Tweak - Remove unnecessary code.
 
 1.0.0 - June 21, 2019
-Initial release
+Initial release.

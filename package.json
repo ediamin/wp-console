@@ -1,6 +1,6 @@
 {
   "name": "wp-console",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "An in-browser PHP console for WordPress powered by PsySH",
   "author": "Edi Amin <to.ediamin@gmail.com>",
   "license": "GPL-3.0",
@@ -20,40 +20,48 @@
   "bugs": {
     "url": "https://github.com/ediamin/wp-console/issues"
   },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.9.0 <7"
+  },
   "dependencies": {
-    "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "@wordpress/api-fetch": "^3.21.5",
-    "@wordpress/components": "^12.0.8",
-    "@wordpress/compose": "^3.24.5",
-    "@wordpress/data": "^4.26.8",
-    "@wordpress/element": "^2.19.1",
-    "@wordpress/hooks": "^2.11.1",
-    "@wordpress/i18n": "^3.18.0",
-    "jquery": "^3.6.0",
-    "jsonminify": "^0.4.1",
-    "nanoid": "^3.1.20"
+    "@fortawesome/free-solid-svg-icons": "6.1.1",
+    "@wordpress/api-fetch": "6.6.0",
+    "@wordpress/components": "19.11.0",
+    "@wordpress/compose": "5.7.0",
+    "@wordpress/data": "6.9.0",
+    "@wordpress/element": "4.7.0",
+    "@wordpress/hooks": "3.9.0",
+    "@wordpress/i18n": "4.9.0",
+    "jquery": "3.6.0",
+    "jsonminify": "0.4.2",
+    "nanoid": "3.3.4"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^13.0.3",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.4",
-    "prettier": "npm:wp-prettier@^2.2.1-beta-1",
-    "shelljs": "^0.8.4"
+    "@wordpress/e2e-test-utils": "7.5.0",
+    "@wordpress/env": "4.7.0",
+    "@wordpress/scripts": "23.1.0",
+    "husky": "^8.0.0",
+    "lint-staged": "12.4.2",
+    "minimist": "1.2.6",
+    "shelljs": "0.8.5"
   },
   "scripts": {
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
     "dev": "wp-scripts start",
     "build": "wp-scripts build",
-    "lint:js": "wp-scripts lint-js src/",
+    "lint:js": "wp-scripts lint-js src/ tests/js/",
     "lint:css": "wp-scripts lint-style src/",
-    "make-pot": "wp i18n make-pot ./ languages/wp-console.pot --exclude=build,assets",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "make-pot": "wp i18n make-pot . languages/wp-console.pot --include=includes,src --exclude=wordpress-core",
     "zip": "node build",
     "release": "npm run make-pot && npm run clean && npm run build && node build",
-    "clean": "rimraf assets/css && rimraf assets/js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "clean": "rimraf assets/css && rimraf assets/js",
+    "test:e2e": "wp-scripts test-e2e",
+    "test:e2e:debug": "wp-scripts --inspect-brk test-e2e --puppeteer-devtools",
+    "wp-core:download": "wp core download --path=wordpress-core --force",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.js": [
@@ -61,6 +69,9 @@
     ],
     "*.scss": [
       "wp-scripts lint-style"
+    ],
+    "package.json": [
+      "wp-scripts lint-pkg-json"
     ]
   }
 }

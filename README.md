@@ -7,8 +7,6 @@ Write your code in code editor, press Cmd-Enter(mac) or Ctrl-Enter(win/linux) an
 
 You can also use PsySH with wp-cli with the command `wp shell`. wp-cli has built-in support for psysh already. You need to just activate WP Console to use this.
 
-WP Console requires WordPress v5.0 or later.
-
 [Download the plugin from wordpress.org](https://wordpress.org/plugins/wp-console/)
 
 ### Features
