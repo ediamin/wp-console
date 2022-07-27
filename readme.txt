@@ -48,6 +48,15 @@ WP Console explicitly checks for `manage_options` permission to display the UI a
 
 == Changelog ==
 
+2.3.0 - July 27, 2022
+* Add code execution time in console output panel.
+* Use ace.js with custom namespace to avoid conflict with other ace.js source.
+* Fix snippet manager module style.
+* Use verticle split as default in console panel.
+* Fix error handling for PHP v5.6.
+* Fix some UI issues in different WordPress versions.
+* Add wp-env and e2e testing with Jest using wp-scripts for developing the plugin.
+
 2.2.0 - November 22, 2020
 * Add custom code snippet support. You can use VS Code supported PHP code snippets now.
 * Add Copy Output button.
