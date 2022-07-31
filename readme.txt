@@ -48,6 +48,9 @@ WP Console explicitly checks for `manage_options` permission to display the UI a
 
 == Changelog ==
 
+2.3.1 - July 31, 2022
+* Update script version of ace.
+
 2.3.0 - July 27, 2022
 * Add code execution time in console output panel.
 * Use ace.js with custom namespace to avoid conflict with other ace.js source.
