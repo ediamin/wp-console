@@ -90,7 +90,7 @@ describe( 'WP Console plugin e2e tests.', () => {
         );
 
         expect( content ).toContain(
-            "PHP Notice:  Undefined variable: b in /var/www/html/wp-content/plugins/wp-console/includes/Core/Console/RestController.php(139) : eval()'d code on line 3"
+            "PHP Warning:  Undefined variable $b in /var/www/html/wp-content/plugins/wp-console/includes/Core/Console/RestController.php(139) : eval()'d code on line 3"
         );
     } );
 
