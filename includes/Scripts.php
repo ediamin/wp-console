@@ -73,7 +73,8 @@ class Scripts {
                 'assests' => WP_CONSOLE_ASSETS,
             ],
             'user_settings' => $user_settings,
-            'wp_version' => [
+            'php_version'   => PHP_VERSION,
+            'wp_version'    => [
                 'gte_5_8' => version_compare( get_bloginfo( 'version' ), '5.8', '>=' ),
             ],
         ];

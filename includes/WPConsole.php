@@ -47,10 +47,19 @@ final class WPConsole {
      *
      * @since 1.0.0
      *
-     * @var array
+     * @var object
      */
     private $controllers = null;
 
+    /**
+     * Contains REST controller class instances
+     *
+     * Can be called via wp_console()->controller_name->feature.
+     *
+     * @since 1.0.0
+     *
+     * @var object
+     */
     public $rest_controllers = null;
 
     /**
