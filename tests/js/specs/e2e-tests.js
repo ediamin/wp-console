@@ -60,7 +60,7 @@ describe( 'WP Console plugin e2e tests.', () => {
                 ).textContent
         );
 
-        expect( content ).toContain( 'wp_insert_postWP Function' );
+        expect( content ).toContain( 'wp_insert_post WP Function' );
     } );
 
     test( 'Copy Output button.', async () => {
