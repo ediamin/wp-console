@@ -8,7 +8,7 @@
       "port": 9003,
       "pathMappings": {
         "/var/www/html": "${workspaceFolder}/wordpress-core/",
-        "/var/www/html/wp-content/plugins/wp-console": "${workspaceFolder}/"
+        "/var/www/html/wp-content/plugins/wp-console": "${workspaceFolder}"
       }
     }
   ]

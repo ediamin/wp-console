@@ -31,6 +31,15 @@ class ShellOutput extends PsyShellOutput {
     public $exception = null;
 
     /**
+     * The output pager.
+     *
+     * @since 2.4.0
+     *
+     * @var null|string|OutputPager
+     */
+    private $pager;
+
+    /**
      * Construct a ShellOutput instance.
      *
      * @since 1.0.0

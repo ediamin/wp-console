@@ -3,6 +3,7 @@ const fs = require( 'fs' );
 const path = require( 'path' );
 const minimist = require( 'minimist' );
 const shell = require( 'shelljs' );
+const semvar = require( 'semver' );
 
 function resolve( ...paths ) {
     return path.resolve( __dirname, ...paths );
@@ -14,9 +15,7 @@ const args = minimist( process.argv.slice( 2 ) );
 
 let version = packageInfo.version;
 
-const semverRegex = /^((([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)$/;
-
-if ( args.version && args.version.match( semverRegex ) ) {
+if ( args.version && semvar.valid( args.version ) ) {
     const currentVersion = version;
     version = args.version;
 
@@ -40,6 +39,7 @@ shell.mkdir( '-p', DEST );
 
 const include = [
     'assets',
+    'compat',
     'includes',
     'languages',
     'vendor',

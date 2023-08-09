@@ -160,11 +160,11 @@ class RestController extends WP_REST_Controller {
             return rest_ensure_response( $data );
 
         } catch ( Throwable $error ) {
-            // Executed only in PHP 7, will not match in PHP 5.x
+            // This code only executes in PHP >= 7.x and is ignored in PHP 5.x.
             return $this->request_error( $request['input'], $error );
 
         } catch ( Exception $error ) {
-            // Executed only in PHP 5.x, will not be reached in PHP 7
+            // This code only executes in PHP 5.x and is ignored in PHP 7.
             return $this->request_error( $request['input'], $error );
         }
     }
@@ -180,7 +180,9 @@ class RestController extends WP_REST_Controller {
      * @return \WP_Error
      */
     protected function request_error( $input, $error ) {
-        ob_end_flush();
+        if ( ob_get_length() ) {
+            ob_end_flush();
+        }
 
         return new WP_Error( 'wp_console_rest_error', $error->getMessage(), [
             'input'  => $input,

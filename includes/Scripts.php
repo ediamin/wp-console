@@ -38,8 +38,8 @@ class Scripts {
         ] );
 
         wp_register_style( 'wp-console', WP_CONSOLE_ASSETS . '/css/wp-console.css', [ 'wp-components' ], $assets['version'] );
-        wp_register_script( 'wp-console-ace-editor', WP_CONSOLE_ASSETS . '/vendor/ace-builds/src-min-noconflict/ace.js', [], '1.8.1', true );
-        wp_register_script( 'wp-console-ace-editor-lang', WP_CONSOLE_ASSETS . '/vendor/ace-builds/src-min-noconflict/ext-language_tools.js', [ 'wp-console-ace-editor' ], '1.8.1', true );
+        wp_register_script( 'wp-console-ace-editor', WP_CONSOLE_ASSETS . '/vendor/ace-builds/src-min-noconflict/ace.js', [], '1.23.4', true );
+        wp_register_script( 'wp-console-ace-editor-lang', WP_CONSOLE_ASSETS . '/vendor/ace-builds/src-min-noconflict/ext-language_tools.js', [ 'wp-console-ace-editor' ], '1.23.4', true );
         wp_register_script( 'wp-console', WP_CONSOLE_ASSETS . '/js/wp-console.js', $dependencies, $assets['version'], true );
     }
 
@@ -73,7 +73,8 @@ class Scripts {
                 'assests' => WP_CONSOLE_ASSETS,
             ],
             'user_settings' => $user_settings,
-            'wp_version' => [
+            'php_version'   => PHP_VERSION,
+            'wp_version'    => [
                 'gte_5_8' => version_compare( get_bloginfo( 'version' ), '5.8', '>=' ),
             ],
         ];

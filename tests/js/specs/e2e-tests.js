@@ -1,4 +1,5 @@
 import { activatePlugin, deactivatePlugin } from '@wordpress/e2e-test-utils';
+import semver from 'semver';
 
 describe( 'WP Console plugin e2e tests.', () => {
     async function clearEditor() {
@@ -8,6 +9,16 @@ describe( 'WP Console plugin e2e tests.', () => {
             editor.focus();
             editor.gotoLine( 2 );
         } );
+    }
+
+    async function getPHPVersion() {
+        const phpVersion = await page.evaluate( () => wpConsole.php_version );
+
+        if ( semver.satisfies( phpVersion, '8.2' ) ) {
+            return '8.2';
+        }
+
+        return '5.6';
     }
 
     test( 'Activate the plugin without any error.', async () => {
@@ -33,7 +44,7 @@ describe( 'WP Console plugin e2e tests.', () => {
                     .children[ 1 ].textContent
         );
 
-        expect( content ).toContain( 'foo⏎' );
+        expect( content ).toContain( 'foo' );
     } );
 
     test( 'Autocompletion for WordPress functions.', async () => {
@@ -49,7 +60,7 @@ describe( 'WP Console plugin e2e tests.', () => {
                 ).textContent
         );
 
-        expect( content ).toContain( 'wp_insert_postWP Function' );
+        expect( content ).toContain( 'wp_insert_post WP Function' );
     } );
 
     test( 'Copy Output button.', async () => {
@@ -89,9 +100,14 @@ describe( 'WP Console plugin e2e tests.', () => {
                 ).textContent
         );
 
-        expect( content ).toContain(
-            "PHP Notice:  Undefined variable: b in /var/www/html/wp-content/plugins/wp-console/includes/Core/Console/RestController.php(139) : eval()'d code on line 3"
-        );
+        const phpVersion = await getPHPVersion();
+
+        const expectedContent = {
+            5.6: "PHP Notice:  Undefined variable: b in /var/www/html/wp-content/plugins/wp-console/includes/Core/Console/RestController.php(139) : eval()'d code on line 3",
+            8.2: "PHP Warning:  Undefined variable $b in /var/www/html/wp-content/plugins/wp-console/includes/Core/Console/RestController.php(139) : eval()'d code on line 3",
+        };
+
+        expect( content ).toContain( expectedContent[ phpVersion ] );
     } );
 
     test( 'Dectivate the plugin without any error.', async () => {
