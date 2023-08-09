@@ -56,6 +56,10 @@ WP Console explicitly verifies the presence of the `manage_options` permission t
 
 == Changelog ==
 
+2.4 - August 09, 2023
+* Add support for PHP 8.0+.
+* Update Ace Editor version to 1.23.4.
+
 2.3.1 - July 31, 2022
 * Update script version of ace.
 
