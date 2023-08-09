@@ -33,7 +33,7 @@ class ShellOutput extends PsyShellOutput {
     /**
      * The output pager.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.4.0
      *
      * @var null|string|OutputPager
      */
