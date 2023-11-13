@@ -46,7 +46,7 @@ class AdminBar {
      * using admin bar menu, can use this submenu.
      * @see: https://wordpress.org/support/topic/feature-request-dedicated-page-instead-of-pop-up/
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.4.1
      *
      * @return void
      */
@@ -78,7 +78,7 @@ class AdminBar {
      * This is just a dummy page and JS will prevent
      * opening it.
      *
-     * @since WP_CONSOLE_SINCE
+     * @since 2.4.1
      *
      * @return void
      */
