@@ -2,7 +2,7 @@
 Contributors: ediamin
 Tags: console, repl, browser, psysh, shell, dump
 Requires at least: 5.3.12
-Tested up to: 6.3
+Tested up to: 6.4.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv3
