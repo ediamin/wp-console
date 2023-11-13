@@ -25,8 +25,7 @@ $( document ).ready( function () {
         return;
     }
 
-    $( '.ab-item', '#wp-admin-bar-wp-console' ).on( 'click', ( e ) => {
-        e.preventDefault();
+    const openConsoleWindow = () => {
         $( 'body' ).addClass( 'wp-console-active' );
         $( '#wp-console' ).addClass( 'active' );
 
@@ -35,5 +34,18 @@ $( document ).ready( function () {
         }
 
         render( <App />, document.getElementById( 'wp-console' ) );
+    };
+
+    $( '.ab-item', '#wp-admin-bar-wp-console' ).on( 'click', ( e ) => {
+        e.preventDefault();
+        openConsoleWindow();
     } );
+
+    $( '#adminmenu a[href="tools.php?page=wp-console"]' ).on(
+        'click',
+        ( e ) => {
+            e.preventDefault();
+            openConsoleWindow();
+        }
+    );
 } );
