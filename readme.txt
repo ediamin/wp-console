@@ -56,7 +56,12 @@ WP Console explicitly verifies the presence of the `manage_options` permission t
 
 == Changelog ==
 
-2.4 - August 09, 2023
+2.4.1 - November 13, 2023
+* Fix deprecation notice in PHP 8.2 related to strtolower argument type.
+* Add an admin submenu under the tools menu to open the console window.
+* Update WordPress compatibility to the latest version 6.4.2.
+
+2.4.0 - August 09, 2023
 * Add support for PHP 8.0+.
 * Update Ace Editor version to 1.23.4.
 
