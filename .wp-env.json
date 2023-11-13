@@ -1,5 +1,5 @@
 {
-  "core": "WordPress/WordPress#6.3",
+  "core": "WordPress/WordPress#6.4.1",
   "phpVersion": "7.4",
   "mappings": {
     "wp-content/plugins/wp-console": "./"
