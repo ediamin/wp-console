@@ -22,3 +22,6 @@ dump.rdb
 artifacts
 wordpress-core
 .wp-env.override.json
+
+# PHP Version Compat
+lib/**/vendor/

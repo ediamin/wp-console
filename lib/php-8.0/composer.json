@@ -13,10 +13,11 @@
   ],
   "autoload" : {
     "psr-4": {
-      "WPConsole\\": "includes/"
+      "WPConsole\\": "../../includes"
     }
   },
   "require": {
-    "php": ">=7.4"
+    "php": ">=8.0.0",
+    "psy/psysh": "^0.11.22"
   }
 }
