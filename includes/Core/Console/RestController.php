@@ -4,11 +4,11 @@ namespace WPConsole\Core\Console;
 
 use WP_Error;
 use Exception;
+use Psy\Shell;
 use Throwable;
 use WP_REST_Server;
 use WP_REST_Controller;
-use WPConsole\Core\Console\Psy\Shell;
-use WPConsole\Core\Console\Psy\Output\ShellOutput;
+use Psy\Output\ShellOutput;
 
 class RestController extends WP_REST_Controller {
 

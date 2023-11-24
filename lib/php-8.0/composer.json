@@ -14,10 +14,13 @@
   "autoload" : {
     "psr-4": {
       "WPConsole\\": "../../includes"
-    }
+    },
+    "files": [
+      "./overrides.php"
+    ]
   },
   "require": {
-    "php": ">=8.0.0",
+    "php": "^8.0.0",
     "psy/psysh": "^0.11.22"
   }
 }

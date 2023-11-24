@@ -13,15 +13,10 @@
 // Do not call the file directly.
 defined( 'ABSPATH' ) || exit;
 
-class_exists( 'WPConsole\WPConsole' ) || require_once __DIR__ . '/vendor/autoload.php';
-
-if ( version_compare( PHP_VERSION, '8.0.0', '>=' ) ) {
-    require_once __DIR__ . '/compat/php-8.0/nikic/php-parser/lib/PhpParser/NodeAbstract.php';
-    require_once __DIR__ . '/compat/php-8.0/nikic/php-parser/lib/PhpParser/Comment.php';
-    require_once __DIR__ . '/compat/php-8.0/psy/psysh/src/CodeCleaner/UseStatementPass.php';
-    require_once __DIR__ . '/compat/php-8.0/psy/psysh/src/VarDumper/Dumper.php';
-    require_once __DIR__ . '/compat/php-8.0/symfony/var-dumper/Cloner/Data.php';
-    require_once __DIR__ . '/compat/php-8.0/symfony/var-dumper/Dumper/HtmlDumper.php';
+if ( ! class_exists( 'WPConsole\WPConsole' ) ) {
+    // Supported PHP versions are depends on the supported PHP version by PsySH.
+    $version = version_compare( PHP_VERSION, '8.0', '>=' ) ? 'php-8.0' :'php-7.4';
+    require_once __DIR__ . '/lib/' . $version . '/vendor/autoload.php';
 }
 
 use WPConsole\Core\Console\VarDumper\VarDumper;
