@@ -1,0 +1,26 @@
+{
+  "name": "ediamin/wp-console",
+  "description": "WordPress PHP Console",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0-or-later",
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Edi Amin",
+      "email": "to.ediamin@gmail.com"
+    }
+  ],
+  "autoload" : {
+    "psr-4": {
+      "WPConsole\\": "../../includes"
+    },
+    "files": [
+      "./overrides.php"
+    ]
+  },
+  "require": {
+    "php": "^7.4.0",
+    "psy/psysh": "^0.11.22"
+  }
+}
