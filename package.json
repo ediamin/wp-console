@@ -21,30 +21,28 @@
     "url": "https://github.com/ediamin/wp-console/issues"
   },
   "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.9.0 <7"
-  },
-  "dependencies": {
-    "@fortawesome/free-solid-svg-icons": "6.1.1",
-    "@wordpress/api-fetch": "6.6.0",
-    "@wordpress/components": "19.11.0",
-    "@wordpress/compose": "5.7.0",
-    "@wordpress/data": "6.9.0",
-    "@wordpress/element": "4.7.0",
-    "@wordpress/hooks": "3.9.0",
-    "@wordpress/i18n": "4.9.0",
-    "jquery": "3.6.0",
-    "jsonminify": "0.4.2",
-    "nanoid": "3.3.4",
-    "semver": "7.5.4"
+    "node": ">=20.11.0",
+    "npm": ">=10.2.4"
   },
   "devDependencies": {
-    "@wordpress/e2e-test-utils": "7.5.0",
-    "@wordpress/env": "8.12.0",
-    "@wordpress/scripts": "23.1.0",
-    "husky": "^8.0.0",
-    "lint-staged": "12.4.2",
-    "minimist": "1.2.6",
+    "@fortawesome/free-solid-svg-icons": "6.5.1",
+    "@wordpress/api-fetch": "6.49.0",
+    "@wordpress/components": "27.0.0",
+    "@wordpress/compose": "6.29.0",
+    "@wordpress/data": "9.22.0",
+    "@wordpress/e2e-test-utils": "10.23.0",
+    "@wordpress/element": "5.29.0",
+    "@wordpress/env": "9.4.0",
+    "@wordpress/hooks": "3.52.0",
+    "@wordpress/i18n": "4.52.0",
+    "@wordpress/scripts": "27.3.0",
+    "husky": "9.0.11",
+    "jquery": "3.7.1",
+    "jsonminify": "0.4.2",
+    "lint-staged": "15.2.2",
+    "minimist": "1.2.8",
+    "nanoid": "5.0.6",
+    "semver": "7.6.0",
     "shelljs": "0.8.5"
   },
   "scripts": {
@@ -61,7 +59,6 @@
     "clean": "rimraf assets/css && rimraf assets/js",
     "test:e2e": "wp-scripts test-e2e",
     "test:e2e:debug": "wp-scripts --inspect-brk test-e2e --puppeteer-devtools",
-    "wp-core:download": "wp core download --path=wordpress-core --force",
     "prepare": "husky install"
   },
   "lint-staged": {
