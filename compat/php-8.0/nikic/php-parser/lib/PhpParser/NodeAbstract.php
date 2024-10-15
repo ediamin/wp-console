@@ -22,7 +22,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return string Type of the node
      */
-    public function getType() {
+    public function getType(): string {
         $className = rtrim(get_class($this), '_');
         return strtr(
             substr($className, strlen(Node::class) + 1),
@@ -36,7 +36,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
      *
      * @return int Line
      */
-    public function getLine() {
+    public function getLine(): int {
         return $this->getAttribute('startLine', -1);
     }
 
@@ -98,7 +98,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
         $this->attributes[$key] = $value;
     }
 
-    public function hasAttribute($key) {
+    public function hasAttribute($key): bool {
         return array_key_exists($key, $this->attributes);
     }
 
@@ -110,7 +110,7 @@ abstract class NodeAbstract implements Node, \JsonSerializable
         }
     }
 
-    public function getAttributes() {
+    public function getAttributes(): array {
         return $this->attributes;
     }
 
