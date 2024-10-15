@@ -1,38 +1,66 @@
-const path = require( 'path' );
-const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
-const plugins = [];
+const path = require('path');
+const defaultConfig = require('@wordpress/scripts/config/webpack.config');
+const { getWebpackEntryPoints } = require('@wordpress/scripts/utils/config');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-function resolve( ...paths ) {
-    return path.resolve( __dirname, ...paths );
-}
-
-defaultConfig.plugins.forEach( ( item ) => {
-    if ( item.constructor.name.toLowerCase() === 'minicssextractplugin' ) {
-        item.options.filename = '../css/[name].css';
-        item.options.chunkFilename = '../css/[name].css';
-        item.options.esModule = true;
-    }
-
-    if ( item.constructor.name.toLowerCase() === 'livereloadplugin' ) {
-        return;
-    }
-
-    plugins.push( item );
-} );
+const defaultPlugins = defaultConfig.plugins.filter(plugin => {
+    const pluginName = plugin.constructor.name.toLowerCase();
+    return pluginName !== 'minicssextractplugin' && pluginName !== 'livereloadplugin';
+});
 
 module.exports = {
     ...defaultConfig,
 
-    plugins,
-
     entry: {
-        'wp-console': resolve( 'src/wp-console.js' ),
+        ...getWebpackEntryPoints(),
+        'wp-console': path.resolve(process.cwd(), 'src', 'wp-console.js'),
     },
 
     output: {
         filename: '[name].js',
-        path: resolve( 'assets', 'js' ),
+        path: path.resolve(process.cwd(), 'assets', 'js'),
         chunkFilename: 'chunks/[chunkhash].js',
         chunkLoadingGlobal: 'wpConsoleWebpack',
+    },
+
+    plugins: [
+        ...defaultPlugins,
+        new MiniCssExtractPlugin({
+            filename: '../css/[name].css',
+            chunkFilename: '../css/[name].css',
+        }),
+        // Add any other custom plugins here
+    ],
+
+    resolve: {
+        ...defaultConfig.resolve,
+        alias: {
+            ...defaultConfig.resolve.alias,
+            '@': path.resolve(process.cwd(), 'src'),
+        },
+    },
+
+    optimization: {
+        ...defaultConfig.optimization,
+        splitChunks: {
+            cacheGroups: {
+                default: false,
+                vendors: false,
+                vendor: {
+                    name: 'vendor',
+                    chunks: 'all',
+                    test: /node_modules/,
+                    priority: 20,
+                },
+                common: {
+                    name: 'common',
+                    minChunks: 2,
+                    chunks: 'all',
+                    priority: 10,
+                    reuseExistingChunk: true,
+                    enforce: true,
+                },
+            },
+        },
     },
 };
