@@ -25,6 +25,8 @@ module.exports = {
 
     plugins,
 
+    devtool: 'source-map',
+
     entry: {
         'wp-console': resolve( 'src/wp-console.js' ),
     },
