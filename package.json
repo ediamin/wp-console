@@ -35,7 +35,7 @@
     "@wordpress/env": "10.10.0",
     "@wordpress/hooks": "4.10.0",
     "@wordpress/i18n": "5.10.0",
-    "@wordpress/scripts": "30.3.0",
+    "@wordpress/scripts": "27.9.0",
     "husky": "9.1.6",
     "jquery": "3.7.1",
     "jsonminify": "0.4.2",
