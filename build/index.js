@@ -39,7 +39,6 @@ shell.mkdir( '-p', DEST );
 
 const include = [
     'assets',
-    'compat',
     'includes',
     'languages',
     'lib',
