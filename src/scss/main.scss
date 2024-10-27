@@ -1,5 +1,6 @@
-@import "variables";
-@import "mixins";
+@use "sass:meta";
+@use "colors" as colors;
+@use "variables" as var;
 
 body.wp-console-active {
     overflow: hidden;
@@ -13,17 +14,15 @@ body.wp-console-active {
 
 #wp-console {
 
-    /* stylelint-disable no-invalid-position-at-import-rule */
-    @import "utilities";
-    @import "nav";
-    @import "output-colors";
-    @import "symfony-dump";
-    /* stylelint-enable no-invalid-position-at-import-rule */
+    @include meta.load-css( "utilities" );
+    @include meta.load-css( "nav" );
+    @include meta.load-css( "output-colors" );
+    @include meta.load-css( "symfony-dump" );
 
     display: none;
-    font-family: $font-family;
-    color: $text-color;
-    background-color: $body-background-color;
+    font-family: var.$font-family;
+    color: var.$text-color;
+    background-color: var.$body-background-color;
     font-size: 13px;
     line-height: 1.4;
 
@@ -45,12 +44,12 @@ body.wp-console-active {
 
     a {
         text-decoration: none;
-        color: $link-color;
+        color: var.$link-color;
     }
 
     .components-button {
         padding: 0 8px;
-        font-family: $font-family;
+        font-family: var.$font-family;
         font-weight: 400;
         text-transform: none;
         letter-spacing: normal;
@@ -71,8 +70,8 @@ body.wp-console-active {
 
             svg {
                 position: absolute;
-                fill: $white;
-                background-color: $text-color;
+                fill: colors.$white;
+                background-color: var.$text-color;
                 border: 1px solid #111;
                 padding: 3px 5px;
                 border-radius: 3px;
@@ -83,7 +82,7 @@ body.wp-console-active {
     }
 
     #wp-console-editor-output {
-        border-bottom: 1px solid $border-color;
+        border-bottom: 1px solid var.$border-color;
 
         pre {
             width: calc(100vw - 20px);
@@ -91,18 +90,18 @@ body.wp-console-active {
             overflow: auto;
             padding: 10px 20px 10px 10px;
             margin: 0 0 0 20px;
-            border-left: 1px solid $border-color;
+            border-left: 1px solid var.$border-color;
 
             &.wp-console-output {
                 font-size: 13px;
-                background-color: $white;
+                background-color: colors.$white;
             }
 
             &.wp-console-error-trace {
                 width: 100%;
                 padding-right: 10px;
                 margin-left: 0;
-                border-left: 15px solid $alert-red;
+                border-left: 15px solid colors.$alert-red;
                 background-color: #f9e2e2;
             }
         }
@@ -111,14 +110,14 @@ body.wp-console-active {
     #wp-console-panel-debug-log {
 
         pre {
-            font-family: $font-family-monospace;
+            font-family: var.$font-family-monospace;
             width: 100%;
             height: calc(100vh - (32px + 50px));
             overflow: auto;
-            background-color: $white;
+            background-color: colors.$white;
             border-top: 0;
-            border-left: 20px solid $body-background-color;
-            border-bottom: 20px solid $body-background-color;
+            border-left: 20px solid var.$body-background-color;
+            border-bottom: 20px solid var.$body-background-color;
             padding: 10px;
             margin: 0;
             line-height: 1.6;
@@ -128,7 +127,7 @@ body.wp-console-active {
 
         .extra-info {
             width: 100%;
-            font-family: $font-family-monospace;
+            font-family: var.$font-family-monospace;
             position: absolute;
             bottom: 0;
             left: 0;
@@ -147,11 +146,18 @@ body.wp-console-active {
             }
         }
     }
+
+    @keyframes blink_text {
+
+        50% {
+            opacity: 0;
+        }
+    }
 }
 
 #wp-console-code-editor-wrapper {
     position: relative;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid var.$border-color;
 }
 
 #wp-console-code-editor {
@@ -184,7 +190,7 @@ body.wp-console-active {
         }
 
         #wp-console-panel-console-results {
-            border-left: 1px solid $border-color;
+            border-left: 1px solid var.$border-color;
         }
 
         #wp-console-code-editor {
@@ -200,8 +206,6 @@ body.wp-console-active {
     }
 }
 
-/* stylelint-disable no-invalid-position-at-import-rule */
-@import "app-notice";
-@import "snippet-manager";
-@import "compat";
-/* stylelint-enable no-invalid-position-at-import-rule */
+@include meta.load-css( "app-notice" );
+@include meta.load-css( "snippet-manager" );
+@include meta.load-css( "compat" );

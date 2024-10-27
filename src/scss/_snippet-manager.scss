@@ -1,3 +1,6 @@
+@use "colors" as colors;
+@use "variables" as var;
+
 .wp-console-snippet-manager-modal {
 
     .components-modal__content { /* stylelint-disable-line selector-class-pattern */
@@ -41,8 +44,8 @@
     bottom: 0;
     z-index: 4;
     padding: 8px 20px;
-    background-color: $body-background-color;
-    border-top: 1px solid $border-color;
+    background-color: var.$body-background-color;
+    border-top: 1px solid var.$border-color;
 
     .components-button {
         margin-left: 10px;
@@ -50,11 +53,11 @@
 }
 
 #wp-conoele-snippet-manager-update-message {
-    color: $alert-green;
+    color: colors.$alert-green;
 
     svg {
         position: relative;
         top: 2px;
-        fill: $alert-green;
+        fill: colors.$alert-green;
     }
 }

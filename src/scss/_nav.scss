@@ -1,8 +1,10 @@
+@use "variables" as var;
+
 #wp-console-navbar {
     height: 50px;
     padding: 0 15px;
     align-items: center;
-    border: 1px solid $border-color;
+    border: 1px solid var.$border-color;
 
     .wp-console-navbar-left {
         width: 50%;
@@ -27,7 +29,7 @@
 }
 
 #wp-console-logo {
-    font-family: $font-family;
+    font-family: var.$font-family;
     margin: 0 40px 0 0;
     font-size: 16px;
     font-weight: 400;
@@ -41,16 +43,16 @@
     li {
         margin: 0;
         padding: 12px;
-        border-bottom: 3px solid $body-background-color;
+        border-bottom: 3px solid var.$body-background-color;
         cursor: default;
 
         &.active {
-            border-bottom: 3px solid $text-color;
+            border-bottom: 3px solid var.$text-color;
         }
 
         svg {
             display: inline-block;
-            background-color: $text-color;
+            background-color: var.$text-color;
             fill: #fff;
             border-radius: 3px;
             padding: 4px;

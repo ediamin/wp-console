@@ -1,6 +1,10 @@
+@use "sass:color";
+@use "variables" as var;
+@use "mixins" as mixins;
+
 .clearfix {
 
-    @include clearfix();
+    @include mixins.clearfix();
 }
 
 .display-flex {
@@ -50,7 +54,7 @@
 }
 
 .wp-console-button-no-style {
-    color: $text-color;
+    color: var.$text-color;
     line-height: 1.9;
 
     &:not(.is-busy) {
@@ -77,10 +81,10 @@
     }
 
     &[disabled] {
-        color: lighten($text-color, 25%); /* stylelint-disable-line scss/no-global-function-names */
+        color: color.scale(var.$text-color, $lightness: 25%);
 
         svg {
-            fill: lighten($text-color, 25%); /* stylelint-disable-line scss/no-global-function-names */
+            fill: color.scale(var.$text-color, $lightness: 25%);
         }
     }
 }
@@ -99,7 +103,7 @@
 
 .panel-header {
     margin: 0;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid var.$border-color;
     padding: 15px 20px;
 
     .panel-title {
