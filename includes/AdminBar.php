@@ -16,7 +16,7 @@ class AdminBar {
             return;
         }
 
-        add_action( 'wp_before_admin_bar_render', [ $this, 'add_admin_bar_quick_link' ] );
+        add_action( 'admin_bar_menu', [ $this, 'add_admin_bar_quick_link' ] );
         add_action( 'admin_menu', [ $this, 'add_admin_tools_submenu' ] );
 
         add_action( 'wp_after_admin_bar_render', [ $this, 'add_footer' ] );
