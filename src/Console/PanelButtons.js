@@ -21,13 +21,8 @@ import SnippetManager from './Snippet/Manager';
 const PanelButtons = ( props ) => {
     const [ isOpenModal, setIsOpenModal ] = useState( false );
     const [ canCloseManager, setCanCloseManager ] = useState( true );
-    const {
-        userSettings,
-        code,
-        isExecuting,
-        setUserSettings,
-        setNotice,
-    } = props;
+    const { userSettings, code, isExecuting, setUserSettings, setNotice } =
+        props;
 
     const windowSplit = userSettings.console.window_split;
     const IconSplit =

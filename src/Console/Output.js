@@ -11,6 +11,10 @@ import { Tooltip } from '@wordpress/components';
 import { IconExecutionTime } from '../Icons';
 import CopyOutputButton from './CopyOutputButton';
 
+const toolTipPlacement = wpConsole.wp_version.gte_6_4
+    ? { placement: 'left' }
+    : { position: 'middle left' };
+
 function formatOutput( output ) {
     // Strip all html tags.
     output = output.replace( /(<([^>]+)>)/gi, '' );
@@ -55,7 +59,7 @@ const Output = ( { output, dump, executionTime, errorTrace } ) => {
                         <ul className="panel-buttons list-inline float-right">
                             <Tooltip
                                 text={ __( 'Execution Time', 'wp-console' ) }
-                                position="middle left"
+                                { ...toolTipPlacement }
                             >
                                 <li className="list-inline-item">
                                     <span className="opacity-70 font-size-11">

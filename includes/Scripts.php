@@ -76,6 +76,7 @@ class Scripts {
             'php_version'   => PHP_VERSION,
             'wp_version'    => [
                 'gte_5_8' => version_compare( get_bloginfo( 'version' ), '5.8', '>=' ),
+                'gte_6_4' => version_compare( get_bloginfo( 'version' ), '6.4', '>=' ),
             ],
         ];
 
