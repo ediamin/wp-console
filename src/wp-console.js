@@ -6,7 +6,7 @@ import $ from 'jquery';
 /**
  * WordPress dependencies
  */
-import { render } from '@wordpress/element';
+import { render, createRoot } from '@wordpress/element';
 import { createHooks } from '@wordpress/hooks';
 
 /**
@@ -33,6 +33,14 @@ $( document ).ready( function () {
             return;
         }
 
+        // Newer versions of @wordpress/element use createRoot.
+        if ( typeof createRoot === 'function' ) {
+            const root = createRoot( document.getElementById( 'wp-console' ) );
+            root.render( <App /> );
+            return;
+        }
+
+        // Fallback for older versions of @wordpress/element.
         render( <App />, document.getElementById( 'wp-console' ) );
     };
 
