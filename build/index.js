@@ -42,7 +42,6 @@ const include = [
     'includes',
     'languages',
     'lib',
-    'README.md',
     'index.php',
     'license.txt',
     'readme.txt',
