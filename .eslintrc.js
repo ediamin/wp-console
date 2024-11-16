@@ -22,4 +22,19 @@ module.exports = {
         wpConsole: true,
         wpConsoleAce: true,
     },
+    overrides: [
+        {
+            files: [ 'tests/**/*.js' ],
+            extends: [
+                'plugin:jest-dom/recommended',
+                'plugin:testing-library/react',
+                'plugin:jest/recommended',
+            ],
+            globals: {
+                page: true,
+                navigator: true,
+                browser: true,
+            },
+        },
+    ],
 };

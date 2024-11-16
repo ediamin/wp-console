@@ -81,7 +81,7 @@ describe( 'WP Console plugin e2e tests.', () => {
             navigator.clipboard.readText()
         );
 
-        expect( copiedText ).toEqual( '"http://localhost:8889/wp-admin/"' );
+        expect( copiedText ).toEqual( '"http://localhost:8889/wp-admin/"\n' );
     } );
 
     test( 'Catch errors in the code and show it as an error notice.', async () => {
