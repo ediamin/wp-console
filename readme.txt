@@ -39,6 +39,9 @@ To begin using the plugin, follow these steps:
 == Security Concern ==
 WP Console explicitly verifies the presence of the `manage_options` permission to render the user interface and execute various functions. However, it's important to note that this plugin is not intended for use on a production server.
 
+== Other Plugin ==
+Working with the block or the block editor? Checkout [CSS Class Manager](https://wordpress.org/plugins/css-class-manager/) – An advanced autocomplete additional css class control for your blocks.
+
 == Screenshots ==
 
 1. Basic input output
