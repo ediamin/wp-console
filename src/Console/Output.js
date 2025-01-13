@@ -4,6 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { Tooltip } from '@wordpress/components';
+import { decodeEntities } from '@wordpress/html-entities';
 
 /**
  * Internal dependencies
@@ -18,6 +19,10 @@ const toolTipPlacement = wpConsole.wp_version.gte_6_4
 function formatOutput( output ) {
     // Strip all html tags.
     output = output.replace( /(<([^>]+)>)/gi, '' );
+
+    // Decode HTML entities in string type data.
+    output = decodeEntities( output );
+
     // Replace new line
     output = output.replace( /⏎/gi, '\n' );
 

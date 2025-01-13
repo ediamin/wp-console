@@ -88,9 +88,10 @@ pre.sf-dump span {
     display: inline;
 }
 
-pre.sf-dump .sf-dump-compact {
-    display: none;
-}
+// Reveal the nested structure of the dumped data.
+// pre.sf-dump .sf-dump-compact {
+//     display: none;
+// }
 
 pre.sf-dump abbr {
     text-decoration: none;
