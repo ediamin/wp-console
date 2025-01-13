@@ -1,6 +1,6 @@
 {
   "name": "wp-console",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "An in-browser PHP console for WordPress powered by PsySH",
   "author": "Edi Amin <to.ediamin@gmail.com>",
   "license": "GPL-3.0",
