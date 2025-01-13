@@ -1079,6 +1079,8 @@ class Shell extends Application
 
         // Incremental flush
         if ($out !== '' && !$isCleaning) {
+            // @see Issue: https://wordpress.org/support/topic/html-output-display-issue/.
+            $out = esc_html($out);
             $this->output->write($out, false, OutputInterface::OUTPUT_RAW);
             $this->outputWantsNewline = (\substr($out, -1) !== "\n");
             $this->stdoutBuffer .= $out;

@@ -1,10 +1,10 @@
 === WP Console - WordPress PHP Console powered by PsySH ===
 Contributors: ediamin
-Tags: console, repl, browser, psysh, shell, dump
+Tags: repl, browser, shell, dump, autocomplete
 Requires at least: 5.3.12
-Tested up to: 6.7
+Tested up to: 6.7.1
 Requires PHP: 7.4
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,6 +39,9 @@ To begin using the plugin, follow these steps:
 == Security Concern ==
 WP Console explicitly verifies the presence of the `manage_options` permission to render the user interface and execute various functions. However, it's important to note that this plugin is not intended for use on a production server.
 
+== Other Plugin ==
+Working with the block or the block editor? Checkout [CSS Class Manager](https://wordpress.org/plugins/css-class-manager/) – An advanced autocomplete additional css class control for your blocks.
+
 == Screenshots ==
 
 1. Basic input output
@@ -55,6 +58,9 @@ WP Console explicitly verifies the presence of the `manage_options` permission t
 12. Custom snippets in action
 
 == Changelog ==
+
+2.5.1 - January 13, 2025
+* Prevent HTML rendering in console output.
 
 2.5.0 - November 17, 2024
 * Breaking: Dropped support for PHP 5.6. The minimum PHP requirement is now 7.4.
