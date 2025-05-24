@@ -2,7 +2,7 @@
 Contributors: ediamin
 Tags: repl, browser, shell, dump, autocomplete
 Requires at least: 5.3.12
-Tested up to: 6.7.1
+Tested up to: 6.8.1
 Requires PHP: 7.4
 Stable tag: 2.5.1
 License: GPLv3
