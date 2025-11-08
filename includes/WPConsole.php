@@ -20,7 +20,7 @@ final class WPConsole {
      *
      * @var string
      */
-    public $version = '2.5.1';
+    public $version = '2.6.0';
 
     /**
      * Minimum PHP version required

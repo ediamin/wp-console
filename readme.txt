@@ -2,9 +2,9 @@
 Contributors: ediamin
 Tags: repl, browser, shell, dump, autocomplete
 Requires at least: 5.3.12
-Tested up to: 6.8.1
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.5.1
+Stable tag: 2.6.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -58,6 +58,9 @@ Working with the block or the block editor? Checkout [CSS Class Manager](https:/
 12. Custom snippets in action
 
 == Changelog ==
+
+2.6.0 - November 08, 2025
+* Added support for PHP 8.4.
 
 2.5.1 - January 13, 2025
 * Prevent HTML rendering in console output.
