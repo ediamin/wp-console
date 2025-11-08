@@ -14,8 +14,14 @@
 defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'WPConsole\WPConsole' ) ) {
-    // Supported PHP versions are depends on the supported PHP version by PsySH.
-    $version = version_compare( PHP_VERSION, '8.0', '>=' ) ? 'php-8.0' :'php-7.4';
+    // Supported PHP versions depend on the supported PHP version by PsySH.
+    $version = 'php-7.4';
+    if ( version_compare( PHP_VERSION, '8.4', '>=' ) ) {
+        $version = 'php-8.4';
+    } elseif ( version_compare( PHP_VERSION, '8.0', '>=' ) ) {
+        $version = 'php-8.0';
+    }
+
     require_once __DIR__ . '/lib/' . $version . '/vendor/autoload.php';
 }
 
