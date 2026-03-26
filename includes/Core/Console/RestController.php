@@ -180,8 +180,10 @@ class RestController extends WP_REST_Controller {
      * @return \WP_Error
      */
     protected function request_error( $input, $error ) {
-        if ( ob_get_length() ) {
-            ob_end_flush();
+        restore_error_handler();
+
+        if ( ob_get_length() !== false ) {
+            ob_end_clean();
         }
 
         return new WP_Error( 'wp_console_rest_error', $error->getMessage(), [
